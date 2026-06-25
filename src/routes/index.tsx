@@ -215,3 +215,85 @@ function Index() {
     </div>
   );
 }
+
+const testimonials = [
+  { quote: "Foster Stern Group transformó por completo nuestra estrategia patrimonial. Su acompañamiento es excepcional.", name: "María Restrepo", role: "CEO, Restrepo Holdings" },
+  { quote: "Profesionales con visión clara y un trato genuinamente humano. Confío plenamente en su criterio.", name: "Andrés Villamizar", role: "Director Financiero, Grupo Andina" },
+  { quote: "La claridad y disciplina con que estructuran cada decisión nos dio tranquilidad y resultados reales.", name: "Lucía Bermúdez", role: "Fundadora, Bermúdez & Co." },
+  { quote: "Más que asesores, son verdaderos socios estratégicos en el crecimiento de nuestro patrimonio familiar.", name: "Javier Ocampo", role: "Family Office" },
+];
+
+function TestimonialsCarousel() {
+  const [i, setI] = useState(0);
+  const total = testimonials.length;
+  const prev = () => setI((p) => (p - 1 + total) % total);
+  const next = () => setI((p) => (p + 1) % total);
+  const t = testimonials[i];
+  return (
+    <section id="testimonials" className="py-28">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Clientes</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-[#0D3B7F]">Voces que confían en nosotros.</h2>
+          </div>
+          <div className="hidden md:flex gap-2">
+            <button onClick={prev} aria-label="Anterior" className="w-12 h-12 rounded-full border border-[#0D3B7F]/15 grid place-items-center text-[#0D3B7F] hover:bg-[#238CCC] hover:text-white hover:border-transparent transition">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button onClick={next} aria-label="Siguiente" className="w-12 h-12 rounded-full border border-[#0D3B7F]/15 grid place-items-center text-[#0D3B7F] hover:bg-[#238CCC] hover:text-white hover:border-transparent transition">
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        <div key={i} className="relative overflow-hidden rounded-[2rem] p-10 md:p-14 bg-white border border-[#238CCC]/10 animate-rise" style={{ boxShadow: "var(--shadow-fresh)" }}>
+          <Quote className="w-14 h-14 text-[#238CCC]/25 absolute top-8 right-8" />
+          <p className="text-2xl md:text-3xl font-medium text-[#0D3B7F] leading-snug max-w-3xl">
+            "{t.quote}"
+          </p>
+          <div className="mt-8 flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full grid place-items-center text-white font-bold animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)" }}>
+              {t.name.split(" ").map(n => n[0]).slice(0,2).join("")}
+            </div>
+            <div>
+              <div className="font-semibold text-[#0D3B7F]">{t.name}</div>
+              <div className="text-sm text-[#0D3B7F]/60">{t.role}</div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex items-center gap-2">
+            {testimonials.map((_, idx) => (
+              <button key={idx} onClick={() => setI(idx)} aria-label={`Ir al testimonio ${idx+1}`}
+                className="h-1.5 rounded-full transition-all"
+                style={{ width: idx === i ? 32 : 12, background: idx === i ? "var(--gradient-fresh)" : "rgba(13,59,127,0.15)" }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LogosCarousel() {
+  const logos = ["Andina Capital", "Restrepo Holdings", "Bermúdez & Co.", "Ocampo Family", "Grupo Mérida", "Bravo Partners", "Cordillera Group", "Solaris Wealth"];
+  const row = [...logos, ...logos];
+  return (
+    <section className="py-16 border-y border-[#238CCC]/10 bg-[#eaf4fb]/40 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 mb-8 text-center">
+        <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Confían en nosotros</span>
+      </div>
+      <div className="relative">
+        <div className="flex gap-6 marquee-track" style={{ width: "max-content" }}>
+          {row.map((name, idx) => (
+            <div key={idx} className="shrink-0 px-8 py-5 rounded-2xl bg-white border border-[#238CCC]/10 text-[#0D3B7F] font-semibold tracking-tight" style={{ boxShadow: "0 8px 20px -15px rgba(13,59,127,0.2)" }}>
+              {name}
+            </div>
+          ))}
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#eaf4fb] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#eaf4fb] to-transparent" />
+      </div>
+    </section>
+  );
+}
