@@ -177,6 +177,13 @@ function Index() {
 
       {/* CTA */}
       <section id="contact" className="py-28">
+
+      {/* TESTIMONIALS CAROUSEL */}
+      <TestimonialsCarousel />
+
+      {/* LOGOS MARQUEE */}
+      <LogosCarousel />
+
         <div className="mx-auto max-w-5xl px-6">
           <div className="relative overflow-hidden rounded-[2.5rem] p-12 md:p-20 text-center" style={{ background: "var(--gradient-soft)", boxShadow: "var(--shadow-fresh)" }}>
             <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(80px)" }} />
