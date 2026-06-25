@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroWave from "@/assets/hero-wave.jpg";
-import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2 } from "lucide-react";
+import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,9 +18,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-white/70 border-b border-[#238CCC]/10">
-        <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
+      {/* NAV - bubble fixed */}
+      <header className="fixed top-0 inset-x-0 z-50" style={{ padding: "15px" }}>
+        <div className="mx-auto max-w-7xl backdrop-blur-xl bg-white/75 border border-[#238CCC]/15 flex items-center justify-between px-6 h-16" style={{ borderRadius: "20px", boxShadow: "0 10px 30px -15px rgba(13,59,127,0.25)" }}>
           <a href="#top" className="flex items-center gap-2.5">
             <span className="relative grid place-items-center w-9 h-9 rounded-xl text-white font-bold" style={{ background: "var(--gradient-fresh)" }}>
               FS
@@ -31,6 +32,7 @@ function Index() {
             <a href="#about" className="hover:text-[#238CCC] transition">Quiénes somos</a>
             <a href="#values" className="hover:text-[#238CCC] transition">Valores</a>
             <a href="#services" className="hover:text-[#238CCC] transition">Servicios</a>
+            <a href="#testimonials" className="hover:text-[#238CCC] transition">Clientes</a>
             <a href="#contact" className="hover:text-[#238CCC] transition">Contacto</a>
           </nav>
           <a href="#contact" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}>
