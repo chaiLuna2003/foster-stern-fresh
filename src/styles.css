@@ -198,6 +198,27 @@
 .marquee-track { animation: marquee 32s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
 
+@keyframes word-rotate {
+  0%   { opacity: 0; transform: translateY(40px) rotateX(-60deg); filter: blur(6px); }
+  6%   { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+  25%  { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+  31%  { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
+  100% { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
+}
+.word-rotate-item {
+  position: absolute;
+  inset: 0;
+  display: inline-block;
+  animation: word-rotate 16s linear infinite;
+  transform-origin: 50% 100%;
+}
+.info-image {
+  transition: transform 0.5s cubic-bezier(.2,.7,.2,1), box-shadow 0.5s ease;
+}
+.info-image:hover {
+  transform: translateY(-3px);
+}
+
 @utility animate-float { animation: float-y 6s ease-in-out infinite; }
 @utility animate-blob { animation: blob 14s ease-in-out infinite; }
 @utility animate-rise { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
