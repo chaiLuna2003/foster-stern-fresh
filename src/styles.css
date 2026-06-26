@@ -200,9 +200,9 @@
 
 @keyframes word-rotate {
   0%   { opacity: 0; transform: translateY(40px) rotateX(-60deg); filter: blur(6px); }
-  10%  { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
-  30%  { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
-  40%  { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
+  6%   { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+  25%  { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+  31%  { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
   100% { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
 }
 .word-rotate-item {
