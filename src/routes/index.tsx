@@ -301,3 +301,54 @@ function LogosCarousel() {
     </section>
   );
 }
+
+function InfoSection() {
+  const words = ["Visión", "Confianza", "Estrategia", "Futuro"];
+  return (
+    <section id="info" className="relative py-28 overflow-hidden">
+      <div className="pointer-events-none absolute top-20 -left-32 w-[380px] h-[380px] opacity-25 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }} />
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div className="animate-rise">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Lo que nos mueve</span>
+          <h2 className="mt-4 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
+            Construimos con{" "}
+            <span className="relative inline-block align-baseline overflow-hidden h-[1.1em]" style={{ minWidth: "6.5ch", perspective: "800px" }}>
+              {words.map((w, idx) => (
+                <span
+                  key={w}
+                  className="word-rotate-item text-shimmer"
+                  style={{ animationDelay: `${idx * 4}s` }}
+                >
+                  {w}
+                </span>
+              ))}
+            </span>
+          </h2>
+          <p className="mt-7 text-lg leading-relaxed text-[#0D3B7F]/75 max-w-xl">
+            Cada decisión que tomamos nace de un principio simple: cuidar lo que más
+            importa para nuestros clientes. Fusionamos análisis riguroso con sensibilidad
+            humana para crear estrategias que resisten el paso del tiempo y se adaptan a
+            cada nueva etapa.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">Asesoría personalizada</span>
+            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">Análisis estratégico</span>
+            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">Resultados a largo plazo</span>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 rounded-[2rem] -rotate-3" style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }} />
+          <img
+            src={infoImage}
+            alt="Equipo Foster Stern Group colaborando"
+            width={1024}
+            height={1024}
+            loading="lazy"
+            className="info-image relative rounded-[2rem] w-full h-auto object-cover border-8 border-white"
+            style={{ boxShadow: "var(--shadow-fresh)" }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
