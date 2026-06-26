@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
 import heroWave from "@/assets/hero-wave.jpg";
 import infoImage from "@/assets/info-section.jpg";
 import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight, MapPin, Phone, Mail, User, MessageSquare, Send, CheckCircle2 } from "lucide-react";
@@ -19,28 +20,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* NAV - bubble fixed */}
-      <header className="fixed top-0 inset-x-0 z-50" style={{ padding: "15px" }}>
-        <div className="mx-auto max-w-7xl backdrop-blur-xl bg-white/75 border border-[#238CCC]/15 flex items-center justify-between px-6 h-16" style={{ borderRadius: "20px", boxShadow: "0 10px 30px -15px rgba(13,59,127,0.25)" }}>
-          <a href="#top" className="flex items-center gap-2.5">
-            <span className="relative grid place-items-center w-9 h-9 rounded-xl text-white font-bold" style={{ background: "var(--gradient-fresh)" }}>
-              FS
-              <span className="absolute inset-0 rounded-xl animate-pulse-ring" style={{ background: "var(--gradient-fresh)" }} />
-            </span>
-            <span className="font-semibold tracking-tight text-[#0D3B7F]">Foster Stern Group</span>
-          </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-[#0D3B7F]/80">
-            <a href="#about" className="hover:text-[#238CCC] transition">Quiénes somos</a>
-            <a href="#values" className="hover:text-[#238CCC] transition">Valores</a>
-            <a href="#services" className="hover:text-[#238CCC] transition">Servicios</a>
-            <a href="#testimonials" className="hover:text-[#238CCC] transition">Clientes</a>
-            <a href="#contact" className="hover:text-[#238CCC] transition">Contacto</a>
-          </nav>
-          <a href="#contact" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}>
-            Hablemos <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section id="top" className="relative pt-32 pb-24 md:pt-44 md:pb-32">
