@@ -221,6 +221,12 @@ function Index() {
 }
 
 const testimonials = [
+  // anchor
+] as const;
+
+const _placeholder = null;
+
+const testimonialsList = [
   { quote: "Foster Stern Group transformó por completo nuestra estrategia patrimonial. Su acompañamiento es excepcional.", name: "María Restrepo", role: "CEO, Restrepo Holdings" },
   { quote: "Profesionales con visión clara y un trato genuinamente humano. Confío plenamente en su criterio.", name: "Andrés Villamizar", role: "Director Financiero, Grupo Andina" },
   { quote: "La claridad y disciplina con que estructuran cada decisión nos dio tranquilidad y resultados reales.", name: "Lucía Bermúdez", role: "Fundadora, Bermúdez & Co." },
