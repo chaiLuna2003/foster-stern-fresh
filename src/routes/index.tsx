@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroWave from "@/assets/hero-wave.jpg";
+import infoImage from "@/assets/info-section.jpg";
 import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
@@ -177,6 +178,9 @@ function Index() {
 
       {/* TESTIMONIALS CAROUSEL */}
       <TestimonialsCarousel />
+
+      {/* INFO SECTION */}
+      <InfoSection />
 
       {/* LOGOS MARQUEE */}
       <LogosCarousel />
