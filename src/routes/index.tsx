@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroWave from "@/assets/hero-wave.jpg";
 import infoImage from "@/assets/info-section.jpg";
-import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight, MapPin, Phone, Mail, User, MessageSquare, Send, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -186,7 +186,7 @@ function Index() {
       <LogosCarousel />
 
       {/* CTA */}
-      <section id="contact" className="py-28">
+      <section id="cta" className="py-28">
         <div className="mx-auto max-w-5xl px-6">
           <div className="relative overflow-hidden rounded-[2.5rem] p-12 md:p-20 text-center" style={{ background: "var(--gradient-soft)", boxShadow: "var(--shadow-fresh)" }}>
             <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(80px)" }} />
@@ -198,13 +198,16 @@ function Index() {
               <p className="mt-5 text-lg text-[#0D3B7F]/70 max-w-xl mx-auto">
                 Conversemos sobre cómo podemos acompañarte a alcanzar tus metas financieras.
               </p>
-              <a href="mailto:contacto@fosterstern.com" className="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full text-white font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }}>
+              <a href="#contact" className="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full text-white font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }}>
                 Agendar una conversación <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* CONTACT FORM */}
+      <ContactSection />
 
       {/* FOOTER */}
       <footer className="border-t border-[#0D3B7F]/10 py-10">
