@@ -2,7 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroWave from "@/assets/hero-wave.jpg";
 import infoImage from "@/assets/info-section.jpg";
-import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight, MapPin, Phone, Mail, User, MessageSquare, Send, CheckCircle2 } from "lucide-react";
+import cityMexico from "@/assets/city-mexico.jpg";
+import cityMiami from "@/assets/city-miami.jpg";
+import cityMadrid from "@/assets/city-madrid.jpg";
+import cityBogota from "@/assets/city-bogota.jpg";
+import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight, MapPin, Phone, Mail, User, MessageSquare, Send, CheckCircle2, Building2, Clock } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -161,6 +165,9 @@ function Index() {
 
       {/* INFO SECTION */}
       <InfoSection />
+
+      {/* GLOBAL PRESENCE */}
+      <GlobalPresence />
 
       {/* LOGOS MARQUEE */}
       <LogosCarousel />
