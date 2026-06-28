@@ -241,6 +241,42 @@
   transform: translateY(-3px);
 }
 
+/* Nav link hover/active zoom */
+@keyframes brand-zoom-in {
+  from { opacity: 0; transform: scale(0.85); filter: blur(4px); }
+  to   { opacity: 1; transform: scale(1);    filter: blur(0); }
+}
+.brand-zoom-in { animation: brand-zoom-in 0.7s cubic-bezier(.2,.7,.2,1) both; }
+
+.nav-zoom {
+  position: relative;
+  display: inline-block;
+  color: rgba(13, 59, 127, 0.8);
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(.2,.7,.2,1);
+  transform-origin: center;
+}
+.nav-zoom::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 2px;
+  background: var(--gradient-fresh);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+}
+.nav-zoom:hover {
+  color: #238CCC;
+  transform: scale(1.08);
+}
+.nav-zoom:hover::after,
+.nav-zoom.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+.nav-zoom.is-active { color: #238CCC; font-weight: 600; }
+
 @utility animate-float { animation: float-y 6s ease-in-out infinite; }
 @utility animate-blob { animation: blob 14s ease-in-out infinite; }
 @utility animate-rise { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
