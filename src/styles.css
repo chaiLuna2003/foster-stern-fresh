@@ -152,8 +152,13 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    font-size: 1.0625rem;   /* 17px base, up from 16px */
+    line-height: 1.65;
   }
-  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.15; }
+  @media (min-width: 768px) {
+    body { font-size: 1.125rem; } /* 18px on tablet+ */
+  }
 }
 
 @theme inline {
