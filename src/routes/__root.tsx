@@ -82,10 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Foster Stern Group — Estrategia financiera y asesoramiento de confianza para clientes que buscan crecer." },
       { name: "author", content: "Foster Stern Group" },
       { property: "og:title", content: "Foster Stern Group" },
-      { property: "og:description", content: "Estrategia financiera y asesoramiento de confianza." },
+      { property: "og:description", content: "Foster Stern Group — Estrategia financiera y asesoramiento de confianza para clientes que buscan crecer." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Foster Stern Group" },
+      { name: "twitter:description", content: "Foster Stern Group — Estrategia financiera y asesoramiento de confianza para clientes que buscan crecer." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b1cffa7e-06e4-4391-b45c-3edc7efe8aee/id-preview-03274fa5--84fde5c4-5d88-4c38-8e19-54f85a5c6cfb.lovable.app-1782660770527.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b1cffa7e-06e4-4391-b45c-3edc7efe8aee/id-preview-03274fa5--84fde5c4-5d88-4c38-8e19-54f85a5c6cfb.lovable.app-1782660770527.png" },
     ],
     links: [
       {
