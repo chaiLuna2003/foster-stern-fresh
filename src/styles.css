@@ -201,9 +201,9 @@
 
 @keyframes word-rotate {
   0%    { opacity: 0; transform: translateY(40px) rotateX(-60deg); filter: blur(6px); }
-  5%    { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
-  20%   { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
-  25%   { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
+  4%    { opacity: 1; transform: translateY(0)   rotateX(0);     filter: blur(0); }
+  22%   { opacity: 1; transform: translateY(0)   rotateX(0);     filter: blur(0); }
+  27%   { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
   100%  { opacity: 0; transform: translateY(-40px) rotateX(60deg); filter: blur(6px); }
 }
 .word-rotate-item {
@@ -216,11 +216,14 @@
   will-change: opacity, transform, filter;
 }
 
+/* Page transition — opacity only.
+   Do NOT add transform/filter/perspective/clip-path here: they create a new
+   containing block and break `position: fixed` on the site header. */
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-.page-transition { animation: page-enter 0.55s cubic-bezier(.2,.7,.2,1) both; }
+.page-transition { animation: page-enter 0.45s ease-out both; }
 
 @keyframes menu-drop {
   from { opacity: 0; transform: translateY(-20px) scaleY(0.96); }
