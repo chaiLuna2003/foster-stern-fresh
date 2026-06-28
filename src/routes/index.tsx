@@ -269,6 +269,197 @@ function TestimonialsCarousel() {
   );
 }
 
+const offices = [
+  {
+    city: "Ciudad de México",
+    country: "México",
+    region: "Sede principal",
+    image: cityMexico,
+    coords: { x: 24, y: 52 },
+    timezone: "GMT-6",
+    address: "Polanco, CDMX",
+    team: "45+ asesores",
+    note: "Nuestra oficina principal, donde nació la firma hace más de dos décadas.",
+  },
+  {
+    city: "Miami",
+    country: "Estados Unidos",
+    region: "Oficina regional",
+    image: cityMiami,
+    coords: { x: 30, y: 48 },
+    timezone: "GMT-5",
+    address: "Brickell Avenue",
+    team: "20+ asesores",
+    note: "Puente estratégico para clientes con intereses internacionales en USD.",
+  },
+  {
+    city: "Bogotá",
+    country: "Colombia",
+    region: "Oficina LATAM",
+    image: cityBogota,
+    coords: { x: 32, y: 62 },
+    timezone: "GMT-5",
+    address: "Zona Financiera, Chicó",
+    team: "15+ asesores",
+    note: "Acompañamos familias y empresas en su expansión regional.",
+  },
+  {
+    city: "Madrid",
+    country: "España",
+    region: "Oficina Europa",
+    image: cityMadrid,
+    coords: { x: 51, y: 40 },
+    timezone: "GMT+1",
+    address: "Paseo de la Castellana",
+    team: "12+ asesores",
+    note: "Nuestra puerta de entrada al mercado europeo y patrimonio transatlántico.",
+  },
+];
+
+function GlobalPresence() {
+  const [active, setActive] = useState(0);
+  const a = offices[active];
+
+  return (
+    <section id="presence" className="relative py-28 overflow-hidden" style={{ background: "var(--gradient-soft)" }}>
+      <div className="pointer-events-none absolute -top-24 -right-24 w-[460px] h-[460px] opacity-25 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }} />
+      <div className="pointer-events-none absolute bottom-0 -left-32 w-[380px] h-[380px] opacity-20 animate-blob" style={{ background: "linear-gradient(135deg,#238CCC,#a7d8f0)", filter: "blur(70px)", animationDelay: "-6s" }} />
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Presencia global</span>
+          <h2 className="mt-3 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
+            Estamos donde <span className="text-shimmer">nuestros clientes nos necesitan.</span>
+          </h2>
+          <p className="mt-5 text-lg text-[#0D3B7F]/70">
+            Una red de oficinas en América y Europa para acompañarte en cada decisión, sin importar la zona horaria.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-8 items-stretch">
+          {/* INTERACTIVE MAP */}
+          <div className="lg:col-span-3 relative rounded-[2rem] p-6 md:p-8 bg-white border border-[#238CCC]/15" style={{ boxShadow: "var(--shadow-fresh)" }}>
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden" style={{ background: "linear-gradient(160deg,#eaf4fb 0%,#d3e8f5 100%)" }}>
+              {/* dotted world-ish backdrop */}
+              <div
+                className="absolute inset-0 opacity-50"
+                style={{
+                  backgroundImage: "radial-gradient(circle, #238CCC33 1.2px, transparent 1.2px)",
+                  backgroundSize: "18px 18px",
+                }}
+                aria-hidden="true"
+              />
+              {/* pins */}
+              {offices.map((o, idx) => {
+                const isActive = idx === active;
+                return (
+                  <button
+                    key={o.city}
+                    type="button"
+                    onClick={() => setActive(idx)}
+                    onMouseEnter={() => setActive(idx)}
+                    aria-label={`Ver oficina ${o.city}`}
+                    aria-pressed={isActive}
+                    className="absolute -translate-x-1/2 -translate-y-full group"
+                    style={{ left: `${o.coords.x}%`, top: `${o.coords.y}%` }}
+                  >
+                    <span className="relative grid place-items-center">
+                      {isActive && (
+                        <span
+                          className="absolute w-10 h-10 rounded-full animate-pulse-ring"
+                          style={{ background: "var(--gradient-fresh)" }}
+                          aria-hidden="true"
+                        />
+                      )}
+                      <span
+                        className={`relative grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-300 ease-out ${isActive ? "scale-110" : "group-hover:scale-110"}`}
+                        style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}
+                      >
+                        <MapPin className="w-4 h-4" />
+                      </span>
+                      <span
+                        className={`mt-1 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all duration-300 ${isActive ? "bg-[#0D3B7F] text-white" : "bg-white/90 text-[#0D3B7F] group-hover:bg-[#0D3B7F] group-hover:text-white"}`}
+                      >
+                        {o.city}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+
+              {/* corner stat */}
+              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur rounded-xl px-4 py-2.5 flex items-center gap-2 text-sm">
+                <Globe2 className="w-4 h-4 text-[#238CCC]" />
+                <span className="text-[#0D3B7F] font-semibold">{offices.length} oficinas</span>
+                <span className="text-[#0D3B7F]/60">en 4 países</span>
+              </div>
+            </div>
+
+            {/* tabs */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {offices.map((o, idx) => (
+                <button
+                  key={o.city}
+                  type="button"
+                  onClick={() => setActive(idx)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${idx === active ? "text-white" : "bg-[#238CCC]/10 text-[#0D3B7F] hover:bg-[#238CCC]/20"}`}
+                  style={idx === active ? { backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" } : undefined}
+                >
+                  {o.city}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* DETAIL CARD */}
+          <div key={a.city} className="lg:col-span-2 relative rounded-[2rem] overflow-hidden bg-white border border-[#238CCC]/15 animate-rise" style={{ boxShadow: "var(--shadow-fresh)" }}>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={a.image}
+                alt={`${a.city}, ${a.country}`}
+                width={1024}
+                height={768}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(13,59,127,0) 40%, rgba(13,59,127,0.85) 100%)" }} />
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur text-[11px] uppercase tracking-wider text-[#0D3B7F] font-semibold">
+                  {a.region}
+                </span>
+              </div>
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <div className="text-3xl font-bold leading-tight">{a.city}</div>
+                <div className="text-sm opacity-90">{a.country}</div>
+              </div>
+            </div>
+            <div className="p-6">
+              <p className="text-[#0D3B7F]/75 leading-relaxed">{a.note}</p>
+              <div className="mt-5 grid grid-cols-3 gap-3 text-center">
+                <div className="p-3 rounded-2xl bg-[#238CCC]/8">
+                  <Building2 className="w-4 h-4 mx-auto text-[#238CCC]" />
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">Dirección</div>
+                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">{a.address}</div>
+                </div>
+                <div className="p-3 rounded-2xl bg-[#238CCC]/8">
+                  <Users className="w-4 h-4 mx-auto text-[#238CCC]" />
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">Equipo</div>
+                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">{a.team}</div>
+                </div>
+                <div className="p-3 rounded-2xl bg-[#238CCC]/8">
+                  <Clock className="w-4 h-4 mx-auto text-[#238CCC]" />
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">Horario</div>
+                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">{a.timezone}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function LogosCarousel() {
   const logos = ["Andina Capital", "Restrepo Holdings", "Bermúdez & Co.", "Ocampo Family", "Grupo Mérida", "Bravo Partners", "Cordillera Group", "Solaris Wealth"];
   const row = [...logos, ...logos];
