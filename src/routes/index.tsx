@@ -27,66 +27,7 @@ function Index() {
       <SiteHeader />
 
       {/* HERO */}
-      <section id="top" className="relative pt-32 pb-24 md:pt-44 md:pb-32">
-        {/* floating blobs */}
-        <div className="pointer-events-none absolute -top-20 -left-32 w-[480px] h-[480px] opacity-40 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(60px)" }} />
-        <div className="pointer-events-none absolute top-40 -right-32 w-[420px] h-[420px] opacity-30 animate-blob" style={{ background: "linear-gradient(135deg,#238CCC,#a7d8f0)", filter: "blur(70px)", animationDelay: "-5s" }} />
-
-        <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-rise">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-xs font-medium">
-              <Sparkles className="w-3.5 h-3.5" /> Estrategia con propósito
-            </span>
-            <h1 className="mt-5 text-5xl md:text-7xl font-bold leading-[1.05] text-[#0D3B7F]">
-              Construimos <span className="text-shimmer">decisiones financieras</span> que perduran.
-            </h1>
-            <p className="mt-6 text-lg text-[#0D3B7F]/70 max-w-xl">
-              En Foster Stern Group acompañamos a nuestros clientes con visión estratégica, claridad y un compromiso real por su crecimiento.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#about" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-white font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}>
-                Conoce quiénes somos <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#services" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#0D3B7F]/15 text-[#0D3B7F] font-medium hover:bg-[#238CCC]/5 transition">
-                Nuestros servicios
-              </a>
-            </div>
-            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-              {[["25+","Años"],["120+","Clientes"],["$3B","Asesorados"]].map(([n,l]) => (
-                <div key={l}>
-                  <div className="text-3xl font-bold text-[#0D3B7F]">{n}</div>
-                  <div className="text-xs uppercase tracking-wider text-[#0D3B7F]/60 mt-1">{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative animate-float">
-            <div className="absolute inset-0 rounded-[2.5rem] rotate-3" style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }} />
-            <img
-              src={heroWave}
-              alt="Foster Stern Group visual"
-              width={1024}
-              height={1024}
-              className="relative rounded-[2.5rem] w-full h-auto object-cover border-8 border-white"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 flex items-center gap-3" style={{ boxShadow: "var(--shadow-fresh)" }}>
-              <div className="w-10 h-10 rounded-xl grid place-items-center text-white" style={{ background: "var(--gradient-fresh)" }}>
-                <TrendingUp className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-[#0D3B7F]/60">Crecimiento promedio</div>
-                <div className="text-lg font-bold text-[#0D3B7F]">+18.4%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* wave divider */}
-        <svg className="absolute bottom-0 inset-x-0 w-full h-24 animate-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path d="M0,64 C320,128 720,0 1440,80 L1440,120 L0,120 Z" fill="#eaf4fb" />
-        </svg>
-      </section>
+      <HeroSection />
 
       {/* ABOUT */}
       <section id="about" className="relative py-28" style={{ background: "var(--gradient-soft)" }}>
