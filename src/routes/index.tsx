@@ -9,6 +9,120 @@ import cityBogota from "@/assets/city-bogota.jpg";
 import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight, MapPin, Phone, Mail, User, MessageSquare, Send, CheckCircle2, Building2, Clock } from "lucide-react";
 import { useState } from "react";
 
+function HeroSection() {
+  const line1 = ["Construimos"];
+  const line2 = ["decisiones"];
+  const line3 = ["financieras"];
+  const line4 = ["que", "perduran."];
+  let wi = 0;
+  const word = (w: string, delay: number) => (
+    <span key={`${w}-${wi++}`} className="hero-word-mask">
+      <span className="hero-word" style={{ animationDelay: `${delay}s` }}>{w}</span>
+    </span>
+  );
+  return (
+    <section id="top" className="relative pt-32 pb-28 md:pt-44 md:pb-40 overflow-hidden">
+      {/* aurora mesh */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-32 -left-40 w-[620px] h-[620px] rounded-full opacity-50 aurora-layer"
+             style={{ background: "radial-gradient(circle at 30% 30%, #238CCC 0%, transparent 60%)", filter: "blur(80px)" }} />
+        <div className="absolute top-1/3 -right-40 w-[680px] h-[680px] rounded-full opacity-40 aurora-layer"
+             style={{ background: "radial-gradient(circle at 60% 50%, #0D3B7F 0%, transparent 60%)", filter: "blur(90px)", animationDelay: "-6s" }} />
+        <div className="absolute bottom-0 left-1/3 w-[520px] h-[520px] rounded-full opacity-35 aurora-layer"
+             style={{ background: "radial-gradient(circle at 50% 50%, #a7d8f0 0%, transparent 60%)", filter: "blur(80px)", animationDelay: "-12s" }} />
+      </div>
+      {/* animated grid */}
+      <div className="pointer-events-none absolute inset-0 -z-10 hero-grid" />
+
+      <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-12 items-center">
+        <div className="md:col-span-7">
+          <span className="badge-pop inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#238CCC]/20 text-[#0D3B7F] text-xs font-medium shadow-sm">
+            <span className="relative flex w-2 h-2">
+              <span className="absolute inset-0 rounded-full bg-[#238CCC] animate-pulse-ring" />
+              <span className="relative w-2 h-2 rounded-full bg-[#238CCC]" />
+            </span>
+            Foster Stern Group · Estrategia con propósito
+          </span>
+
+          <h1 className="mt-6 text-[clamp(2.6rem,7vw,5.6rem)] font-bold leading-[1.02] text-[#0D3B7F] tracking-tight">
+            <span className="block">{line1.map((w,i)=>word(w, 0.05 + i*0.08))}</span>
+            <span className="block hero-gradient-text">
+              {line2.map((w,i)=>word(w, 0.25 + i*0.08))}{" "}
+              {line3.map((w,i)=>word(w, 0.38 + i*0.08))}
+            </span>
+            <span className="block">
+              {line4.map((w,i)=>word(w, 0.58 + i*0.10))}
+              <span className="hero-caret" />
+            </span>
+          </h1>
+
+          <p className="mt-7 text-lg md:text-xl text-[#0D3B7F]/70 max-w-xl animate-rise" style={{ animationDelay: "0.9s" }}>
+            En Foster Stern Group acompañamos a nuestros clientes con visión estratégica, claridad y un compromiso real por su crecimiento.
+          </p>
+
+          <div className="mt-9 flex flex-wrap gap-3 animate-rise" style={{ animationDelay: "1.05s" }}>
+            <a href="#contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full text-white font-medium animate-gradient hover:scale-[1.03] transition-transform"
+               style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}>
+              Hablemos hoy
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+            <a href="#services" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-[#0D3B7F]/15 text-[#0D3B7F] font-medium bg-white/50 backdrop-blur hover:bg-[#238CCC]/5 transition">
+              Nuestros servicios
+            </a>
+          </div>
+
+          <div className="mt-14 grid grid-cols-3 gap-6 max-w-lg animate-rise" style={{ animationDelay: "1.2s" }}>
+            {[["25+","Años"],["120+","Clientes"],["$3B","Asesorados"]].map(([n,l]) => (
+              <div key={l} className="relative">
+                <div className="text-3xl md:text-4xl font-bold hero-gradient-text">{n}</div>
+                <div className="text-xs uppercase tracking-[0.18em] text-[#0D3B7F]/60 mt-1">{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="md:col-span-5 relative tilt-in" style={{ animationDelay: "0.4s" }}>
+          {/* spinning ring */}
+          <div className="absolute -inset-6 spin-slow opacity-50 pointer-events-none"
+               style={{ background: "conic-gradient(from 0deg, transparent 0deg, #238CCC 90deg, transparent 180deg, #0D3B7F 270deg, transparent 360deg)", borderRadius: "9999px", filter: "blur(28px)" }} />
+          <div className="relative animate-float">
+            <div className="absolute inset-0 rounded-[2.5rem] rotate-3" style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }} />
+            <img
+              src={heroWave}
+              alt="Foster Stern Group visual"
+              width={1024}
+              height={1024}
+              className="relative rounded-[2.5rem] w-full h-auto object-cover border-8 border-white"
+            />
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 flex items-center gap-3 ticker-up" style={{ boxShadow: "var(--shadow-fresh)" }}>
+              <div className="w-10 h-10 rounded-xl grid place-items-center text-white" style={{ background: "var(--gradient-fresh)" }}>
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs text-[#0D3B7F]/60">Crecimiento promedio</div>
+                <div className="text-lg font-bold text-[#0D3B7F]">+18.4%</div>
+              </div>
+            </div>
+            <div className="absolute -top-5 -right-5 bg-white rounded-2xl px-4 py-3 flex items-center gap-3 badge-pop" style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "1.4s" }}>
+              <div className="w-9 h-9 rounded-xl grid place-items-center text-white" style={{ background: "var(--gradient-fresh)" }}>
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs text-[#0D3B7F]/60">Confianza</div>
+                <div className="text-sm font-bold text-[#0D3B7F]">25 años</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <svg className="absolute bottom-0 inset-x-0 w-full h-24 animate-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,64 C320,128 720,0 1440,80 L1440,120 L0,120 Z" fill="#eaf4fb" />
+      </svg>
+    </section>
+  );
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
