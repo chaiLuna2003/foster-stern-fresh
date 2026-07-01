@@ -302,3 +302,9 @@
   color: transparent;
   animation: shimmer 4s linear infinite;
 }
+
+@keyframes zoom-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+@utility animate-zoom-pulse { animation: zoom-pulse 3s ease-in-out infinite; }
