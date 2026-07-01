@@ -51,27 +51,18 @@ export function SiteHeader() {
   return (
     <header className="fixed top-0 inset-x-0 z-50" style={{ padding: "15px" }}>
       <div
-        className="mx-auto max-w-7xl backdrop-blur-xl bg-white/75 border border-[#238CCC]/15 flex items-center justify-between px-6 h-16 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgba(35,140,204,0.45)]"
+        className="mx-auto max-w-7xl backdrop-blur-xl bg-white/75 border border-[#238CCC]/15 flex items-center justify-between px-12 py-10 h-16 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgba(35,140,204,0.45)]"
         style={{ borderRadius: "20px", boxShadow: "0 10px 30px -15px rgba(13,59,127,0.25)" }}
       >
         <Link to="/" className="group flex items-center gap-2.5 brand-zoom-in">
-          <span
-            className="relative grid place-items-center w-9 h-9 rounded-xl text-white font-bold transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-3"
-            style={{ background: "var(--gradient-fresh)" }}
-          >
-            FS
-            <span
-              className="absolute inset-0 rounded-xl animate-pulse-ring"
-              style={{ background: "var(--gradient-fresh)" }}
-              aria-hidden="true"
-            />
-          </span>
-          <span className="font-semibold tracking-tight text-[#0D3B7F] transition-transform duration-500 ease-out group-hover:scale-105 origin-left">
-            Foster Stern Group
-          </span>
+<img
+  src="/images/LogoMain1.png"
+  alt="Foster Stern Group"
+  className="h-16 w-auto transition-transform duration-500 ease-out group-hover:scale-105"
+/>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7 text-sm text-[#0D3B7F]/80">
+        <nav className="hidden md:flex items-center gap-7 text-lg text-[#0D3B7F]/80">
           <Link to="/" className="nav-zoom" activeOptions={{ exact: true }} activeProps={{ className: "nav-zoom is-active" }}>Inicio</Link>
           <Link to="/nosotros" className="nav-zoom" activeProps={{ className: "nav-zoom is-active" }}>Nosotros</Link>
           <Link to="/" hash="services" className="nav-zoom">Servicios</Link>
@@ -83,10 +74,10 @@ export function SiteHeader() {
           <Link
             to="/"
             hash="contact"
-            className="group hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium animate-gradient transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-0.5"
+            className="group hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-lg font-medium animate-gradient transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-0.5"
             style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}
           >
-            Hablemos
+            Contactanos
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
           <button
@@ -137,7 +128,7 @@ export function SiteHeader() {
             className="mt-4 inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-full text-white text-sm font-medium animate-gradient menu-item-in"
             style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)", animationDelay: `${0.05 + links.length * 0.05}s` }}
           >
-            Hablemos <ArrowRight className="w-4 h-4" />
+            Contacto <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       )}

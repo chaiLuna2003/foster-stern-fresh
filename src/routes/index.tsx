@@ -1,3 +1,6 @@
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import infoImage from "@/assets/info-section.jpg";
@@ -6,85 +9,110 @@ import cityMexico from "@/assets/city-mexico.jpg";
 import cityMiami from "@/assets/city-miami.jpg";
 import cityMadrid from "@/assets/city-madrid.jpg";
 import cityBogota from "@/assets/city-bogota.jpg";
-import { ArrowRight, Compass, ShieldCheck, Sparkles, TrendingUp, Users, Globe2, Quote, ChevronLeft, ChevronRight, MapPin, Phone, Mail, User, MessageSquare, Send, CheckCircle2, Building2, Clock } from "lucide-react";
-import { useState } from "react";
+import {
+  ArrowRight,
+  Compass,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  Users,
+  Globe2,
+  Quote,
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
+  Phone,
+  Mail,
+  User,
+  MessageSquare,
+  Send,
+  CheckCircle2,
+  Building2,
+  Clock,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+
+const heroImages = ["/images/HeroSection1.webp", "/images/hero-main.jpg"];
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Foster Stern Group — Estrategia financiera con visión" },
-      { name: "description", content: "Foster Stern Group acompaña a sus clientes con estrategia financiera, asesoría experta y soluciones a medida." },
-      { property: "og:title", content: "Foster Stern Group" },
-      { property: "og:description", content: "Estrategia financiera y asesoramiento de confianza." },
-    ],
-  }),
   component: Index,
 });
 
 function Index() {
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+    },
+    [
+      Autoplay({
+        delay: 3000,
+      }),
+    ],
+  );
+
+  
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteHeader />
 
       {/* HERO — Deep navy strategic */}
-      <section id="top" className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <div className="relative w-full overflow-hidden rounded-3xl bg-[#0D3B7F] shadow-2xl animate-rise">
-            {/* Ambient glow */}
-            <div className="pointer-events-none absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-[#238CCC] opacity-20 blur-3xl animate-blob" />
-            <div className="pointer-events-none absolute bottom-0 left-0 -ml-20 -mb-20 h-80 w-80 rounded-full bg-[#238CCC] opacity-10 blur-3xl animate-blob" style={{ animationDelay: "-5s" }} />
+      <section id="top" className="relative overflow-hidden bg-[#f5f5f5] pt-24 md:pt-10">
+        <div className="grid min-h-[85vh] lg:grid-cols-2">
+          {/* LEFT CONTENT */}
+          <div className="flex items-center">
+            <div className="mx-auto w-full max-w-xl px-6 py-16 md:px-12 lg:px-20">
+              <h1 className="text-5xl font-extrabold tracking-tight text-[#111] md:text-6xl lg:text-5xl leading-tight flex flex-col gap-3">
+                <span className="text-[#0D3B7F]">Instituciones más sólidas.</span>
 
-            <div className="relative z-10 grid items-center gap-12 px-6 py-16 md:px-12 md:py-24 lg:grid-cols-2 lg:px-16 lg:py-32">
-              {/* Copy */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 backdrop-blur-md border border-white/10">
-                  <span className="h-2 w-2 rounded-full bg-[#238CCC] animate-pulse-ring" />
-                  <span className="text-xs font-bold tracking-widest text-white uppercase">Asesoría financiera de confianza</span>
-                </div>
+                <span>Pacientes más sanos.</span>
 
-                <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight text-white">
-                  Precisión en <span className="text-[#238CCC]">estrategia</span> financiera.
-                </h1>
+                <span className="text-[#0D3B7F] relative inline-block">
+                  Éxito garantizado.
+                  <span className="absolute inset-0 text-[#0D3B7F] blur-sm opacity-60 animate-pulse">
+                    Éxito garantizado.
+                  </span>
+                </span>
+              </h1>
 
-                <p className="max-w-xl text-lg leading-relaxed text-slate-300">
-                  Foster Stern Group acompaña a empresas e inversionistas a navegar mercados complejos con claridad, disciplina y una visión de largo plazo.
-                </p>
+              <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-500">
+                Más de 25 años de experiencia brindando soluciones de alta tecnología y excelencia
+                en el sector de la salud global.
+              </p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#238CCC] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#1b6fa3] hover:shadow-lg hover:shadow-[#238CCC]/25">
-                    Hablemos <ArrowRight className="w-4 h-4" />
-                  </a>
-                  <a href="#services" className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10">
-                    Explorar servicios
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-8 pt-6 border-t border-white/10">
-                  {[["25+","Años"],["120+","Clientes"],["$3B","Asesorados"]].map(([n,l]) => (
-                    <div key={l}>
-                      <div className="text-2xl font-bold text-white">{n}</div>
-                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">{l}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Hero image with zoom in/out animation */}
-              <div className="relative">
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl aspect-[4/5] md:aspect-square">
-                  <img
-                    src={heroMain}
-                    alt="Foster Stern Group — asesoría financiera"
-                    width={1024}
-                    height={1024}
-                    className="h-full w-full object-cover animate-zoom-pulse"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#0D3B7F]/40 via-transparent to-transparent" />
-                </div>
+              <div className="mt-10">
+                <a
+                  href="#contact"
+                  className="group inline-flex items-center gap-3 rounded-xl bg-[#0D3B7F] px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#222]"
+                >
+                  Conoce nuestros Servicios
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
               </div>
             </div>
+          </div>
 
-            <div className="absolute bottom-0 left-0 h-1.5 w-full bg-gradient-to-r from-[#0D3B7F] via-[#238CCC] to-[#0D3B7F]" />
+          {/* RIGHT CAROUSEL */}
+          <div className="relative overflow-hidden bg-[#ececec] h-[800px]">
+            <div ref={emblaRef} className="h-full overflow-hidden">
+              <div className="flex h-full">
+                {heroImages.map((image, index) => (
+                  <div key={index} className="relative min-w-0 flex-[0_0_100%] h-full">
+                    <img
+                      src={image}
+                      alt={`Slide ${index + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -92,77 +120,192 @@ function Index() {
       {/* ABOUT */}
       <section id="about" className="relative py-28" style={{ background: "var(--gradient-soft)" }}>
         <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-start">
+          {/* LEFT */}
           <div>
-            <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Quiénes somos</span>
+            <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+              Quiénes somos
+            </span>
+
             <h2 className="mt-3 text-4xl md:text-5xl font-bold text-[#0D3B7F] leading-tight">
-              Un equipo dedicado a hacer crecer tu patrimonio con integridad.
+              Un Grupo Comprometido con la{" "}
+              <span className="inline-block brightness-195 text-[#0D3B7F]">Salud Global</span>
             </h2>
           </div>
+
+          {/* RIGHT */}
           <div className="space-y-5 text-[#0D3B7F]/75 text-lg leading-relaxed">
             <p>
-              Foster Stern Group es una firma de asesoría financiera independiente fundada sobre la confianza, la transparencia y una visión a largo plazo.
+              Somos un conjunto de empresas enfocado en diferentes áreas de la salud. Establecidos
+              sólidamente en el Estado de la Florida, Estados Unidos, expandimos nuestro impacto a
+              nivel mundial.
             </p>
+
             <p>
-              Trabajamos hombro a hombro con cada cliente para diseñar estrategias claras, ágiles y profundamente personalizadas — porque cada historia financiera merece su propio camino.
+              Trabajamos hombro a hombro con cada cliente para diseñar estrategias claras, ágiles y
+              profundamente personalizadas.
             </p>
           </div>
         </div>
-      </section>
 
-      {/* VALUES */}
-      <section id="values" className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Nuestros valores</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-[#0D3B7F]">Lo que nos define cada día.</h2>
-          </div>
-          <div className="mt-14 grid md:grid-cols-3 gap-6">
+        {/* 🌍 PRESENCIA INTERNACIONAL */}
+        <section className="mx-auto max-w-7xl px-6 mt-20">
+          <h3 className="text-center text-sm uppercase tracking-[0.25em] text-[#238CCC] font-semibold mb-10">
+            Presencia Internacional
+          </h3>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {[
-              { icon: ShieldCheck, t: "Integridad", d: "Actuamos con honestidad absoluta. Tu confianza es el activo más valioso que protegemos." },
-              { icon: Compass, t: "Visión", d: "Pensamos a largo plazo, anticipando tendencias y oportunidades para tu futuro." },
-              { icon: Users, t: "Cercanía", d: "Cada cliente es único. Te acompañamos como socios estratégicos, no como proveedores." },
-            ].map(({icon:Icon,t,d}, i) => (
-              <div key={t} className="group relative p-8 rounded-3xl bg-white border border-[#238CCC]/10 transition hover:-translate-y-2 hover:border-[#238CCC]/30" style={{ boxShadow: "0 10px 30px -20px rgba(13,59,127,0.25)", animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${i*0.1}s both` }}>
-                <div className="w-14 h-14 rounded-2xl grid place-items-center text-white mb-5 animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)" }}>
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-semibold text-[#0D3B7F]">{t}</h3>
-                <p className="mt-3 text-[#0D3B7F]/70 leading-relaxed">{d}</p>
-                <div className="absolute -bottom-px left-8 right-8 h-px opacity-0 group-hover:opacity-100 transition" style={{ background: "var(--gradient-fresh)" }} />
+              { name: "República Dominicana", code: "do" },
+              { name: "Colombia", code: "co" },
+              { name: "México", code: "mx" },
+              { name: "Costa Rica", code: "cr" },
+              { name: "Argentina", code: "ar" },
+              { name: "España", code: "es" },
+              { name: "China", code: "cn" },
+            ].map((country) => (
+              <div
+                key={country.code}
+                className="group relative rounded-2xl border border-[#238CCC]/15 bg-white/60 backdrop-blur-md px-4 py-5 text-center transition-all duration-300 hover:scale-105 hover:bg-white hover:shadow-lg"
+              >
+                {/* FLAG */}
+                <img
+                  src={`https://flagcdn.com/w80/${country.code}.png`}
+                  alt={country.name}
+                  className="mx-auto mb-3 h-10 w-10 object-cover rounded-full shadow-sm"
+                />
+
+                {/* NAME */}
+                <span className="text-sm font-medium text-[#0D3B7F]">{country.name}</span>
+
+                {/* glow hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[#238CCC]/5" />
               </div>
             ))}
           </div>
-        </div>
+        </section>
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="relative py-28 overflow-hidden" style={{ background: "var(--gradient-fresh)" }}>
-        <div className="pointer-events-none absolute -top-24 -right-24 w-[500px] h-[500px] bg-white/10 rounded-full animate-blob" />
-        <div className="pointer-events-none absolute -bottom-32 -left-24 w-[400px] h-[400px] bg-white/5 rounded-full animate-blob" style={{ animationDelay: "-7s" }} />
-        <div className="relative mx-auto max-w-7xl px-6">
-          <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">Qué hacemos</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white">Soluciones financieras con un toque humano.</h2>
+      <section
+  id="services"
+  className="relative py-28 overflow-hidden"
+  style={{ background: "var(--gradient-fresh)" }}
+>
+  {/* Decorative blobs */}
+  <div className="pointer-events-none absolute -top-24 -right-24 w-[500px] h-[500px] bg-white/10 rounded-full animate-blob" />
+  <div
+    className="pointer-events-none absolute -bottom-32 -left-24 w-[400px] h-[400px] bg-white/5 rounded-full animate-blob"
+    style={{ animationDelay: "-7s" }}
+  />
+
+  <div className="relative mx-auto max-w-7xl px-6">
+    {/* Header */}
+    <div className="max-w-3xl">
+      <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">
+        Nuestros servicios
+      </span>
+
+      <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white leading-tight">
+        Soluciones Médicas Especializadas
+      </h2>
+
+      <p className="mt-4 text-white/80 text-base md:text-lg">
+        Ofrecemos una gama integral de servicios de vanguardia diseñados para cubrir múltiples áreas del sector salud.
+      </p>
+    </div>
+
+    {/* Grid */}
+    <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        {
+          t: "Medicina Clínica",
+          d: "Atención médica especializada y de alta calidad.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 3v18M3 12h18" />
+            </svg>
+          ),
+        },
+        {
+          t: "Medicina Regenerativa",
+          d: "Restauración de la salud celular y tejidos mediante terapias innovadoras.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6.5 20l2-7L3 9h7z" />
+            </svg>
+          ),
+        },
+        {
+          t: "Investigación Médica",
+          d: "Desarrollo científico y protocolos de vanguardia para la medicina del futuro.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 3h6m-7 6h8m-9 6h10" />
+            </svg>
+          ),
+        },
+        {
+          t: "Manufactura y Distribución",
+          d: "Producción y logística global de insumos médicos confiables.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 7h18M3 12h18M3 17h18" />
+            </svg>
+          ),
+        },
+        {
+          t: "Inmunología y Alergias",
+          d: "Diagnóstico avanzado y tratamientos para el sistema inmunológico.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2l4 10-4 10-4-10 4-10z" />
+            </svg>
+          ),
+        },
+        {
+          t: "Innovación en Salud",
+          d: "Creación de nuevos proyectos y soluciones médicas de alto impacto.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2v20M2 12h20" />
+            </svg>
+          ),
+        },
+      ].map((s, i) => (
+        <div
+          key={s.t}
+          className="group relative p-7 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-white transition-all duration-300 hover:bg-white hover:text-[#0D3B7F] hover:-translate-y-2 hover:shadow-2xl"
+          style={{
+            animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${i * 0.1}s both`,
+          }}
+        >
+          {/* Icon */}
+          <div className="flex items-center justify-between">
+            <div className="p-2 rounded-lg bg-white/10 group-hover:bg-[#0D3B7F]/10 transition">
+              {s.icon}
+            </div>
+            <span className="text-xs opacity-40 group-hover:opacity-100 font-bold">
+              0{i + 1}
+            </span>
           </div>
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { t: "Asesoría Patrimonial", d: "Diseño estratégico de tu patrimonio personal y familiar." },
-              { t: "Inversiones", d: "Carteras balanceadas con visión global y disciplina." },
-              { t: "Planeación Fiscal", d: "Optimización eficiente y responsable de tus obligaciones." },
-              { t: "Sucesión", d: "Estructuras que protegen a las próximas generaciones." },
-            ].map((s,i) => (
-              <div key={s.t} className="group p-7 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-white transition hover:bg-white hover:text-[#0D3B7F] hover:-translate-y-1" style={{ animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${i*0.08}s both` }}>
-                <div className="text-4xl font-bold opacity-40 group-hover:opacity-100 transition">0{i+1}</div>
-                <h3 className="mt-4 text-xl font-semibold">{s.t}</h3>
-                <p className="mt-2 text-sm opacity-80">{s.d}</p>
-              </div>
-            ))}
-          </div>
+
+          {/* Title */}
+          <h3 className="mt-5 text-xl font-semibold">{s.t}</h3>
+
+          {/* Description */}
+          <p className="mt-2 text-sm opacity-80 group-hover:opacity-90">
+            {s.d}
+          </p>
+
+          {/* Glow line */}
+          <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0D3B7F] group-hover:w-full transition-all duration-500" />
         </div>
+      ))}
+    </div>
+  </div>
       </section>
 
-      {/* TESTIMONIALS CAROUSEL */}
-      <TestimonialsCarousel />
+      
 
       {/* INFO SECTION */}
       <InfoSection />
@@ -176,17 +319,30 @@ function Index() {
       {/* CTA */}
       <section id="cta" className="py-28">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="relative overflow-hidden rounded-[2.5rem] p-12 md:p-20 text-center" style={{ background: "var(--gradient-soft)", boxShadow: "var(--shadow-fresh)" }}>
-            <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(80px)" }} />
+          <div
+            className="relative overflow-hidden rounded-[2.5rem] p-12 md:p-20 text-center"
+            style={{ background: "var(--gradient-soft)", boxShadow: "var(--shadow-fresh)" }}
+          >
+            <div
+              className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 animate-blob"
+              style={{ background: "var(--gradient-fresh)", filter: "blur(80px)" }}
+            />
             <div className="relative">
               <Globe2 className="w-12 h-12 mx-auto text-[#238CCC] animate-float" />
               <h2 className="mt-6 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-tight">
-                Empecemos a construir <br/> <span className="text-shimmer">tu próxima etapa.</span>
+                Empecemos a construir <br /> <span className="text-shimmer">tu próxima etapa.</span>
               </h2>
               <p className="mt-5 text-lg text-[#0D3B7F]/70 max-w-xl mx-auto">
                 Conversemos sobre cómo podemos acompañarte a alcanzar tus metas financieras.
               </p>
-              <a href="#contact" className="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full text-white font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }}>
+              <a
+                href="#contact"
+                className="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full text-white font-medium animate-gradient"
+                style={{
+                  backgroundImage: "var(--gradient-fresh)",
+                  boxShadow: "var(--shadow-deep)",
+                }}
+              >
                 Agendar una conversación <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -201,7 +357,12 @@ function Index() {
       <footer className="border-t border-[#0D3B7F]/10 py-10">
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#0D3B7F]/60">
           <div className="flex items-center gap-2">
-            <span className="w-7 h-7 rounded-lg grid place-items-center text-white text-xs font-bold" style={{ background: "var(--gradient-fresh)" }}>FS</span>
+            <span
+              className="w-7 h-7 rounded-lg grid place-items-center text-white text-xs font-bold"
+              style={{ background: "var(--gradient-fresh)" }}
+            >
+              FS
+            </span>
             <span>© {new Date().getFullYear()} Foster Stern Group</span>
           </div>
           <div>Confianza · Visión · Resultados</div>
@@ -212,10 +373,30 @@ function Index() {
 }
 
 const testimonials = [
-  { quote: "Foster Stern Group transformó por completo nuestra estrategia patrimonial. Su acompañamiento es excepcional.", name: "María Restrepo", role: "CEO, Restrepo Holdings" },
-  { quote: "Profesionales con visión clara y un trato genuinamente humano. Confío plenamente en su criterio.", name: "Andrés Villamizar", role: "Director Financiero, Grupo Andina" },
-  { quote: "La claridad y disciplina con que estructuran cada decisión nos dio tranquilidad y resultados reales.", name: "Lucía Bermúdez", role: "Fundadora, Bermúdez & Co." },
-  { quote: "Más que asesores, son verdaderos socios estratégicos en el crecimiento de nuestro patrimonio familiar.", name: "Javier Ocampo", role: "Family Office" },
+  {
+    quote:
+      "Foster Stern Group transformó por completo nuestra estrategia patrimonial. Su acompañamiento es excepcional.",
+    name: "María Restrepo",
+    role: "CEO, Restrepo Holdings",
+  },
+  {
+    quote:
+      "Profesionales con visión clara y un trato genuinamente humano. Confío plenamente en su criterio.",
+    name: "Andrés Villamizar",
+    role: "Director Financiero, Grupo Andina",
+  },
+  {
+    quote:
+      "La claridad y disciplina con que estructuran cada decisión nos dio tranquilidad y resultados reales.",
+    name: "Lucía Bermúdez",
+    role: "Fundadora, Bermúdez & Co.",
+  },
+  {
+    quote:
+      "Más que asesores, son verdaderos socios estratégicos en el crecimiento de nuestro patrimonio familiar.",
+    name: "Javier Ocampo",
+    role: "Family Office",
+  },
 ];
 
 function TestimonialsCarousel() {
@@ -229,27 +410,50 @@ function TestimonialsCarousel() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Clientes</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-[#0D3B7F]">Voces que confían en nosotros.</h2>
+            <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+              Clientes
+            </span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-[#0D3B7F]">
+              Voces que confían en nosotros.
+            </h2>
           </div>
           <div className="hidden md:flex gap-2">
-            <button onClick={prev} aria-label="Anterior" className="w-12 h-12 rounded-full border border-[#0D3B7F]/15 grid place-items-center text-[#0D3B7F] hover:bg-[#238CCC] hover:text-white hover:border-transparent transition">
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="w-12 h-12 rounded-full border border-[#0D3B7F]/15 grid place-items-center text-[#0D3B7F] hover:bg-[#238CCC] hover:text-white hover:border-transparent transition"
+            >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button onClick={next} aria-label="Siguiente" className="w-12 h-12 rounded-full border border-[#0D3B7F]/15 grid place-items-center text-[#0D3B7F] hover:bg-[#238CCC] hover:text-white hover:border-transparent transition">
+            <button
+              onClick={next}
+              aria-label="Siguiente"
+              className="w-12 h-12 rounded-full border border-[#0D3B7F]/15 grid place-items-center text-[#0D3B7F] hover:bg-[#238CCC] hover:text-white hover:border-transparent transition"
+            >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        <div key={i} className="relative overflow-hidden rounded-[2rem] p-10 md:p-14 bg-white border border-[#238CCC]/10 animate-rise" style={{ boxShadow: "var(--shadow-fresh)" }}>
+        <div
+          key={i}
+          className="relative overflow-hidden rounded-[2rem] p-10 md:p-14 bg-white border border-[#238CCC]/10 animate-rise"
+          style={{ boxShadow: "var(--shadow-fresh)" }}
+        >
           <Quote className="w-14 h-14 text-[#238CCC]/25 absolute top-8 right-8" />
           <p className="text-2xl md:text-3xl font-medium text-[#0D3B7F] leading-snug max-w-3xl">
             "{t.quote}"
           </p>
           <div className="mt-8 flex items-center gap-4">
-            <div className="w-14 h-14 rounded-full grid place-items-center text-white font-bold animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)" }}>
-              {t.name.split(" ").map(n => n[0]).slice(0,2).join("")}
+            <div
+              className="w-14 h-14 rounded-full grid place-items-center text-white font-bold animate-gradient"
+              style={{ backgroundImage: "var(--gradient-fresh)" }}
+            >
+              {t.name
+                .split(" ")
+                .map((n) => n[0])
+                .slice(0, 2)
+                .join("")}
             </div>
             <div>
               <div className="font-semibold text-[#0D3B7F]">{t.name}</div>
@@ -259,9 +463,16 @@ function TestimonialsCarousel() {
 
           <div className="mt-8 flex items-center gap-2">
             {testimonials.map((_, idx) => (
-              <button key={idx} onClick={() => setI(idx)} aria-label={`Ir al testimonio ${idx+1}`}
+              <button
+                key={idx}
+                onClick={() => setI(idx)}
+                aria-label={`Ir al testimonio ${idx + 1}`}
                 className="h-1.5 rounded-full transition-all"
-                style={{ width: idx === i ? 32 : 12, background: idx === i ? "var(--gradient-fresh)" : "rgba(13,59,127,0.15)" }} />
+                style={{
+                  width: idx === i ? 32 : 12,
+                  background: idx === i ? "var(--gradient-fresh)" : "rgba(13,59,127,0.15)",
+                }}
+              />
             ))}
           </div>
         </div>
@@ -322,25 +533,48 @@ function GlobalPresence() {
   const a = offices[active];
 
   return (
-    <section id="presence" className="relative py-28 overflow-hidden" style={{ background: "var(--gradient-soft)" }}>
-      <div className="pointer-events-none absolute -top-24 -right-24 w-[460px] h-[460px] opacity-25 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }} />
-      <div className="pointer-events-none absolute bottom-0 -left-32 w-[380px] h-[380px] opacity-20 animate-blob" style={{ background: "linear-gradient(135deg,#238CCC,#a7d8f0)", filter: "blur(70px)", animationDelay: "-6s" }} />
+    <section
+      id="presence"
+      className="relative py-28 overflow-hidden"
+      style={{ background: "var(--gradient-soft)" }}
+    >
+      <div
+        className="pointer-events-none absolute -top-24 -right-24 w-[460px] h-[460px] opacity-25 animate-blob"
+        style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 -left-32 w-[380px] h-[380px] opacity-20 animate-blob"
+        style={{
+          background: "linear-gradient(135deg,#238CCC,#a7d8f0)",
+          filter: "blur(70px)",
+          animationDelay: "-6s",
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Presencia global</span>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+            Presencia global
+          </span>
           <h2 className="mt-3 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
             Estamos donde <span className="text-shimmer">nuestros clientes nos necesitan.</span>
           </h2>
           <p className="mt-5 text-lg text-[#0D3B7F]/70">
-            Una red de oficinas en América y Europa para acompañarte en cada decisión, sin importar la zona horaria.
+            Una red de oficinas en América y Europa para acompañarte en cada decisión, sin importar
+            la zona horaria.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 items-stretch">
           {/* INTERACTIVE MAP */}
-          <div className="lg:col-span-3 relative rounded-[2rem] p-6 md:p-8 bg-white border border-[#238CCC]/15" style={{ boxShadow: "var(--shadow-fresh)" }}>
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden" style={{ background: "linear-gradient(160deg,#eaf4fb 0%,#d3e8f5 100%)" }}>
+          <div
+            className="lg:col-span-3 relative rounded-[2rem] p-6 md:p-8 bg-white border border-[#238CCC]/15"
+            style={{ boxShadow: "var(--shadow-fresh)" }}
+          >
+            <div
+              className="relative aspect-[16/10] rounded-2xl overflow-hidden"
+              style={{ background: "linear-gradient(160deg,#eaf4fb 0%,#d3e8f5 100%)" }}
+            >
               {/* dotted world-ish backdrop */}
               <div
                 className="absolute inset-0 opacity-50"
@@ -374,7 +608,10 @@ function GlobalPresence() {
                       )}
                       <span
                         className={`relative grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-300 ease-out ${isActive ? "scale-110" : "group-hover:scale-110"}`}
-                        style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}
+                        style={{
+                          background: "var(--gradient-fresh)",
+                          boxShadow: "var(--shadow-fresh)",
+                        }}
                       >
                         <MapPin className="w-4 h-4" />
                       </span>
@@ -404,7 +641,14 @@ function GlobalPresence() {
                   type="button"
                   onClick={() => setActive(idx)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${idx === active ? "text-white" : "bg-[#238CCC]/10 text-[#0D3B7F] hover:bg-[#238CCC]/20"}`}
-                  style={idx === active ? { backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" } : undefined}
+                  style={
+                    idx === active
+                      ? {
+                          backgroundImage: "var(--gradient-fresh)",
+                          boxShadow: "var(--shadow-fresh)",
+                        }
+                      : undefined
+                  }
                 >
                   {o.city}
                 </button>
@@ -413,7 +657,11 @@ function GlobalPresence() {
           </div>
 
           {/* DETAIL CARD */}
-          <div key={a.city} className="lg:col-span-2 relative rounded-[2rem] overflow-hidden bg-white border border-[#238CCC]/15 animate-rise" style={{ boxShadow: "var(--shadow-fresh)" }}>
+          <div
+            key={a.city}
+            className="lg:col-span-2 relative rounded-[2rem] overflow-hidden bg-white border border-[#238CCC]/15 animate-rise"
+            style={{ boxShadow: "var(--shadow-fresh)" }}
+          >
             <div className="relative aspect-[4/3] overflow-hidden">
               <img
                 src={a.image}
@@ -423,7 +671,13 @@ function GlobalPresence() {
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out hover:scale-105"
               />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(13,59,127,0) 40%, rgba(13,59,127,0.85) 100%)" }} />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(13,59,127,0) 40%, rgba(13,59,127,0.85) 100%)",
+                }}
+              />
               <div className="absolute top-4 left-4">
                 <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur text-[11px] uppercase tracking-wider text-[#0D3B7F] font-semibold">
                   {a.region}
@@ -439,18 +693,30 @@ function GlobalPresence() {
               <div className="mt-5 grid grid-cols-3 gap-3 text-center">
                 <div className="p-3 rounded-2xl bg-[#238CCC]/8">
                   <Building2 className="w-4 h-4 mx-auto text-[#238CCC]" />
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">Dirección</div>
-                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">{a.address}</div>
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">
+                    Dirección
+                  </div>
+                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">
+                    {a.address}
+                  </div>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#238CCC]/8">
                   <Users className="w-4 h-4 mx-auto text-[#238CCC]" />
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">Equipo</div>
-                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">{a.team}</div>
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">
+                    Equipo
+                  </div>
+                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">
+                    {a.team}
+                  </div>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#238CCC]/8">
                   <Clock className="w-4 h-4 mx-auto text-[#238CCC]" />
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">Horario</div>
-                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">{a.timezone}</div>
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">
+                    Horario
+                  </div>
+                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">
+                    {a.timezone}
+                  </div>
                 </div>
               </div>
             </div>
@@ -462,17 +728,32 @@ function GlobalPresence() {
 }
 
 function LogosCarousel() {
-  const logos = ["Andina Capital", "Restrepo Holdings", "Bermúdez & Co.", "Ocampo Family", "Grupo Mérida", "Bravo Partners", "Cordillera Group", "Solaris Wealth"];
+  const logos = [
+    "Andina Capital",
+    "Restrepo Holdings",
+    "Bermúdez & Co.",
+    "Ocampo Family",
+    "Grupo Mérida",
+    "Bravo Partners",
+    "Cordillera Group",
+    "Solaris Wealth",
+  ];
   const row = [...logos, ...logos];
   return (
     <section className="py-16 border-y border-[#238CCC]/10 bg-[#eaf4fb]/40 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 mb-8 text-center">
-        <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Confían en nosotros</span>
+        <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+          Confían en nosotros
+        </span>
       </div>
       <div className="relative">
         <div className="flex gap-6 marquee-track" style={{ width: "max-content" }}>
           {row.map((name, idx) => (
-            <div key={idx} className="shrink-0 px-8 py-5 rounded-2xl bg-white border border-[#238CCC]/10 text-[#0D3B7F] font-semibold tracking-tight" style={{ boxShadow: "0 8px 20px -15px rgba(13,59,127,0.2)" }}>
+            <div
+              key={idx}
+              className="shrink-0 px-8 py-5 rounded-2xl bg-white border border-[#238CCC]/10 text-[#0D3B7F] font-semibold tracking-tight"
+              style={{ boxShadow: "0 8px 20px -15px rgba(13,59,127,0.2)" }}
+            >
               {name}
             </div>
           ))}
@@ -488,13 +769,21 @@ function InfoSection() {
   const words = ["Visión", "Confianza", "Estrategia", "Futuro"];
   return (
     <section id="info" className="relative py-28 overflow-hidden">
-      <div className="pointer-events-none absolute top-20 -left-32 w-[380px] h-[380px] opacity-25 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }} />
+      <div
+        className="pointer-events-none absolute top-20 -left-32 w-[380px] h-[380px] opacity-25 animate-blob"
+        style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }}
+      />
       <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <div className="animate-rise">
-          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Lo que nos mueve</span>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+            Lo que nos mueve
+          </span>
           <h2 className="mt-4 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
             Construimos con{" "}
-            <span className="relative inline-block align-baseline overflow-hidden h-[1.1em]" style={{ minWidth: "6.5ch", perspective: "800px" }}>
+            <span
+              className="relative inline-block align-baseline overflow-hidden h-[1.1em]"
+              style={{ minWidth: "6.5ch", perspective: "800px" }}
+            >
               {words.map((w, idx) => (
                 <span
                   key={w}
@@ -507,19 +796,27 @@ function InfoSection() {
             </span>
           </h2>
           <p className="mt-7 text-lg leading-relaxed text-[#0D3B7F]/75 max-w-xl">
-            Cada decisión que tomamos nace de un principio simple: cuidar lo que más
-            importa para nuestros clientes. Fusionamos análisis riguroso con sensibilidad
-            humana para crear estrategias que resisten el paso del tiempo y se adaptan a
-            cada nueva etapa.
+            Cada decisión que tomamos nace de un principio simple: cuidar lo que más importa para
+            nuestros clientes. Fusionamos análisis riguroso con sensibilidad humana para crear
+            estrategias que resisten el paso del tiempo y se adaptan a cada nueva etapa.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">Asesoría personalizada</span>
-            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">Análisis estratégico</span>
-            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">Resultados a largo plazo</span>
+            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">
+              Asesoría personalizada
+            </span>
+            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">
+              Análisis estratégico
+            </span>
+            <span className="px-4 py-2 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-sm font-medium">
+              Resultados a largo plazo
+            </span>
           </div>
         </div>
         <div className="relative">
-          <div className="absolute inset-0 rounded-[2rem] -rotate-3" style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }} />
+          <div
+            className="absolute inset-0 rounded-[2rem] -rotate-3"
+            style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }}
+          />
           <img
             src={infoImage}
             alt="Equipo Foster Stern Group colaborando"
@@ -573,7 +870,9 @@ function ContactSection() {
         >
           {label}
         </span>
-        <Icon className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${active ? "text-[#238CCC]" : "text-[#0D3B7F]/40"}`} />
+        <Icon
+          className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${active ? "text-[#238CCC]" : "text-[#0D3B7F]/40"}`}
+        />
         <input
           type={type}
           required
@@ -588,15 +887,31 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden" style={{ background: "var(--gradient-soft)" }}>
-      <div className="pointer-events-none absolute top-10 right-0 w-[420px] h-[420px] opacity-25 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }} />
+    <section
+      id="contact"
+      className="relative py-28 overflow-hidden"
+      style={{ background: "var(--gradient-soft)" }}
+    >
+      <div
+        className="pointer-events-none absolute top-10 right-0 w-[420px] h-[420px] opacity-25 animate-blob"
+        style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }}
+      />
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Contacto</span>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+            Contacto
+          </span>
           <h2 className="mt-3 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
-            <span className="relative inline-block align-baseline overflow-hidden h-[1.1em]" style={{ minWidth: "8ch", perspective: "800px" }}>
+            <span
+              className="relative inline-block align-baseline overflow-hidden h-[1.1em]"
+              style={{ minWidth: "8ch", perspective: "800px" }}
+            >
               {contactTitles.map((w, idx) => (
-                <span key={w} className="word-rotate-item text-shimmer" style={{ animationDelay: `${idx * 4}s` }}>
+                <span
+                  key={w}
+                  className="word-rotate-item text-shimmer"
+                  style={{ animationDelay: `${idx * 4}s` }}
+                >
                   {w}
                 </span>
               ))}
@@ -628,14 +943,17 @@ function ContactSection() {
                   top: focus === "message" || form.message.length > 0 ? "10px" : "22px",
                   fontSize: focus === "message" || form.message.length > 0 ? "11px" : "15px",
                   letterSpacing: focus === "message" || form.message.length > 0 ? "0.1em" : "0",
-                  textTransform: focus === "message" || form.message.length > 0 ? "uppercase" : "none",
+                  textTransform:
+                    focus === "message" || form.message.length > 0 ? "uppercase" : "none",
                   fontWeight: focus === "message" || form.message.length > 0 ? 600 : 400,
                   color: focus === "message" || form.message.length > 0 ? "#238CCC" : undefined,
                 }}
               >
                 Mensaje
               </span>
-              <MessageSquare className={`absolute left-4 top-5 w-5 h-5 transition-colors ${focus === "message" || form.message.length > 0 ? "text-[#238CCC]" : "text-[#0D3B7F]/40"}`} />
+              <MessageSquare
+                className={`absolute left-4 top-5 w-5 h-5 transition-colors ${focus === "message" || form.message.length > 0 ? "text-[#238CCC]" : "text-[#0D3B7F]/40"}`}
+              />
               <textarea
                 required
                 rows={5}
@@ -654,9 +972,18 @@ function ContactSection() {
               >
                 <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={3} />
               </span>
-              <input type="checkbox" checked={accept} onChange={(e) => setAccept(e.target.checked)} className="sr-only" />
+              <input
+                type="checkbox"
+                checked={accept}
+                onChange={(e) => setAccept(e.target.checked)}
+                className="sr-only"
+              />
               <span className="text-sm text-[#0D3B7F]/75 leading-relaxed">
-                He leído y acepto el <a href="#" className="text-[#238CCC] font-semibold hover:underline">aviso de privacidad</a> y el tratamiento de mis datos.
+                He leído y acepto el{" "}
+                <a href="#" className="text-[#238CCC] font-semibold hover:underline">
+                  aviso de privacidad
+                </a>{" "}
+                y el tratamiento de mis datos.
               </span>
             </label>
 
@@ -666,13 +993,24 @@ function ContactSection() {
               className="mt-7 inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-4 rounded-full text-white font-medium animate-gradient disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:-translate-y-0.5"
               style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}
             >
-              {sent ? (<><CheckCircle2 className="w-4 h-4" /> ¡Mensaje enviado!</>) : (<>Enviar mensaje <Send className="w-4 h-4" /></>)}
+              {sent ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4" /> ¡Mensaje enviado!
+                </>
+              ) : (
+                <>
+                  Enviar mensaje <Send className="w-4 h-4" />
+                </>
+              )}
             </button>
           </form>
 
           {/* MAP + LOCATION */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <div className="rounded-[2rem] overflow-hidden border border-[#238CCC]/15 bg-white animate-rise" style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "0.1s" }}>
+            <div
+              className="rounded-[2rem] overflow-hidden border border-[#238CCC]/15 bg-white animate-rise"
+              style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "0.1s" }}
+            >
               <iframe
                 title="Ubicación Foster Stern Group"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-99.1776%2C19.4250%2C-99.1576%2C19.4350&layer=mapnik&marker=19.4300%2C-99.1676"
@@ -680,22 +1018,38 @@ function ContactSection() {
                 loading="lazy"
               />
             </div>
-            <div className="p-6 rounded-[2rem] bg-white border border-[#238CCC]/15 animate-rise" style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "0.2s" }}>
+            <div
+              className="p-6 rounded-[2rem] bg-white border border-[#238CCC]/15 animate-rise"
+              style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "0.2s" }}
+            >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 shrink-0 rounded-2xl grid place-items-center text-white animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)" }}>
+                <div
+                  className="w-12 h-12 shrink-0 rounded-2xl grid place-items-center text-white animate-gradient"
+                  style={{ backgroundImage: "var(--gradient-fresh)" }}
+                >
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">Oficina principal</div>
-                  <div className="mt-1 font-semibold text-[#0D3B7F]">Av. Paseo de la Reforma 250</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+                    Oficina principal
+                  </div>
+                  <div className="mt-1 font-semibold text-[#0D3B7F]">
+                    Av. Paseo de la Reforma 250
+                  </div>
                   <div className="text-sm text-[#0D3B7F]/70">Piso 18, Cuauhtémoc, CDMX</div>
                 </div>
               </div>
               <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-                <a href="tel:+525555555555" className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#238CCC]/8 text-[#0D3B7F] hover:bg-[#238CCC]/15 transition">
+                <a
+                  href="tel:+525555555555"
+                  className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#238CCC]/8 text-[#0D3B7F] hover:bg-[#238CCC]/15 transition"
+                >
                   <Phone className="w-4 h-4 text-[#238CCC]" /> +52 55 5555 5555
                 </a>
-                <a href="mailto:contacto@fosterstern.com" className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#238CCC]/8 text-[#0D3B7F] hover:bg-[#238CCC]/15 transition">
+                <a
+                  href="mailto:contacto@fosterstern.com"
+                  className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#238CCC]/8 text-[#0D3B7F] hover:bg-[#238CCC]/15 transition"
+                >
                   <Mail className="w-4 h-4 text-[#238CCC]" /> Escríbenos
                 </a>
               </div>
