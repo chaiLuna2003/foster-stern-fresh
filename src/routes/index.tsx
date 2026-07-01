@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
-import heroWave from "@/assets/hero-wave.jpg";
 import infoImage from "@/assets/info-section.jpg";
 import cityMexico from "@/assets/city-mexico.jpg";
 import cityMiami from "@/assets/city-miami.jpg";
