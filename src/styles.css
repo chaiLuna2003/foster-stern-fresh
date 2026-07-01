@@ -72,8 +72,8 @@
   --gradient-soft: linear-gradient(180deg, #ffffff 0%, #eaf4fb 100%);
   --shadow-fresh: 0 20px 50px -20px color-mix(in oklab, #238CCC 45%, transparent);
   --shadow-deep: 0 30px 60px -30px color-mix(in oklab, #0D3B7F 50%, transparent);
-  --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
