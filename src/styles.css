@@ -72,8 +72,8 @@
   --gradient-soft: linear-gradient(180deg, #ffffff 0%, #eaf4fb 100%);
   --shadow-fresh: 0 20px 50px -20px color-mix(in oklab, #238CCC 45%, transparent);
   --shadow-deep: 0 30px 60px -30px color-mix(in oklab, #0D3B7F 50%, transparent);
-  --font-display: "AvantGarde-Demi", "Jost", system-ui, sans-serif;
-  --font-body: "AvantGarde-Book", "Jost", system-ui, sans-serif;
+  --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -155,7 +155,7 @@
     font-size: 1.0625rem;   /* 17px base, up from 16px */
     line-height: 1.65;
   }
-  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.15; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); letter-spacing: -0.015em; line-height: 1.2; font-weight: 700; }
   @media (min-width: 768px) {
     body { font-size: 1.125rem; } /* 18px on tablet+ */
   }
