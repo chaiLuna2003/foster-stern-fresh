@@ -19,7 +19,7 @@ import {
   Globe2,
   Quote,
   ChevronLeft,
-  ChevronRight,
+  ChevronRight, 
   MapPin,
   Phone,
   Mail,
@@ -317,38 +317,56 @@ function Index() {
       <LogosCarousel />
 
       {/* CTA */}
-      <section id="cta" className="py-28">
-        <div className="mx-auto max-w-5xl px-6">
-          <div
-            className="relative overflow-hidden rounded-[2.5rem] p-12 md:p-20 text-center"
-            style={{ background: "var(--gradient-soft)", boxShadow: "var(--shadow-fresh)" }}
+      <section id="cta" className="relative py-28 overflow-hidden">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: "url('/images/CTAImage.png')",
+    }}
+  />
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/60" />
+
+  {/* Content */}
+  <div className="relative mx-auto max-w-7xl px-6">
+    <div className="grid md:grid-cols-2 items-center min-h-[500px]">
+      
+      {/* LEFT EMPTY (puedes usarlo para aire visual o logo) */}
+      <div className="hidden md:block" />
+
+      {/* RIGHT CONTENT */}
+      <div className="text-right text-white">
+        <Globe2 className="w-12 h-12 ml-auto text-white/90 animate-float" />
+
+        <h2 className="mt-6 text-4xl md:text-6xl font-bold leading-tight">
+          Empecemos a construir <br />
+          <span className="text-[#38bdf8]">tu próxima etapa.</span>
+        </h2>
+
+        <p className="mt-5 text-lg text-white/80 max-w-md ml-auto">
+          Conversemos sobre cómo podemos acompañarte a alcanzar tus metas financieras
+          con una estrategia clara y enfocada en resultados.
+        </p>
+
+        <div className="mt-8 flex justify-end">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium text-white transition-all hover:scale-105"
+            style={{
+              background: "linear-gradient(135deg, #238CCC, #38bdf8)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+            }}
           >
-            <div
-              className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 animate-blob"
-              style={{ background: "var(--gradient-fresh)", filter: "blur(80px)" }}
-            />
-            <div className="relative">
-              <Globe2 className="w-12 h-12 mx-auto text-[#238CCC] animate-float" />
-              <h2 className="mt-6 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-tight">
-                Empecemos a construir <br /> <span className="text-shimmer">tu próxima etapa.</span>
-              </h2>
-              <p className="mt-5 text-lg text-[#0D3B7F]/70 max-w-xl mx-auto">
-                Conversemos sobre cómo podemos acompañarte a alcanzar tus metas financieras.
-              </p>
-              <a
-                href="#contact"
-                className="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full text-white font-medium animate-gradient"
-                style={{
-                  backgroundImage: "var(--gradient-fresh)",
-                  boxShadow: "var(--shadow-deep)",
-                }}
-              >
-                Agendar una conversación <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+            Agendar una conversación
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* CONTACT FORM */}
       <ContactSection />
@@ -1055,6 +1073,7 @@ function ContactSection() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
