@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
-import heroWave from "@/assets/hero-wave.jpg";
 import infoImage from "@/assets/info-section.jpg";
 import cityMexico from "@/assets/city-mexico.jpg";
 import cityMiami from "@/assets/city-miami.jpg";
@@ -26,66 +25,84 @@ function Index() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteHeader />
 
-      {/* HERO */}
-      <section id="top" className="relative pt-32 pb-24 md:pt-44 md:pb-32">
-        {/* floating blobs */}
-        <div className="pointer-events-none absolute -top-20 -left-32 w-[480px] h-[480px] opacity-40 animate-blob" style={{ background: "var(--gradient-fresh)", filter: "blur(60px)" }} />
-        <div className="pointer-events-none absolute top-40 -right-32 w-[420px] h-[420px] opacity-30 animate-blob" style={{ background: "linear-gradient(135deg,#238CCC,#a7d8f0)", filter: "blur(70px)", animationDelay: "-5s" }} />
+      {/* HERO — Deep navy strategic */}
+      <section id="top" className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <div className="relative w-full overflow-hidden rounded-3xl bg-[#0D3B7F] shadow-2xl animate-rise">
+            {/* Ambient glow */}
+            <div className="pointer-events-none absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-[#238CCC] opacity-20 blur-3xl animate-blob" />
+            <div className="pointer-events-none absolute bottom-0 left-0 -ml-20 -mb-20 h-80 w-80 rounded-full bg-[#238CCC] opacity-10 blur-3xl animate-blob" style={{ animationDelay: "-5s" }} />
 
-        <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-rise">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#238CCC]/10 text-[#0D3B7F] text-xs font-medium">
-              <Sparkles className="w-3.5 h-3.5" /> Estrategia con propósito
-            </span>
-            <h1 className="mt-5 text-5xl md:text-7xl font-bold leading-[1.05] text-[#0D3B7F]">
-              Construimos <span className="text-shimmer">decisiones financieras</span> que perduran.
-            </h1>
-            <p className="mt-6 text-lg text-[#0D3B7F]/70 max-w-xl">
-              En Foster Stern Group acompañamos a nuestros clientes con visión estratégica, claridad y un compromiso real por su crecimiento.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#about" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-white font-medium animate-gradient" style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}>
-                Conoce quiénes somos <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#services" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#0D3B7F]/15 text-[#0D3B7F] font-medium hover:bg-[#238CCC]/5 transition">
-                Nuestros servicios
-              </a>
-            </div>
-            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-              {[["25+","Años"],["120+","Clientes"],["$3B","Asesorados"]].map(([n,l]) => (
-                <div key={l}>
-                  <div className="text-3xl font-bold text-[#0D3B7F]">{n}</div>
-                  <div className="text-xs uppercase tracking-wider text-[#0D3B7F]/60 mt-1">{l}</div>
+            <div className="relative z-10 grid items-center gap-12 px-6 py-16 md:px-12 md:py-24 lg:grid-cols-2 lg:px-16 lg:py-32">
+              {/* Copy */}
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 backdrop-blur-md border border-white/10">
+                  <span className="h-2 w-2 rounded-full bg-[#238CCC] animate-pulse-ring" />
+                  <span className="text-xs font-bold tracking-widest text-white uppercase">Asesoría financiera de confianza</span>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="relative animate-float">
-            <div className="absolute inset-0 rounded-[2.5rem] rotate-3" style={{ background: "var(--gradient-fresh)", boxShadow: "var(--shadow-deep)" }} />
-            <img
-              src={heroWave}
-              alt="Foster Stern Group visual"
-              width={1024}
-              height={1024}
-              className="relative rounded-[2.5rem] w-full h-auto object-cover border-8 border-white"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 flex items-center gap-3" style={{ boxShadow: "var(--shadow-fresh)" }}>
-              <div className="w-10 h-10 rounded-xl grid place-items-center text-white" style={{ background: "var(--gradient-fresh)" }}>
-                <TrendingUp className="w-5 h-5" />
+                <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight text-white">
+                  Precisión en <span className="text-[#238CCC]">estrategia</span> financiera.
+                </h1>
+
+                <p className="max-w-xl text-lg leading-relaxed text-slate-300">
+                  Foster Stern Group acompaña a empresas e inversionistas a navegar mercados complejos con claridad, disciplina y una visión de largo plazo.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#238CCC] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#1b6fa3] hover:shadow-lg hover:shadow-[#238CCC]/25">
+                    Hablemos <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a href="#services" className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                    Explorar servicios
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-8 pt-6 border-t border-white/10">
+                  {[["25+","Años"],["120+","Clientes"],["$3B","Asesorados"]].map(([n,l]) => (
+                    <div key={l}>
+                      <div className="text-2xl font-bold text-white">{n}</div>
+                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">{l}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div>
-                <div className="text-xs text-[#0D3B7F]/60">Crecimiento promedio</div>
-                <div className="text-lg font-bold text-[#0D3B7F]">+18.4%</div>
+
+              {/* Financial card stack */}
+              <div className="relative hidden lg:block animate-float">
+                <div className="relative z-20 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-8 shadow-2xl backdrop-blur-xl">
+                  <div className="mb-8 flex items-center justify-between">
+                    <div className="h-10 w-16 rounded-md bg-[#238CCC]/30 grid place-items-center">
+                      <TrendingUp className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="h-8 w-8 rounded-full bg-white/10" />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="h-4 w-3/4 rounded-full bg-white/20" />
+                    <div className="h-4 w-1/2 rounded-full bg-white/10" />
+                  </div>
+                  <div className="mt-12 flex items-end justify-between">
+                    <div className="space-y-2">
+                      <div className="text-3xl font-bold text-white">+18.4%</div>
+                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Portafolio</div>
+                    </div>
+                    <div className="flex items-end gap-1">
+                      <div className="h-8 w-2 bg-[#238CCC] rounded-t-sm" />
+                      <div className="h-12 w-2 bg-[#238CCC]/70 rounded-t-sm" />
+                      <div className="h-6 w-2 bg-[#238CCC]/40 rounded-t-sm" />
+                      <div className="h-14 w-2 bg-[#238CCC]/90 rounded-t-sm" />
+                      <div className="h-10 w-2 bg-[#238CCC]/60 rounded-t-sm" />
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -right-6 -top-6 -z-10 h-full w-full rounded-2xl border border-white/5 bg-white/5" />
+                <div className="absolute -left-6 -bottom-6 -z-10 h-full w-full rounded-2xl border border-white/5 bg-white/5" />
               </div>
             </div>
+
+            <div className="absolute bottom-0 left-0 h-1.5 w-full bg-gradient-to-r from-[#0D3B7F] via-[#238CCC] to-[#0D3B7F]" />
           </div>
         </div>
-
-        {/* wave divider */}
-        <svg className="absolute bottom-0 inset-x-0 w-full h-24 animate-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path d="M0,64 C320,128 720,0 1440,80 L1440,120 L0,120 Z" fill="#eaf4fb" />
-        </svg>
       </section>
 
       {/* ABOUT */}
