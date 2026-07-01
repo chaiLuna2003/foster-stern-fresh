@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import infoImage from "@/assets/info-section.jpg";
+import heroMain from "@/assets/hero-main.jpg";
 import cityMexico from "@/assets/city-mexico.jpg";
 import cityMiami from "@/assets/city-miami.jpg";
 import cityMadrid from "@/assets/city-madrid.jpg";
@@ -68,35 +69,18 @@ function Index() {
                 </div>
               </div>
 
-              {/* Financial card stack */}
-              <div className="relative hidden lg:block animate-float">
-                <div className="relative z-20 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-8 shadow-2xl backdrop-blur-xl">
-                  <div className="mb-8 flex items-center justify-between">
-                    <div className="h-10 w-16 rounded-md bg-[#238CCC]/30 grid place-items-center">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="h-8 w-8 rounded-full bg-white/10" />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="h-4 w-3/4 rounded-full bg-white/20" />
-                    <div className="h-4 w-1/2 rounded-full bg-white/10" />
-                  </div>
-                  <div className="mt-12 flex items-end justify-between">
-                    <div className="space-y-2">
-                      <div className="text-3xl font-bold text-white">+18.4%</div>
-                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Portafolio</div>
-                    </div>
-                    <div className="flex items-end gap-1">
-                      <div className="h-8 w-2 bg-[#238CCC] rounded-t-sm" />
-                      <div className="h-12 w-2 bg-[#238CCC]/70 rounded-t-sm" />
-                      <div className="h-6 w-2 bg-[#238CCC]/40 rounded-t-sm" />
-                      <div className="h-14 w-2 bg-[#238CCC]/90 rounded-t-sm" />
-                      <div className="h-10 w-2 bg-[#238CCC]/60 rounded-t-sm" />
-                    </div>
-                  </div>
+              {/* Hero image with zoom in/out animation */}
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl aspect-[4/5] md:aspect-square">
+                  <img
+                    src={heroMain}
+                    alt="Foster Stern Group — asesoría financiera"
+                    width={1024}
+                    height={1024}
+                    className="h-full w-full object-cover animate-zoom-pulse"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#0D3B7F]/40 via-transparent to-transparent" />
                 </div>
-                <div className="absolute -right-6 -top-6 -z-10 h-full w-full rounded-2xl border border-white/5 bg-white/5" />
-                <div className="absolute -left-6 -bottom-6 -z-10 h-full w-full rounded-2xl border border-white/5 bg-white/5" />
               </div>
             </div>
 
