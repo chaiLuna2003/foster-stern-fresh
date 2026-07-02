@@ -216,6 +216,7 @@
   inset: 0;
   display: inline-block;
   animation: word-rotate 16s linear infinite;
+  animation-fill-mode: backwards;
   transform-origin: 50% 100%;
   white-space: nowrap;
   will-change: opacity, transform, filter;

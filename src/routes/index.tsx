@@ -1,6 +1,3 @@
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import infoImage from "@/assets/info-section.jpg";
@@ -39,19 +36,14 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [emblaRef] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "start",
-    },
-    [
-      Autoplay({
-        delay: 3000,
-      }),
-    ],
-  );
+  const [heroIndex, setHeroIndex] = useState(0);
 
-  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((current) => (current + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -97,22 +89,23 @@ function Index() {
 
           {/* RIGHT CAROUSEL */}
           <div className="relative overflow-hidden bg-[#ececec] h-[800px]">
-            <div ref={emblaRef} className="h-full overflow-hidden">
-              <div className="flex h-full">
-                {heroImages.map((image, index) => (
-                  <div key={index} className="relative min-w-0 flex-[0_0_100%] h-full">
-                    <img
-                      src={image}
-                      alt={`Slide ${index + 1}`}
-                      className="h-full w-full object-cover"
-                    />
+            {heroImages.map((image, index) => (
+              <div
+                key={image}
+                className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out ${
+                  index === heroIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <img
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  className="h-full w-full object-cover"
+                />
 
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                  </div>
-                ))}
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -341,13 +334,12 @@ function Index() {
         <Globe2 className="w-12 h-12 ml-auto text-white/90 animate-float" />
 
         <h2 className="mt-6 text-4xl md:text-6xl font-bold leading-tight">
-          Empecemos a construir <br />
-          <span className="text-[#38bdf8]">tu próxima etapa.</span>
+          Liderazgo con<br />
+          <span className="text-[#38bdf8]">Impacto Global</span>
         </h2>
 
         <p className="mt-5 text-lg text-white/80 max-w-md ml-auto">
-          Conversemos sobre cómo podemos acompañarte a alcanzar tus metas financieras
-          con una estrategia clara y enfocada en resultados.
+          Conectamos el futuro de la medicina a través de alianzas estratégicas internacionales y filiales en Latinoamérica, Europa y Estados Unidos. Un compromiso de excelencia que garantiza el éxito de cada proyecto.
         </p>
 
         <div className="mt-8 flex justify-end">
@@ -366,7 +358,7 @@ function Index() {
       </div>
     </div>
   </div>
-</section>
+      </section>
 
       {/* CONTACT FORM */}
       <ContactSection />
@@ -785,6 +777,10 @@ function LogosCarousel() {
 
 function InfoSection() {
   const words = ["Visión", "Confianza", "Estrategia", "Futuro"];
+  // El contenedor mide su ancho solo por minWidth, ya que las palabras están
+  // en position:absolute y no aportan ancho al padre. Debe cubrir la palabra
+  // más larga o el texto se recorta (ej. "Estrategia", "Confianza").
+  const longestWordChars = Math.max(...words.map((w) => w.length));
   return (
     <section id="info" className="relative py-28 overflow-hidden">
       <div
@@ -800,7 +796,7 @@ function InfoSection() {
             Construimos con{" "}
             <span
               className="relative inline-block align-baseline overflow-hidden h-[1.1em]"
-              style={{ minWidth: "6.5ch", perspective: "800px" }}
+              style={{ minWidth: `${longestWordChars + 0.5}ch`, perspective: "800px" }}
             >
               {words.map((w, idx) => (
                 <span
