@@ -50,11 +50,11 @@ function Index() {
       <SiteHeader />
 
       {/* HERO — Deep navy strategic */}
-      <section id="top" className="relative overflow-hidden bg-[#f5f5f5] pt-24 md:pt-10">
-        <div className="grid min-h-[85vh] lg:grid-cols-2">
+      <section id="top" className="relative overflow-hidden bg-[#F7F7F7] pt-24 md:pt-10">
+        <div className="grid min-h-[75vh] lg:grid-cols-2">
           {/* LEFT CONTENT */}
           <div className="flex items-center">
-            <div className="mx-auto w-full max-w-xl px-6 py-16 md:px-12 lg:px-20">
+            <div className="mx-auto w-full max-w-xl px-2 py-16 md:px-12 lg:px-20">
               <h1 className="text-5xl font-extrabold tracking-tight text-[#111] md:text-6xl lg:text-5xl leading-tight flex flex-col gap-3">
                 <span className="text-[#0D3B7F]">Instituciones más sólidas.</span>
 
@@ -111,7 +111,7 @@ function Index() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="relative py-28" style={{ background: "var(--gradient-soft)" }}>
+      <section id="about" className="relative py-28" style={{ background: "var(--background-original)" }}>
         <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-start">
           {/* LEFT */}
           <div>
@@ -176,6 +176,7 @@ function Index() {
             ))}
           </div>
         </section>
+      <GlobalPresence />
       </section>
 
       {/* SERVICES */}
@@ -302,9 +303,7 @@ function Index() {
 
       {/* INFO SECTION */}
       <InfoSection />
-
-      {/* GLOBAL PRESENCE */}
-      <GlobalPresence />
+      
 
       {/* LOGOS MARQUEE */}
       <LogosCarousel />
@@ -546,11 +545,11 @@ function GlobalPresence() {
     <section
       id="presence"
       className="relative py-28 overflow-hidden"
-      style={{ background: "var(--gradient-soft)" }}
+      style={{ background: "var(--background-original)" }}
     >
       <div
         className="pointer-events-none absolute -top-24 -right-24 w-[460px] h-[460px] opacity-25 animate-blob"
-        style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }}
+        
       />
       <div
         className="pointer-events-none absolute bottom-0 -left-32 w-[380px] h-[380px] opacity-20 animate-blob"
@@ -562,18 +561,6 @@ function GlobalPresence() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
-            Presencia global
-          </span>
-          <h2 className="mt-3 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
-            Estamos donde <span className="text-shimmer">nuestros clientes nos necesitan.</span>
-          </h2>
-          <p className="mt-5 text-lg text-[#0D3B7F]/70">
-            Una red de oficinas en América y Europa para acompañarte en cada decisión, sin importar
-            la zona horaria.
-          </p>
-        </div>
 
         <div className="grid lg:grid-cols-5 gap-8 items-stretch">
           {/* INTERACTIVE MAP */}
