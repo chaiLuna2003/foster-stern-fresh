@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const heroImages = ["/images/HeroSection1.webp", "/images/hero-main.jpg"];
+const heroImages = ["/images/HeroSection1.png", "/images/hero-main.jpg"];
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -50,11 +50,11 @@ function Index() {
       <SiteHeader />
 
       {/* HERO — Deep navy strategic */}
-      <section id="top" className="relative overflow-hidden bg-[#F7F7F7] pt-24 md:pt-10">
+      <section id="top" className="relative overflow-hidden bg-[#F5F5F5] pt-24 md:pt-10">
         <div className="grid min-h-[75vh] lg:grid-cols-2">
           {/* LEFT CONTENT */}
           <div className="flex items-center">
-            <div className="mx-auto w-full max-w-xl px-2 py-16 md:px-12 lg:px-20">
+            <div className="mx-auto w-full max-w-xl px-2 py-16 md:px-12 lg:px-2">
               <h1 className="text-5xl font-extrabold tracking-tight text-[#111] md:text-6xl lg:text-5xl leading-tight flex flex-col gap-3">
                 <span className="text-[#0D3B7F]">Instituciones más sólidas.</span>
 
@@ -140,7 +140,7 @@ function Index() {
           </div>
         </div>
 
-        {/* 🌍 PRESENCIA INTERNACIONAL */}
+        
         <section className="mx-auto max-w-7xl px-6 mt-20">
           <h3 className="text-center text-sm uppercase tracking-[0.25em] text-[#238CCC] font-semibold mb-10">
             Presencia Internacional
@@ -544,46 +544,64 @@ function GlobalPresence() {
   return (
     <section
       id="presence"
-      className="relative py-28 overflow-hidden"
-      style={{ background: "var(--background-original)" }}
+      className="relative overflow-hidden py-24"
+      style={{ background: "#f7f7f7" }}
     >
+      {/* subtle background glow */}
       <div
-        className="pointer-events-none absolute -top-24 -right-24 w-[460px] h-[460px] opacity-25 animate-blob"
-        
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 -left-32 w-[380px] h-[380px] opacity-20 animate-blob"
+        className="pointer-events-none absolute top-0 right-0 h-[320px] w-[320px] opacity-10"
         style={{
-          background: "linear-gradient(135deg,#238CCC,#a7d8f0)",
-          filter: "blur(70px)",
-          animationDelay: "-6s",
+          background: "linear-gradient(135deg,#238CCC,#d7edf8)",
+          filter: "blur(90px)",
         }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
+        {/* heading */}
+        <div className="mb-14 max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#238CCC]">
+            Presencia Global
+          </span>
 
-        <div className="grid lg:grid-cols-5 gap-8 items-stretch">
-          {/* INTERACTIVE MAP */}
-          <div
-            className="lg:col-span-3 relative rounded-[2rem] p-6 md:p-8 bg-white border border-[#238CCC]/15"
-            style={{ boxShadow: "var(--shadow-fresh)" }}
-          >
+          <h2 className="mt-4 text-4xl font-bold tracking-tight text-[#0D3B7F] md:text-5xl">
+            Operaciones conectadas
+            <br />
+            alrededor del mundo.
+          </h2>
+
+          <p className="mt-5 leading-relaxed text-[#0D3B7F]/70">
+            Coordinamos equipos y operaciones internacionales con presencia
+            estratégica en múltiples regiones.
+          </p>
+        </div>
+
+        <div className="grid items-stretch gap-6 lg:grid-cols-5">
+          {/* MAP */}
+          <div className="border border-black/5 bg-white p-5 md:p-7 lg:col-span-3">
             <div
-              className="relative aspect-[16/10] rounded-2xl overflow-hidden"
-              style={{ background: "linear-gradient(160deg,#eaf4fb 0%,#d3e8f5 100%)" }}
+              className="relative aspect-[16/10] overflow-hidden border border-[#238CCC]/10 bg-white"
             >
-              {/* dotted world-ish backdrop */}
-              <div
-                className="absolute inset-0 opacity-50"
-                style={{
-                  backgroundImage: "radial-gradient(circle, #238CCC33 1.2px, transparent 1.2px)",
-                  backgroundSize: "18px 18px",
-                }}
-                aria-hidden="true"
+              {/* world map */}
+              <img
+                src="/images/mapWorld.png"
+                alt="World map"
+                className="absolute inset-0 h-full w-full object-contain opacity-15"
               />
+
+              {/* dotted overlay */}
+              <div
+                className="absolute inset-0 opacity-30"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle, #238CCC22 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              />
+
               {/* pins */}
               {offices.map((o, idx) => {
                 const isActive = idx === active;
+
                 return (
                   <button
                     key={o.city}
@@ -591,61 +609,56 @@ function GlobalPresence() {
                     onClick={() => setActive(idx)}
                     onMouseEnter={() => setActive(idx)}
                     aria-label={`Ver oficina ${o.city}`}
-                    aria-pressed={isActive}
-                    className="absolute -translate-x-1/2 -translate-y-full group"
-                    style={{ left: `${o.coords.x}%`, top: `${o.coords.y}%` }}
+                    className="absolute -translate-x-1/2 -translate-y-1/2 group"
+                    style={{
+                      left: `${o.coords.x}%`,
+                      top: `${o.coords.y}%`,
+                    }}
                   >
-                    <span className="relative grid place-items-center">
-                      {isActive && (
-                        <span
-                          className="absolute w-10 h-10 rounded-full animate-pulse-ring"
-                          style={{ background: "var(--gradient-fresh)" }}
-                          aria-hidden="true"
-                        />
-                      )}
+                    <div className="flex flex-col items-center">
+                      {/* pin */}
+                      <div
+                        className={`h-3.5 w-3.5 border-2 transition-all duration-300 ${
+                          isActive
+                            ? "scale-125 border-[#238CCC] bg-[#238CCC]"
+                            : "border-[#238CCC] bg-white"
+                        }`}
+                      />
+
+                      {/* label */}
                       <span
-                        className={`relative grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-300 ease-out ${isActive ? "scale-110" : "group-hover:scale-110"}`}
-                        style={{
-                          background: "var(--gradient-fresh)",
-                          boxShadow: "var(--shadow-fresh)",
-                        }}
-                      >
-                        <MapPin className="w-4 h-4" />
-                      </span>
-                      <span
-                        className={`mt-1 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all duration-300 ${isActive ? "bg-[#0D3B7F] text-white" : "bg-white/90 text-[#0D3B7F] group-hover:bg-[#0D3B7F] group-hover:text-white"}`}
+                        className={`mt-2 text-[11px] font-medium uppercase tracking-wider transition-colors duration-300 ${
+                          isActive
+                            ? "text-[#0D3B7F]"
+                            : "text-[#0D3B7F]/50 group-hover:text-[#0D3B7F]"
+                        }`}
                       >
                         {o.city}
                       </span>
-                    </span>
+                    </div>
                   </button>
                 );
               })}
 
-              {/* corner stat */}
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur rounded-xl px-4 py-2.5 flex items-center gap-2 text-sm">
-                <Globe2 className="w-4 h-4 text-[#238CCC]" />
-                <span className="text-[#0D3B7F] font-semibold">{offices.length} oficinas</span>
-                <span className="text-[#0D3B7F]/60">en 4 países</span>
+              {/* bottom stat */}
+              <div className="absolute bottom-5 left-5 flex items-center gap-3 text-sm text-[#0D3B7F]/70">
+                <Globe2 className="h-4 w-4 text-[#238CCC]" />
+                <span>{offices.length} oficinas internacionales</span>
               </div>
             </div>
 
-            {/* tabs */}
-            <div className="mt-6 flex flex-wrap gap-2">
+            {/* city tabs */}
+            <div className="mt-5 flex flex-wrap gap-2">
               {offices.map((o, idx) => (
                 <button
                   key={o.city}
                   type="button"
                   onClick={() => setActive(idx)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${idx === active ? "text-white" : "bg-[#238CCC]/10 text-[#0D3B7F] hover:bg-[#238CCC]/20"}`}
-                  style={
+                  className={`border px-4 py-2 text-sm transition-all duration-300 ${
                     idx === active
-                      ? {
-                          backgroundImage: "var(--gradient-fresh)",
-                          boxShadow: "var(--shadow-fresh)",
-                        }
-                      : undefined
-                  }
+                      ? "border-[#0D3B7F] bg-[#0D3B7F] text-white"
+                      : "border-black/10 bg-white text-[#0D3B7F]/70 hover:border-[#238CCC]"
+                  }`}
                 >
                   {o.city}
                 </button>
@@ -653,66 +666,92 @@ function GlobalPresence() {
             </div>
           </div>
 
-          {/* DETAIL CARD */}
+          {/* DETAILS */}
           <div
             key={a.city}
-            className="lg:col-span-2 relative rounded-[2rem] overflow-hidden bg-white border border-[#238CCC]/15 animate-rise"
-            style={{ boxShadow: "var(--shadow-fresh)" }}
+            className="overflow-hidden border border-black/5 bg-white lg:col-span-2"
           >
+            {/* image */}
             <div className="relative aspect-[4/3] overflow-hidden">
               <img
                 src={a.image}
                 alt={`${a.city}, ${a.country}`}
-                width={1024}
-                height={768}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover"
               />
+
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(13,59,127,0) 40%, rgba(13,59,127,0.85) 100%)",
+                    "linear-gradient(180deg, rgba(0,0,0,0.05) 20%, rgba(13,59,127,0.82) 100%)",
                 }}
               />
-              <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur text-[11px] uppercase tracking-wider text-[#0D3B7F] font-semibold">
+
+              <div className="absolute left-5 top-5">
+                <span className="border border-white/20 bg-black/20 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white backdrop-blur">
                   {a.region}
                 </span>
               </div>
+
               <div className="absolute bottom-5 left-5 right-5 text-white">
-                <div className="text-3xl font-bold leading-tight">{a.city}</div>
-                <div className="text-sm opacity-90">{a.country}</div>
+                <h3 className="text-3xl font-semibold tracking-tight">
+                  {a.city}
+                </h3>
+
+                <p className="mt-1 text-sm text-white/75">{a.country}</p>
               </div>
             </div>
+
+            {/* content */}
             <div className="p-6">
-              <p className="text-[#0D3B7F]/75 leading-relaxed">{a.note}</p>
-              <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-                <div className="p-3 rounded-2xl bg-[#238CCC]/8">
-                  <Building2 className="w-4 h-4 mx-auto text-[#238CCC]" />
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">
-                    Dirección
-                  </div>
-                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">
-                    {a.address}
+              <p className="text-sm leading-relaxed text-[#0D3B7F]/72">
+                {a.note}
+              </p>
+
+              <div className="mt-6 space-y-4">
+                {/* address */}
+                <div className="flex items-start gap-3 border-t border-black/5 pt-4">
+                  <Building2 className="mt-0.5 h-4 w-4 text-[#238CCC]" />
+
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#0D3B7F]/45">
+                      Dirección
+                    </div>
+
+                    <div className="mt-1 text-sm font-medium text-[#0D3B7F]">
+                      {a.address}
+                    </div>
                   </div>
                 </div>
-                <div className="p-3 rounded-2xl bg-[#238CCC]/8">
-                  <Users className="w-4 h-4 mx-auto text-[#238CCC]" />
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">
-                    Equipo
-                  </div>
-                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">
-                    {a.team}
+
+                {/* team */}
+                <div className="flex items-start gap-3 border-t border-black/5 pt-4">
+                  <Users className="mt-0.5 h-4 w-4 text-[#238CCC]" />
+
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#0D3B7F]/45">
+                      Equipo
+                    </div>
+
+                    <div className="mt-1 text-sm font-medium text-[#0D3B7F]">
+                      {a.team}
+                    </div>
                   </div>
                 </div>
-                <div className="p-3 rounded-2xl bg-[#238CCC]/8">
-                  <Clock className="w-4 h-4 mx-auto text-[#238CCC]" />
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-[#0D3B7F]/60">
-                    Horario
-                  </div>
-                  <div className="text-xs font-semibold text-[#0D3B7F] mt-0.5 leading-tight">
-                    {a.timezone}
+
+                {/* timezone */}
+                <div className="flex items-start gap-3 border-t border-black/5 pt-4">
+                  <Clock className="mt-0.5 h-4 w-4 text-[#238CCC]" />
+
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#0D3B7F]/45">
+                      Horario
+                    </div>
+
+                    <div className="mt-1 text-sm font-medium text-[#0D3B7F]">
+                      {a.timezone}
+                    </div>
                   </div>
                 </div>
               </div>
