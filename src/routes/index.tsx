@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const heroImages = ["/images/HeroSection1.png", "/images/hero-main.jpg"];
+const heroImages = ["/images/HeroSection1.png", "/images/MisionImg.png"];
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -363,20 +363,32 @@ function Index() {
       <ContactSection />
 
       {/* FOOTER */}
-      <footer className="border-t border-[#0D3B7F]/10 py-10">
-        <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#0D3B7F]/60">
-          <div className="flex items-center gap-2">
-            <span
-              className="w-7 h-7 rounded-lg grid place-items-center text-white text-xs font-bold"
-              style={{ background: "var(--gradient-fresh)" }}
-            >
-              FS
-            </span>
-            <span>© {new Date().getFullYear()} Foster Stern Group</span>
-          </div>
-          <div>Confianza · Visión · Resultados</div>
-        </div>
-      </footer>
+      <footer className="border-t border-[#0D3B7F]/10 py-8 bg-[#f5f5f5]">
+  <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-5">
+    
+    {/* LOGO */}
+    <div className="flex items-center gap-4">
+      <img
+        src="/images/LogoMain1.png"
+        alt="Foster Stern Group"
+        className="h-12 w-auto object-contain"
+        draggable={false}
+      />
+
+      
+    </div>
+
+    {/* LINKS */}
+    <div className="flex items-center gap-6 text-sm">
+      <a
+        href="/aviso-de-privacidad"
+        className="text-[#0D3B7F]/70 hover:text-[#0D3B7F] transition-colors duration-300"
+      >
+        Aviso de privacidad
+      </a>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
@@ -765,37 +777,71 @@ function GlobalPresence() {
 
 function LogosCarousel() {
   const logos = [
-    "Andina Capital",
-    "Restrepo Holdings",
-    "Bermúdez & Co.",
-    "Ocampo Family",
-    "Grupo Mérida",
-    "Bravo Partners",
-    "Cordillera Group",
-    "Solaris Wealth",
+    "/images/FSGRD.svg",
+    "/images/FSGMX.svg",
+    "/images/FSGCO.svg",
+    "/images/FSGESP.svg",
   ];
+
   const row = [...logos, ...logos];
+
   return (
-    <section className="py-16 border-y border-[#238CCC]/10 bg-[#eaf4fb]/40 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 mb-8 text-center">
-        <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
-          Confían en nosotros
+    <section
+      className="relative py-20 overflow-hidden border-y border-[#0D3B7F]/10"
+      style={{ background: "#f5f5f5" }}
+    >
+      {/* HEADER */}
+      <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
+        <span className="text-xs uppercase tracking-[0.25em] text-[#0D3B7F] font-bold">
+          Empresas que confían en nosotros
         </span>
+
+        <h2 className="mt-4 text-3xl md:text-5xl font-bold text-[#0D3B7F]">
+          Construimos relaciones sólidas.
+        </h2>
       </div>
+
+      {/* CAROUSEL */}
       <div className="relative">
-        <div className="flex gap-6 marquee-track" style={{ width: "max-content" }}>
-          {row.map((name, idx) => (
+        <div
+          className="flex items-center gap-8 marquee-track"
+          style={{ width: "max-content" }}
+        >
+          {row.map((logo, idx) => (
             <div
-              key={idx}
-              className="shrink-0 px-8 py-5 rounded-2xl bg-white border border-[#238CCC]/10 text-[#0D3B7F] font-semibold tracking-tight"
-              style={{ boxShadow: "0 8px 20px -15px rgba(13,59,127,0.2)" }}
-            >
-              {name}
-            </div>
+  key={idx}
+  className="flex items-center justify-center shrink-0 w-[260px] h-[130px] rounded-3xl border border-[#0D3B7F]/10 bg-white transition-all duration-300 hover:-translate-y-1"
+  style={{
+    boxShadow: "0 10px 30px rgba(13,59,127,0.06)",
+  }}
+>
+  <img
+    src={logo}
+    alt={`logo-${idx}`}
+    className="max-w-[180px] max-h-[70px] object-contain opacity-80 hover:opacity-100 transition-all duration-300"
+    draggable={false}
+  />
+</div>
           ))}
         </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#eaf4fb] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#eaf4fb] to-transparent" />
+
+        {/* FADE LEFT */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-32"
+          style={{
+            background:
+              "linear-gradient(to right, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
+          }}
+        />
+
+        {/* FADE RIGHT */}
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-32"
+          style={{
+            background:
+              "linear-gradient(to left, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
+          }}
+        />
       </div>
     </section>
   );
@@ -875,53 +921,98 @@ function InfoSection() {
 const contactTitles = ["Hablemos", "Conectemos", "Construyamos", "Empecemos"];
 
 function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const [accept, setAccept] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [focus, setFocus] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    company: "",
+    contact: "",
+    phone: "",
+    email: "",
+    address: "",
+    specialty: "",
+    message: "",
+  });
 
-  const onChange = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
+  const [focus, setFocus] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
+
+  const onChange =
+    (key: string) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((prev) => ({
+        ...prev,
+        [key]: e.target.value,
+      }));
+    };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!accept) return;
+
     setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", phone: "", message: "" });
-    setAccept(false);
+
+    setTimeout(() => {
+      setSent(false);
+    }, 4000);
+
+    setForm({
+      company: "",
+      contact: "",
+      phone: "",
+      email: "",
+      address: "",
+      specialty: "",
+      message: "",
+    });
   };
 
-  const field = (key: keyof typeof form, label: string, Icon: any, type = "text") => {
+  const field = (
+    key: keyof typeof form,
+    label: string,
+    type = "text",
+    textarea = false
+  ) => {
     const active = focus === key || form[key].length > 0;
+
     return (
       <label className="relative block">
         <span
-          className="absolute left-12 transition-all pointer-events-none text-[#0D3B7F]/60"
+          className="absolute left-5 transition-all duration-200 pointer-events-none"
           style={{
-            top: active ? "6px" : "50%",
-            transform: active ? "translateY(0)" : "translateY(-50%)",
+            top: active ? "10px" : textarea ? "22px" : "50%",
+            transform: active
+              ? "translateY(0)"
+              : textarea
+                ? "translateY(0)"
+                : "translateY(-50%)",
             fontSize: active ? "11px" : "15px",
-            letterSpacing: active ? "0.1em" : "0",
+            letterSpacing: active ? "0.08em" : "0",
             textTransform: active ? "uppercase" : "none",
-            fontWeight: active ? 600 : 400,
-            color: active ? "#238CCC" : undefined,
+            color: active ? "#0D3B7F" : "#7a7a7a",
+            fontWeight: active ? 700 : 400,
           }}
         >
           {label}
         </span>
-        <Icon
-          className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${active ? "text-[#238CCC]" : "text-[#0D3B7F]/40"}`}
-        />
-        <input
-          type={type}
-          required
-          value={form[key]}
-          onChange={onChange(key)}
-          onFocus={() => setFocus(key)}
-          onBlur={() => setFocus(null)}
-          className="w-full pl-12 pr-4 pt-6 pb-2 rounded-2xl bg-white border border-[#238CCC]/15 outline-none transition-all focus:border-[#238CCC] focus:shadow-[0_0_0_4px_rgba(35,140,204,0.12)] text-[#0D3B7F]"
-        />
+
+        {textarea ? (
+          <textarea
+            rows={5}
+            required
+            value={form[key]}
+            onChange={onChange(key)}
+            onFocus={() => setFocus(key)}
+            onBlur={() => setFocus(null)}
+            className="w-full rounded-2xl border border-[#dcdcdc] bg-[#f5f5f5] px-5 pt-8 pb-4 outline-none transition-all duration-300 resize-none text-[#0D3B7F] focus:border-[#0D3B7F] focus:bg-white"
+          />
+        ) : (
+          <input
+            type={type}
+            required
+            value={form[key]}
+            onChange={onChange(key)}
+            onFocus={() => setFocus(key)}
+            onBlur={() => setFocus(null)}
+            className="w-full rounded-2xl border border-[#dcdcdc] bg-[#f5f5f5] px-5 pt-7 pb-3 outline-none transition-all duration-300 text-[#0D3B7F] focus:border-[#0D3B7F] focus:bg-white"
+          />
+        )}
       </label>
     );
   };
@@ -929,174 +1020,69 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-28 overflow-hidden"
-      style={{ background: "var(--gradient-soft)" }}
+      className="py-28 px-6"
+      style={{ background: "#f5f5f5" }}
     >
-      <div
-        className="pointer-events-none absolute top-10 right-0 w-[420px] h-[420px] opacity-25 animate-blob"
-        style={{ background: "var(--gradient-fresh)", filter: "blur(70px)" }}
-      />
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
+      <div className="mx-auto max-w-4xl">
+        {/* HEADER */}
+        <div className="text-center mb-14">
+          <span
+            className="uppercase tracking-[0.25em] text-sm font-bold"
+            style={{ color: "#0D3B7F" }}
+          >
             Contacto
           </span>
-          <h2 className="mt-3 text-4xl md:text-6xl font-bold text-[#0D3B7F] leading-[1.1]">
-            <span
-              className="relative inline-block align-baseline overflow-hidden h-[1.1em]"
-              style={{ minWidth: "8ch", perspective: "800px" }}
-            >
-              {contactTitles.map((w, idx) => (
-                <span
-                  key={w}
-                  className="word-rotate-item text-shimmer"
-                  style={{ animationDelay: `${idx * 4}s` }}
-                >
-                  {w}
-                </span>
-              ))}
-            </span>{" "}
-            <span className="text-[#0D3B7F]">hoy mismo.</span>
+
+          <h2
+            className="mt-4 text-4xl md:text-5xl font-bold leading-tight"
+            style={{ color: "#0D3B7F" }}
+          >
+            Hablemos de tu empresa.
           </h2>
-          <p className="mt-5 text-lg text-[#0D3B7F]/70">
-            Déjanos tus datos y un asesor te contactará en menos de 24 horas.
+
+          <p className="mt-5 text-lg text-[#4b5563] max-w-2xl mx-auto">
+            Completa el formulario y nos pondremos en contacto contigo lo antes
+            posible.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 items-stretch">
-          {/* FORM */}
-          <form
-            onSubmit={submit}
-            className="lg:col-span-3 p-8 md:p-10 rounded-[2rem] bg-white border border-[#238CCC]/15 animate-rise"
-            style={{ boxShadow: "var(--shadow-fresh)" }}
-          >
-            <div className="grid md:grid-cols-2 gap-5">
-              {field("name", "Nombre completo", User)}
-              {field("phone", "Teléfono", Phone, "tel")}
-            </div>
-            <div className="mt-5">{field("email", "Correo electrónico", Mail, "email")}</div>
-
-            <label className="relative block mt-5">
-              <span
-                className="absolute left-12 transition-all pointer-events-none text-[#0D3B7F]/60"
-                style={{
-                  top: focus === "message" || form.message.length > 0 ? "10px" : "22px",
-                  fontSize: focus === "message" || form.message.length > 0 ? "11px" : "15px",
-                  letterSpacing: focus === "message" || form.message.length > 0 ? "0.1em" : "0",
-                  textTransform:
-                    focus === "message" || form.message.length > 0 ? "uppercase" : "none",
-                  fontWeight: focus === "message" || form.message.length > 0 ? 600 : 400,
-                  color: focus === "message" || form.message.length > 0 ? "#238CCC" : undefined,
-                }}
-              >
-                Mensaje
-              </span>
-              <MessageSquare
-                className={`absolute left-4 top-5 w-5 h-5 transition-colors ${focus === "message" || form.message.length > 0 ? "text-[#238CCC]" : "text-[#0D3B7F]/40"}`}
-              />
-              <textarea
-                required
-                rows={5}
-                value={form.message}
-                onChange={onChange("message")}
-                onFocus={() => setFocus("message")}
-                onBlur={() => setFocus(null)}
-                className="w-full pl-12 pr-4 pt-7 pb-3 rounded-2xl bg-white border border-[#238CCC]/15 outline-none transition-all focus:border-[#238CCC] focus:shadow-[0_0_0_4px_rgba(35,140,204,0.12)] text-[#0D3B7F] resize-none"
-              />
-            </label>
-
-            <label className="mt-5 flex items-start gap-3 cursor-pointer group">
-              <span
-                className={`mt-0.5 w-5 h-5 rounded-md grid place-items-center border-2 transition-all ${accept ? "border-transparent text-white" : "border-[#0D3B7F]/25 text-transparent"}`}
-                style={accept ? { backgroundImage: "var(--gradient-fresh)" } : undefined}
-              >
-                <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={3} />
-              </span>
-              <input
-                type="checkbox"
-                checked={accept}
-                onChange={(e) => setAccept(e.target.checked)}
-                className="sr-only"
-              />
-              <span className="text-sm text-[#0D3B7F]/75 leading-relaxed">
-                He leído y acepto el{" "}
-                <a href="#" className="text-[#238CCC] font-semibold hover:underline">
-                  aviso de privacidad
-                </a>{" "}
-                y el tratamiento de mis datos.
-              </span>
-            </label>
-
-            <button
-              type="submit"
-              disabled={!accept}
-              className="mt-7 inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-4 rounded-full text-white font-medium animate-gradient disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:-translate-y-0.5"
-              style={{ backgroundImage: "var(--gradient-fresh)", boxShadow: "var(--shadow-fresh)" }}
-            >
-              {sent ? (
-                <>
-                  <CheckCircle2 className="w-4 h-4" /> ¡Mensaje enviado!
-                </>
-              ) : (
-                <>
-                  Enviar mensaje <Send className="w-4 h-4" />
-                </>
-              )}
-            </button>
-          </form>
-
-          {/* MAP + LOCATION */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
-            <div
-              className="rounded-[2rem] overflow-hidden border border-[#238CCC]/15 bg-white animate-rise"
-              style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "0.1s" }}
-            >
-              <iframe
-                title="Ubicación Foster Stern Group"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-99.1776%2C19.4250%2C-99.1576%2C19.4350&layer=mapnik&marker=19.4300%2C-99.1676"
-                className="w-full h-72 border-0"
-                loading="lazy"
-              />
-            </div>
-            <div
-              className="p-6 rounded-[2rem] bg-white border border-[#238CCC]/15 animate-rise"
-              style={{ boxShadow: "var(--shadow-fresh)", animationDelay: "0.2s" }}
-            >
-              <div className="flex items-start gap-4">
-                <div
-                  className="w-12 h-12 shrink-0 rounded-2xl grid place-items-center text-white animate-gradient"
-                  style={{ backgroundImage: "var(--gradient-fresh)" }}
-                >
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-[#238CCC] font-semibold">
-                    Oficina principal
-                  </div>
-                  <div className="mt-1 font-semibold text-[#0D3B7F]">
-                    Av. Paseo de la Reforma 250
-                  </div>
-                  <div className="text-sm text-[#0D3B7F]/70">Piso 18, Cuauhtémoc, CDMX</div>
-                </div>
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-                <a
-                  href="tel:+525555555555"
-                  className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#238CCC]/8 text-[#0D3B7F] hover:bg-[#238CCC]/15 transition"
-                >
-                  <Phone className="w-4 h-4 text-[#238CCC]" /> +52 55 5555 5555
-                </a>
-                <a
-                  href="mailto:contacto@fosterstern.com"
-                  className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#238CCC]/8 text-[#0D3B7F] hover:bg-[#238CCC]/15 transition"
-                >
-                  <Mail className="w-4 h-4 text-[#238CCC]" /> Escríbenos
-                </a>
-              </div>
-            </div>
+        {/* FORM */}
+        <form
+          onSubmit={submit}
+          className="rounded-[2rem] border border-[#e5e5e5] bg-white p-8 md:p-12"
+          style={{
+            boxShadow: "0 10px 40px rgba(13,59,127,0.06)",
+          }}
+        >
+          <div className="grid md:grid-cols-2 gap-5">
+            {field("company", "Nombre de la empresa")}
+            {field("contact", "Nombre completo del contacto")}
           </div>
 
-        </div>
+          <div className="grid md:grid-cols-2 gap-5 mt-5">
+            {field("phone", "Teléfono directo", "tel")}
+            {field("email", "Correo electrónico", "email")}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5 mt-5">
+            {field("address", "Dirección")}
+            {field("specialty", "Especialidad")}
+          </div>
+
+          <div className="mt-5">
+            {field("message", "Mensaje", "text", true)}
+          </div>
+
+          <button
+            type="submit"
+            className="mt-8 w-full md:w-auto px-10 py-4 rounded-full font-semibold text-white transition-all duration-300 hover:scale-[1.02]"
+            style={{
+              background: "#0D3B7F",
+            }}
+          >
+            {sent ? "Mensaje enviado" : "Enviar información"}
+          </button>
+        </form>
       </div>
     </section>
   );
