@@ -11,6 +11,15 @@ const links: { label: string; to: string; hash?: string }[] = [
   { label: "Contacto", to: "/", hash: "contact" },
 ];
 
+const logos = [
+  
+  "/images/FSGRD.svg",
+    "/images/FSGMX.svg",
+    "/images/FSGCO.svg",
+    "/images/FSGESP.svg",
+  
+];
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
@@ -53,264 +62,271 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="fixed top-0 inset-x-0 py-2 z-50 bg-white/90 backdrop-blur-md">
-      <div
-        className="
-          relative
-          h-[88px]
-          w-full
-          px-6
-          md:px-10
-          lg:px-16
-          flex
-          items-center
-          justify-between
-        "
-      >
-        {/* LOGO */}
-        <Link
-          to="/"
+    <header className="fixed top-0 inset-x-0 z-50">
+  {/* TOP MARQUEE */}
+  <div
+    className="
+      relative
+      overflow-hidden
+      bg-[#0B1120]
+      border-b
+      border-white/10
+      py-2
+    "
+    style={{
+      maskImage:
+        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+      WebkitMaskImage:
+        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+    }}
+  >
+    <div className="flex w-max animate-marquee gap-14 items-center">
+      {[...logos, ...logos].map((logo, index) => (
+        <div
+          key={index}
           className="
-            group
             flex
             items-center
-            shrink-0
+            justify-center
+            opacity-70
+            hover:opacity-100
+            transition-opacity
+            duration-300
           "
         >
           <img
-            src="/images/LogoMain1.png"
-            alt="Foster Stern Group"
+            src={logo}
+            alt="Brand Logo"
             className="
-              h-18
-              md:h-20
+              h-5
+              md:h-6
               w-auto
               object-contain
+              grayscale
+              brightness-200
+              hover:grayscale-0
               transition-all
               duration-500
+            "
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* MAIN HEADER */}
+  <div className="bg-white/90 backdrop-blur-md border-b border-black/5">
+    <div
+      className="
+        relative
+        h-[88px]
+        w-full
+        px-6
+        md:px-10
+        lg:px-16
+        flex
+        items-center
+        justify-between
+      "
+    >
+      {/* LOGO */}
+      <Link
+        to="/"
+        className="
+          group
+          flex
+          items-center
+          shrink-0
+        "
+      >
+        <img
+          src="/images/LogoMain1.png"
+          alt="Foster Stern Group"
+          className="
+            h-18
+            md:h-20
+            w-auto
+            object-contain
+            transition-all
+            duration-500
+            ease-out
+            group-hover:scale-105
+          "
+        />
+      </Link>
+
+      {/* DESKTOP NAV */}
+      <nav
+        className="
+          hidden
+          md:flex
+          items-center
+          gap-10
+          absolute
+          left-1/2
+          -translate-x-1/2
+        "
+      >
+        {links.map((link) => (
+          <Link
+            key={link.label}
+            to={link.to}
+            hash={link.hash}
+            className="
+              relative
+              text-[14px]
+              font-medium
+              text-black/80
+              transition-all
+              duration-300
               ease-out
-              group-hover:scale-105
+              hover:text-[#238CCC]
+              hover:scale-105
+            "
+          >
+            <span
+              className="
+                relative
+                after:absolute
+                after:left-0
+                after:-bottom-1
+                after:h-[1px]
+                after:w-0
+                after:bg-[#238CCC]
+                after:transition-all
+                after:duration-300
+                hover:after:w-full
+              "
+            >
+              {link.label}
+            </span>
+          </Link>
+        ))}
+      </nav>
+
+      {/* RIGHT SIDE */}
+      <div className="flex items-center gap-5 ml-auto">
+        <Link
+          to="/"
+          hash="contact"
+          className="
+            group
+            hidden
+            md:inline-flex
+            items-center
+            gap-2
+            px-5
+            py-2.5
+            text-white
+            text-[12px]
+            uppercase
+            tracking-[0.08em]
+            font-semibold
+            transition-all
+            duration-300
+            ease-out
+            hover:scale-105
+            hover:-translate-y-0.5
+          "
+          style={{
+            borderRadius: "12px",
+            backgroundImage: "var(--gradient-fresh)",
+            boxShadow: "0 10px 30px -12px rgba(35,140,204,0.45)",
+          }}
+        >
+          Contáctanos
+
+          <ArrowRight
+            className="
+              w-4
+              h-4
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
             "
           />
         </Link>
 
-        {/* DESKTOP NAV */}
-        <nav
+        <button
+          ref={toggleRef}
+          type="button"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((o) => !o)}
           className="
-            hidden
-            md:flex
-            items-center
-            gap-10
-            absolute
-            left-1/2
-            -translate-x-1/2
+            md:hidden
+            w-11
+            h-11
+            grid
+            place-items-center
+            text-black
+            transition-all
+            duration-300
+            hover:scale-110
           "
         >
-          {links.map((link) => (
+          {open ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* MOBILE MENU */}
+  {open && (
+    <div
+      id="mobile-menu"
+      className="
+        md:hidden
+        bg-white
+        px-6
+        py-6
+        border-t
+        border-black/5
+      "
+    >
+      <ul className="flex flex-col gap-5">
+        {links.map((l, i) => (
+          <li key={l.label}>
             <Link
-              key={link.label}
-              to={link.to}
-              hash={link.hash}
+              to={l.to}
+              hash={l.hash}
+              ref={i === 0 ? firstLinkRef : undefined}
+              onClick={() => setOpen(false)}
               className="
-                relative
-                text-[14px]
+                group
+                flex
+                items-center
+                justify-between
+                text-[15px]
                 font-medium
                 text-black/80
                 transition-all
                 duration-300
-                ease-out
                 hover:text-[#238CCC]
-                hover:scale-105
               "
             >
-              <span
+              <span>{l.label}</span>
+
+              <ArrowRight
                 className="
-                  relative
-                  after:absolute
-                  after:left-0
-                  after:-bottom-1
-                  after:h-[1px]
-                  after:w-0
-                  after:bg-[#238CCC]
-                  after:transition-all
-                  after:duration-300
-                  hover:after:w-full
+                  w-4
+                  h-4
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
                 "
-              >
-                {link.label}
-              </span>
+              />
             </Link>
-          ))}
-        </nav>
-
-        {/* RIGHT SIDE */}
-        <div className="flex items-center gap-5 ml-auto">
-          {/* CONTACT BUTTON */}
-          <Link
-            to="/"
-            hash="contact"
-            className="
-              group
-              hidden
-              md:inline-flex
-              items-center
-              gap-2
-              px-5
-              py-2.5
-              text-white
-              text-[12px]
-              uppercase
-              tracking-[0.08em]
-              font-semibold
-              transition-all
-              duration-300
-              ease-out
-              hover:scale-105
-              hover:-translate-y-0.5
-            "
-            style={{
-              borderRadius: "12px",
-              backgroundImage: "var(--gradient-fresh)",
-              boxShadow: "0 10px 30px -12px rgba(35,140,204,0.45)",
-            }}
-          >
-            Contáctanos
-
-            <ArrowRight
-              className="
-                w-4
-                h-4
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
-          </Link>
-
-          
-
-          {/* MOBILE BUTTON */}
-          <button
-            ref={toggleRef}
-            type="button"
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((o) => !o)}
-            className="
-              md:hidden
-              w-11
-              h-11
-              grid
-              place-items-center
-              text-black
-              transition-all
-              duration-300
-              hover:scale-110
-            "
-          >
-            {open ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* MOBILE MENU */}
-      {open && (
-        <div
-          id="mobile-menu"
-          className="
-            md:hidden
-            bg-white
-            px-6
-            py-6
-            border-t
-            border-black/5
-          "
-        >
-          <ul className="flex flex-col gap-5">
-            {links.map((l, i) => (
-              <li key={l.label}>
-                <Link
-                  to={l.to}
-                  hash={l.hash}
-                  ref={i === 0 ? firstLinkRef : undefined}
-                  onClick={() => setOpen(false)}
-                  className="
-                    group
-                    flex
-                    items-center
-                    justify-between
-                    text-[15px]
-                    font-medium
-                    text-black/80
-                    transition-all
-                    duration-300
-                    hover:text-[#238CCC]
-                  "
-                >
-                  <span>{l.label}</span>
-
-                  <ArrowRight
-                    className="
-                      w-4
-                      h-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* MOBILE CTA */}
-          <Link
-            to="/"
-            hash="contact"
-            onClick={() => setOpen(false)}
-            className="
-              group
-              mt-8
-              inline-flex
-              w-full
-              items-center
-              justify-center
-              gap-2
-              px-5
-              py-3.5
-              text-white
-              text-sm
-              uppercase
-              tracking-[0.08em]
-              font-semibold
-              transition-all
-              duration-300
-              hover:scale-[1.02]
-            "
-            style={{
-              borderRadius: "999px",
-              backgroundImage: "var(--gradient-fresh)",
-              boxShadow: "0 10px 30px -12px rgba(35,140,204,0.45)",
-            }}
-          >
-            Contacto
-
-            <ArrowRight
-              className="
-                w-4
-                h-4
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
-          </Link>
-        </div>
-      )}
-    </header>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</header>
   );
-}
+} 
