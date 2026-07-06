@@ -64,33 +64,28 @@ export function SiteHeader() {
   return (
     <header className="fixed top-0 inset-x-0 z-50">
   {/* TOP MARQUEE */}
-  <div
-    className="
-      relative
-      overflow-hidden
-      bg-[#0B1120]
-      border-b
-      border-white/10
-      py-2
-    "
-    style={{
-      maskImage:
-        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-      WebkitMaskImage:
-        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-    }}
-  >
-    <div className="flex w-max animate-marquee gap-14 items-center">
+  
+  <div className="relative overflow-hidden border-b border-white/10 bg-[#071120]">
+  {/* glow */}
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(35,140,204,0.08),transparent_70%)]" />
+
+  {/* fade sides */}
+  <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#071120] to-transparent z-10" />
+  <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#071120] to-transparent z-10" />
+
+  <div className="relative flex overflow-hidden py-4">
+    <div className="marquee-track flex items-center gap-12 pr-12">
       {[...logos, ...logos].map((logo, index) => (
         <div
-          key={index}
+          key={`first-${index}`}
           className="
             flex
             items-center
             justify-center
-            opacity-70
+            shrink-0
+            opacity-80
             hover:opacity-100
-            transition-opacity
+            transition-all
             duration-300
           "
         >
@@ -98,21 +93,61 @@ export function SiteHeader() {
             src={logo}
             alt="Brand Logo"
             className="
-              h-5
-              md:h-6
+              h-8
+              md:h-10
               w-auto
               object-contain
-              grayscale
-              brightness-200
-              hover:grayscale-0
-              transition-all
+              transition-transform
               duration-500
+              hover:scale-105
+            "
+          />
+        </div>
+      ))}
+    </div>
+
+    <div
+      className="
+        marquee-track
+        flex
+        items-center
+        gap-12
+        pr-12
+      "
+      aria-hidden="true"
+    >
+      {[...logos, ...logos].map((logo, index) => (
+        <div
+          key={`second-${index}`}
+          className="
+            flex
+            items-center
+            justify-center
+            shrink-0
+            opacity-80
+            hover:opacity-100
+            transition-all
+            duration-300
+          "
+        >
+          <img
+            src={logo}
+            alt=""
+            className="
+              h-8
+              md:h-10
+              w-auto
+              object-contain
+              transition-transform
+              duration-500
+              hover:scale-105
             "
           />
         </div>
       ))}
     </div>
   </div>
+</div>
 
   {/* MAIN HEADER */}
   <div className="bg-white/90 backdrop-blur-md border-b border-black/5">
