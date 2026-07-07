@@ -148,14 +148,18 @@ function Index() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {[
-              { name: "República Dominicana", code: "do" },
-              { name: "Colombia", code: "co" },
-              { name: "México", code: "mx" },
-              { name: "Costa Rica", code: "cr" },
-              { name: "Argentina", code: "ar" },
-              { name: "España", code: "es" },
-              { name: "China", code: "cn" },
-            ].map((country) => (
+            { name: "Estados Unidos", code: "us" },
+            { name: "Portugal", code: "pt" },
+            { name: "Chile", code: "cl" },
+            { name: "Panamá", code: "pa" },
+            { name: "Guatemala", code: "gt" },
+            { name: "Brasil", code: "br" },
+            { name: "Perú", code: "pe" },
+            { name: "Ecuador", code: "ec" },
+            { name: "Bolivia", code: "bo" },
+            { name: "Venezuela", code: "ve" },
+            { name: "Puerto Rico", code: "pr" },
+              ].map((country) => (
               <div
                 key={country.code}
                 className="group relative rounded-2xl border border-[#238CCC]/15 bg-white/60 backdrop-blur-md px-4 py-5 text-center transition-all duration-300 hover:scale-105 hover:bg-white hover:shadow-lg"

@@ -8,7 +8,7 @@ const links: { label: string; to: string; hash?: string }[] = [
   { label: "Valores", to: "/", hash: "values" },
   { label: "Servicios", to: "/", hash: "services" },
   { label: "Clientes", to: "/", hash: "testimonials" },
-  { label: "Contacto", to: "/", hash: "contact" },
+  
 ];
 
 const logos = [
@@ -209,7 +209,7 @@ export function SiteHeader() {
             hash={link.hash}
             className="
               relative
-              text-[14px]
+              text-[16px]
               font-medium
               text-black/80
               transition-all
@@ -253,7 +253,7 @@ export function SiteHeader() {
             px-5
             py-2.5
             text-white
-            text-[12px]
+            text-[16px]
             uppercase
             tracking-[0.08em]
             font-semibold
