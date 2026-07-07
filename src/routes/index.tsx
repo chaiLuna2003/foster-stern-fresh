@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const heroImages = ["/images/HeroSection1.png", "/images/MisionImg.png"];
+const heroImages = ["/images/HeroSection1.png", "/images/MisionImg.png", "/images/1.png"];
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -102,8 +102,7 @@ function Index() {
                   className="h-full w-full object-cover"
                 />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                
               </div>
             ))}
           </div>
