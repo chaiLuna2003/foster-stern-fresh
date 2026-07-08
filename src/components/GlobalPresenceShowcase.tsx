@@ -17,6 +17,14 @@ import {
   Microscope,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────
@@ -30,6 +38,8 @@ interface Company {
   name: string;
   category: string;
   icon: ReactNode;
+  // Texto ampliado que solo se muestra en el modal "Ver todas".
+  description: string;
 }
 
 interface Sector {
@@ -59,17 +69,31 @@ const countries: CountryData[] = [
     code: "mx",
     name: "México",
     city: "México",
-    pin: { x: 20, y: 55 },
+    pin: { x: 22.5, y: 39.2 },
     description:
       "México representa uno de los principales mercados estratégicos del grupo, concentrando empresas enfocadas en innovación, salud y transformación digital.",
     companies: [
-      { name: "Longev360", category: "Medicina regenerativa", icon: <Dna className="h-5 w-5" /> },
+      {
+        name: "Longev360",
+        category: "Medicina regenerativa",
+        icon: <Dna className="h-5 w-5" />,
+        description:
+          "Clínica especializada en terapias de medicina regenerativa y longevidad, con protocolos personalizados de diagnóstico y tratamiento.",
+      },
       {
         name: "Foster Stern",
         category: "Consultoría médica",
         icon: <Stethoscope className="h-5 w-5" />,
+        description:
+          "Consultoría estratégica para instituciones de salud, enfocada en eficiencia operativa, cumplimiento normativo y crecimiento sostenido.",
       },
-      { name: "StemLife", category: "Biotecnología", icon: <Leaf className="h-5 w-5" /> },
+      {
+        name: "StemLife",
+        category: "Biotecnología",
+        icon: <Leaf className="h-5 w-5" />,
+        description:
+          "Desarrollo e investigación en biotecnología celular, con foco en soluciones innovadoras para el cuidado de la salud a largo plazo.",
+      },
     ],
     sectors: [
       { name: "Salud", icon: <Heart className="h-4 w-4" /> },
@@ -86,7 +110,7 @@ const countries: CountryData[] = [
     code: "us",
     name: "Estados Unidos",
     city: "Miami",
-    pin: { x: 34, y: 40 },
+    pin: { x: 27.7, y: 35.7 },
     description:
       "Estados Unidos es el puente estratégico del grupo hacia el mercado internacional, con oficinas enfocadas en finanzas, innovación médica y expansión global.",
     companies: [
@@ -94,16 +118,22 @@ const countries: CountryData[] = [
         name: "Foster Stern Global",
         category: "Consultoría médica",
         icon: <Stethoscope className="h-5 w-5" />,
+        description:
+          "Oficina corporativa que coordina las operaciones internacionales del grupo y sus alianzas estratégicas en Estados Unidos.",
       },
       {
         name: "Longev360 USA",
         category: "Medicina regenerativa",
         icon: <Dna className="h-5 w-5" />,
+        description:
+          "Extensión de Longev360 enfocada en pacientes internacionales que buscan tratamientos de medicina regenerativa de vanguardia.",
       },
       {
         name: "NovaHealth Capital",
         category: "Inversión en salud",
         icon: <Landmark className="h-5 w-5" />,
+        description:
+          "Vehículo de inversión especializado en identificar y financiar oportunidades de crecimiento en el sector salud.",
       },
     ],
     sectors: [
@@ -121,7 +151,7 @@ const countries: CountryData[] = [
     code: "co",
     name: "Colombia",
     city: "Bogotá",
-    pin: { x: 34, y: 66 },
+    pin: { x: 29.4, y: 47.4 },
     description:
       "Colombia impulsa la expansión del grupo en la región andina, acompañando a empresas e instituciones en su crecimiento y transformación en salud.",
     companies: [
@@ -129,12 +159,22 @@ const countries: CountryData[] = [
         name: "Foster Stern Andina",
         category: "Consultoría médica",
         icon: <Stethoscope className="h-5 w-5" />,
+        description:
+          "Oficina regional que acompaña a instituciones de salud colombianas en procesos de mejora operativa y expansión.",
       },
-      { name: "StemLife Colombia", category: "Biotecnología", icon: <Leaf className="h-5 w-5" /> },
+      {
+        name: "StemLife Colombia",
+        category: "Biotecnología",
+        icon: <Leaf className="h-5 w-5" />,
+        description:
+          "Filial dedicada a la investigación y aplicación clínica de terapias celulares en la región andina.",
+      },
       {
         name: "BioSalud Group",
         category: "Investigación clínica",
         icon: <Microscope className="h-5 w-5" />,
+        description:
+          "Centro de investigación clínica que impulsa estudios y ensayos en alianza con instituciones académicas y hospitalarias.",
       },
     ],
     sectors: [
@@ -152,7 +192,7 @@ const countries: CountryData[] = [
     code: "es",
     name: "España",
     city: "Madrid",
-    pin: { x: 62, y: 28 },
+    pin: { x: 49, y: 27.5 },
     description:
       "España es la puerta de entrada del grupo al mercado europeo, con empresas enfocadas en consultoría médica y desarrollo de negocio internacional.",
     companies: [
@@ -160,16 +200,22 @@ const countries: CountryData[] = [
         name: "Foster Stern Europa",
         category: "Consultoría médica",
         icon: <Stethoscope className="h-5 w-5" />,
+        description:
+          "Oficina europea que asesora a clínicas e instituciones en la adopción de mejores prácticas internacionales.",
       },
       {
         name: "MedBridge Iberia",
         category: "Expansión de negocio",
         icon: <Building2 className="h-5 w-5" />,
+        description:
+          "Equipo especializado en conectar empresas de salud latinoamericanas con el mercado europeo.",
       },
       {
         name: "Vitalia Health",
         category: "Bienestar y prevención",
         icon: <Heart className="h-5 w-5" />,
+        description:
+          "Centro enfocado en programas de bienestar, prevención y medicina personalizada para pacientes europeos.",
       },
     ],
     sectors: [
@@ -255,7 +301,7 @@ export function GlobalPresenceShowcase() {
 
             {/* MAPA */}
             <div className="mt-8 rounded-3xl border border-black/5 bg-white p-4 shadow-[0_10px_40px_rgba(13,59,127,0.06)] md:p-6">
-              <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-[#fafafa]">
+              <div className="relative aspect-[2/1] overflow-hidden rounded-2xl bg-[#fafafa]">
                 <img
                   src="/images/mapWorld.png"
                   alt="Mapa mundial"
@@ -375,13 +421,103 @@ export function GlobalPresenceShowcase() {
             <div className="mt-7">
               <div className="flex items-center justify-between">
                 <h4 className="text-sm font-semibold text-[#0D3B7F]">Empresas</h4>
-                <a
-                  href="#empresas"
-                  className="flex items-center gap-1 text-sm font-medium text-[#238CCC] transition-colors hover:text-[#0D3B7F]"
-                >
-                  Ver todas
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="flex items-center gap-1 text-sm font-medium text-[#238CCC] transition-colors hover:text-[#0D3B7F]"
+                    >
+                      Ver todas
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </button>
+                  </DialogTrigger>
+
+                  <DialogContent className="max-h-[85vh] max-w-2xl gap-0 overflow-y-auto rounded-3xl border-none bg-white p-0">
+                    <div className="p-6 md:p-8">
+                      <DialogHeader className="text-left">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={`https://flagcdn.com/w80/${active.code}.png`}
+                            alt={active.name}
+                            className="h-8 w-11 rounded-md object-cover shadow-sm"
+                          />
+                          <DialogTitle className="text-xl font-bold text-[#0D3B7F]">
+                            Empresas en {active.name}
+                          </DialogTitle>
+                        </div>
+                        <DialogDescription className="text-sm leading-relaxed text-[#0D3B7F]/70">
+                          {active.description}
+                        </DialogDescription>
+                      </DialogHeader>
+
+                      {/* listado completo de empresas */}
+                      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                        {active.companies.map((company) => (
+                          <div
+                            key={company.name}
+                            className="flex flex-col gap-3 rounded-2xl border border-black/5 bg-[#fafafa] p-4"
+                          >
+                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0D3B7F] text-white">
+                              {company.icon}
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-[#0D3B7F]">
+                                {company.name}
+                              </div>
+                              <div className="text-xs font-medium text-[#238CCC]">
+                                {company.category}
+                              </div>
+                              <p className="mt-2 text-xs leading-relaxed text-[#0D3B7F]/60">
+                                {company.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* sectores e indicadores, para contexto completo del país */}
+                      <div className="mt-7 grid gap-6 sm:grid-cols-2">
+                        <div>
+                          <h5 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#0D3B7F]/70">
+                            Sectores
+                          </h5>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {active.sectors.map((sector) => (
+                              <span
+                                key={sector.name}
+                                className="flex items-center gap-2 rounded-full bg-[#238CCC]/10 px-3 py-1.5 text-xs font-medium text-[#0D3B7F]"
+                              >
+                                {sector.icon}
+                                {sector.name}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div>
+                          <h5 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#0D3B7F]/70">
+                            Indicadores clave
+                          </h5>
+                          <div className="mt-3 grid grid-cols-3 gap-2">
+                            {active.indicators.map((indicator) => (
+                              <div
+                                key={indicator.label}
+                                className="rounded-xl border border-black/5 bg-white p-3"
+                              >
+                                <div className="text-base font-bold text-[#0D3B7F]">
+                                  {indicator.value}
+                                </div>
+                                <div className="text-[10px] text-[#0D3B7F]/55">
+                                  {indicator.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
 
               <div className="mt-4 overflow-hidden" ref={emblaRef}>

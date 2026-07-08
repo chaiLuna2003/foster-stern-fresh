@@ -7,6 +7,7 @@ import cityMiami from "@/assets/city-miami.jpg";
 import cityMadrid from "@/assets/city-madrid.jpg";
 import cityBogota from "@/assets/city-bogota.jpg";
 import { GlobalPresenceShowcase } from "@/components/GlobalPresenceShowcase";
+import { SiteFooter } from "@/components/SiteFooter";
 import {
   ArrowRight,
   Compass,
@@ -17,7 +18,7 @@ import {
   Globe2,
   Quote,
   ChevronLeft,
-  ChevronRight, 
+  ChevronRight,
   MapPin,
   Phone,
   Mail,
@@ -102,8 +103,6 @@ function Index() {
                   alt={`Slide ${index + 1}`}
                   className="h-full w-full object-cover"
                 />
-
-                
               </div>
             ))}
           </div>
@@ -111,7 +110,11 @@ function Index() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="relative py-28" style={{ background: "var(--background-original)" }}>
+      <section
+        id="about"
+        className="relative py-28"
+        style={{ background: "var(--background-original)" }}
+      >
         <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-start">
           {/* LEFT */}
           <div>
@@ -140,7 +143,6 @@ function Index() {
           </div>
         </div>
 
-        
         <section className="mx-auto max-w-7xl px-6 mt-20">
           <h3 className="text-center text-sm uppercase tracking-[0.25em] text-[#238CCC] font-semibold mb-10">
             Presencia Internacional
@@ -148,18 +150,18 @@ function Index() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {[
-            { name: "Estados Unidos", code: "us" },
-            { name: "Portugal", code: "pt" },
-            { name: "Chile", code: "cl" },
-            { name: "Panamá", code: "pa" },
-            { name: "Guatemala", code: "gt" },
-            { name: "Brasil", code: "br" },
-            { name: "Perú", code: "pe" },
-            { name: "Ecuador", code: "ec" },
-            { name: "Bolivia", code: "bo" },
-            { name: "Venezuela", code: "ve" },
-            { name: "Puerto Rico", code: "pr" },
-              ].map((country) => (
+              { name: "Estados Unidos", code: "us" },
+              { name: "Portugal", code: "pt" },
+              { name: "Chile", code: "cl" },
+              { name: "Panamá", code: "pa" },
+              { name: "Guatemala", code: "gt" },
+              { name: "Brasil", code: "br" },
+              { name: "Perú", code: "pe" },
+              { name: "Ecuador", code: "ec" },
+              { name: "Bolivia", code: "bo" },
+              { name: "Venezuela", code: "ve" },
+              { name: "Puerto Rico", code: "pr" },
+            ].map((country) => (
               <div
                 key={country.code}
                 className="group relative rounded-2xl border border-[#238CCC]/15 bg-white/60 backdrop-blur-md px-4 py-5 text-center transition-all duration-300 hover:scale-105 hover:bg-white hover:shadow-lg"
@@ -180,220 +182,193 @@ function Index() {
             ))}
           </div>
         </section>
-      <GlobalPresence />
-      <GlobalPresenceShowcase />
+        
+        <GlobalPresenceShowcase />
       </section>
 
       {/* SERVICES */}
       <section
-  id="services"
-  className="relative py-28 overflow-hidden"
-  style={{ background: "var(--gradient-fresh)" }}
->
-  {/* Decorative blobs */}
-  <div className="pointer-events-none absolute -top-24 -right-24 w-[500px] h-[500px] bg-white/10 rounded-full animate-blob" />
-  <div
-    className="pointer-events-none absolute -bottom-32 -left-24 w-[400px] h-[400px] bg-white/5 rounded-full animate-blob"
-    style={{ animationDelay: "-7s" }}
-  />
-
-  <div className="relative mx-auto max-w-7xl px-6">
-    {/* Header */}
-    <div className="max-w-3xl">
-      <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">
-        Nuestros servicios
-      </span>
-
-      <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white leading-tight">
-        Soluciones Médicas Especializadas
-      </h2>
-
-      <p className="mt-4 text-white/80 text-base md:text-lg">
-        Ofrecemos una gama integral de servicios de vanguardia diseñados para cubrir múltiples áreas del sector salud.
-      </p>
-    </div>
-
-    {/* Grid */}
-    <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        {
-          t: "Medicina Clínica",
-          d: "Atención médica especializada y de alta calidad.",
-          icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 3v18M3 12h18" />
-            </svg>
-          ),
-        },
-        {
-          t: "Medicina Regenerativa",
-          d: "Restauración de la salud celular y tejidos mediante terapias innovadoras.",
-          icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6.5 20l2-7L3 9h7z" />
-            </svg>
-          ),
-        },
-        {
-          t: "Investigación Médica",
-          d: "Desarrollo científico y protocolos de vanguardia para la medicina del futuro.",
-          icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 3h6m-7 6h8m-9 6h10" />
-            </svg>
-          ),
-        },
-        {
-          t: "Manufactura y Distribución",
-          d: "Producción y logística global de insumos médicos confiables.",
-          icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 7h18M3 12h18M3 17h18" />
-            </svg>
-          ),
-        },
-        {
-          t: "Inmunología y Alergias",
-          d: "Diagnóstico avanzado y tratamientos para el sistema inmunológico.",
-          icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2l4 10-4 10-4-10 4-10z" />
-            </svg>
-          ),
-        },
-        {
-          t: "Innovación en Salud",
-          d: "Creación de nuevos proyectos y soluciones médicas de alto impacto.",
-          icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2v20M2 12h20" />
-            </svg>
-          ),
-        },
-      ].map((s, i) => (
+        id="services"
+        className="relative py-28 overflow-hidden"
+        style={{ background: "var(--gradient-fresh)" }}
+      >
+        {/* Decorative blobs */}
+        <div className="pointer-events-none absolute -top-24 -right-24 w-[500px] h-[500px] bg-white/10 rounded-full animate-blob" />
         <div
-          key={s.t}
-          className="group relative p-7 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-white transition-all duration-300 hover:bg-white hover:text-[#0D3B7F] hover:-translate-y-2 hover:shadow-2xl"
-          style={{
-            animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${i * 0.1}s both`,
-          }}
-        >
-          {/* Icon */}
-          <div className="flex items-center justify-between">
-            <div className="p-2 rounded-lg bg-white/10 group-hover:bg-[#0D3B7F]/10 transition">
-              {s.icon}
-            </div>
-            <span className="text-xs opacity-40 group-hover:opacity-100 font-bold">
-              0{i + 1}
+          className="pointer-events-none absolute -bottom-32 -left-24 w-[400px] h-[400px] bg-white/5 rounded-full animate-blob"
+          style={{ animationDelay: "-7s" }}
+        />
+
+        <div className="relative mx-auto max-w-7xl px-6">
+          {/* Header */}
+          <div className="max-w-3xl">
+            <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">
+              Nuestros servicios
             </span>
+
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white leading-tight">
+              Soluciones Médicas Especializadas
+            </h2>
+
+            <p className="mt-4 text-white/80 text-base md:text-lg">
+              Ofrecemos una gama integral de servicios de vanguardia diseñados para cubrir múltiples
+              áreas del sector salud.
+            </p>
           </div>
 
-          {/* Title */}
-          <h3 className="mt-5 text-xl font-semibold">{s.t}</h3>
+          {/* Grid */}
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                t: "Medicina Clínica",
+                d: "Atención médica especializada y de alta calidad.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 3v18M3 12h18" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Medicina Regenerativa",
+                d: "Restauración de la salud celular y tejidos mediante terapias innovadoras.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6.5 20l2-7L3 9h7z" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Investigación Médica",
+                d: "Desarrollo científico y protocolos de vanguardia para la medicina del futuro.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 3h6m-7 6h8m-9 6h10" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Manufactura y Distribución",
+                d: "Producción y logística global de insumos médicos confiables.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 7h18M3 12h18M3 17h18" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Inmunología y Alergias",
+                d: "Diagnóstico avanzado y tratamientos para el sistema inmunológico.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l4 10-4 10-4-10 4-10z" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Innovación en Salud",
+                d: "Creación de nuevos proyectos y soluciones médicas de alto impacto.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2v20M2 12h20" />
+                  </svg>
+                ),
+              },
+            ].map((s, i) => (
+              <div
+                key={s.t}
+                className="group relative p-7 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-white transition-all duration-300 hover:bg-white hover:text-[#0D3B7F] hover:-translate-y-2 hover:shadow-2xl"
+                style={{
+                  animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${i * 0.1}s both`,
+                }}
+              >
+                {/* Icon */}
+                <div className="flex items-center justify-between">
+                  <div className="p-2 rounded-lg bg-white/10 group-hover:bg-[#0D3B7F]/10 transition">
+                    {s.icon}
+                  </div>
+                  <span className="text-xs opacity-40 group-hover:opacity-100 font-bold">
+                    0{i + 1}
+                  </span>
+                </div>
 
-          {/* Description */}
-          <p className="mt-2 text-sm opacity-80 group-hover:opacity-90">
-            {s.d}
-          </p>
+                {/* Title */}
+                <h3 className="mt-5 text-xl font-semibold">{s.t}</h3>
 
-          {/* Glow line */}
-          <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0D3B7F] group-hover:w-full transition-all duration-500" />
+                {/* Description */}
+                <p className="mt-2 text-sm opacity-80 group-hover:opacity-90">{s.d}</p>
+
+                {/* Glow line */}
+                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0D3B7F] group-hover:w-full transition-all duration-500" />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
       </section>
-
-      
 
       {/* INFO SECTION */}
       <InfoSection />
-      
 
       {/* LOGOS MARQUEE */}
       <LogosCarousel />
 
       {/* CTA */}
       <section id="cta" className="relative py-28 overflow-hidden">
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{
-      backgroundImage: "url('/images/CTAImage.png')",
-    }}
-  />
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/CTAImage.png')",
+          }}
+        />
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/60" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60" />
 
-  {/* Content */}
-  <div className="relative mx-auto max-w-7xl px-6">
-    <div className="grid md:grid-cols-2 items-center min-h-[500px]">
-      
-      {/* LEFT EMPTY (puedes usarlo para aire visual o logo) */}
-      <div className="hidden md:block" />
+        {/* Content */}
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="grid md:grid-cols-2 items-center min-h-[500px]">
+            {/* LEFT EMPTY (puedes usarlo para aire visual o logo) */}
+            <div className="hidden md:block" />
 
-      {/* RIGHT CONTENT */}
-      <div className="text-right text-white">
-        <Globe2 className="w-12 h-12 ml-auto text-white/90 animate-float" />
+            {/* RIGHT CONTENT */}
+            <div className="text-right text-white">
+              <Globe2 className="w-12 h-12 ml-auto text-white/90 animate-float" />
 
-        <h2 className="mt-6 text-4xl md:text-6xl font-bold leading-tight">
-          Liderazgo con<br />
-          <span className="text-[#38bdf8]">Impacto Global</span>
-        </h2>
+              <h2 className="mt-6 text-4xl md:text-6xl font-bold leading-tight">
+                Liderazgo con
+                <br />
+                <span className="text-[#38bdf8]">Impacto Global</span>
+              </h2>
 
-        <p className="mt-5 text-lg text-white/80 max-w-md ml-auto">
-          Conectamos el futuro de la medicina a través de alianzas estratégicas internacionales y filiales en Latinoamérica, Europa y Estados Unidos. Un compromiso de excelencia que garantiza el éxito de cada proyecto.
-        </p>
+              <p className="mt-5 text-lg text-white/80 max-w-md ml-auto">
+                Conectamos el futuro de la medicina a través de alianzas estratégicas
+                internacionales y filiales en Latinoamérica, Europa y Estados Unidos. Un compromiso
+                de excelencia que garantiza el éxito de cada proyecto.
+              </p>
 
-        <div className="mt-8 flex justify-end">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium text-white transition-all hover:scale-105"
-            style={{
-              background: "linear-gradient(135deg, #238CCC, #38bdf8)",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
-            }}
-          >
-            Agendar una conversación
-            <ArrowRight className="w-4 h-4" />
-          </a>
+              <div className="mt-8 flex justify-end">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium text-white transition-all hover:scale-105"
+                  style={{
+                    background: "linear-gradient(135deg, #238CCC, #38bdf8)",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                  }}
+                >
+                  Agendar una conversación
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
       </section>
 
       {/* CONTACT FORM */}
       <ContactSection />
 
       {/* FOOTER */}
-      <footer className="border-t border-[#0D3B7F]/10 py-8 bg-[#f5f5f5]">
-  <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-5">
-    
-    {/* LOGO */}
-    <div className="flex items-center gap-4">
-      <img
-        src="/images/LogoMain1.png"
-        alt="Foster Stern Group"
-        className="h-12 w-auto object-contain"
-        draggable={false}
-      />
-
-      
-    </div>
-
-    {/* LINKS */}
-    <div className="flex items-center gap-6 text-sm">
-      <a
-        href="/aviso-de-privacidad"
-        className="text-[#0D3B7F]/70 hover:text-[#0D3B7F] transition-colors duration-300"
-      >
-        Aviso de privacidad
-      </a>
-    </div>
-  </div>
-</footer>
+      <SiteFooter />
     </div>
   );
 }
@@ -554,231 +529,7 @@ const offices = [
   },
 ];
 
-function GlobalPresence() {
-  const [active, setActive] = useState(0);
-  const a = offices[active];
 
-  return (
-    <section
-      id="presence"
-      className="relative overflow-hidden py-24"
-      style={{ background: "#f5f5f5" }}
-    >
-      {/* subtle background glow */}
-      <div
-        className="pointer-events-none absolute top-0 right-0 h-[320px] w-[320px] opacity-10"
-        style={{
-          background: "linear-gradient(135deg,#238CCC,#d7edf8)",
-          filter: "blur(90px)",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-7xl px-6">
-        {/* heading */}
-        <div className="mb-14 max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#238CCC]">
-            Presencia Global
-          </span>
-
-          <h2 className="mt-4 text-4xl font-bold tracking-tight text-[#0D3B7F] md:text-5xl">
-            Operaciones conectadas
-            <br />
-            alrededor del mundo.
-          </h2>
-
-          <p className="mt-5 leading-relaxed text-[#0D3B7F]/70">
-            Coordinamos equipos y operaciones internacionales con presencia
-            estratégica en múltiples regiones.
-          </p>
-        </div>
-
-        <div className="grid items-stretch gap-6 lg:grid-cols-5">
-          {/* MAP */}
-          <div className="border border-black/5 bg-white p-5 md:p-7 lg:col-span-3">
-            <div
-              className="relative aspect-[16/10] overflow-hidden border border-[#238CCC]/10 bg-white"
-            >
-              {/* world map */}
-              <img
-                src="/images/mapWorld.png"
-                alt="World map"
-                className="absolute inset-0 h-full w-full object-contain opacity-15"
-              />
-
-              {/* dotted overlay */}
-              <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle, #238CCC22 1px, transparent 1px)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-
-              {/* pins */}
-              {offices.map((o, idx) => {
-                const isActive = idx === active;
-
-                return (
-                  <button
-                    key={o.city}
-                    type="button"
-                    onClick={() => setActive(idx)}
-                    onMouseEnter={() => setActive(idx)}
-                    aria-label={`Ver oficina ${o.city}`}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                    style={{
-                      left: `${o.coords.x}%`,
-                      top: `${o.coords.y}%`,
-                    }}
-                  >
-                    <div className="flex flex-col items-center">
-                      {/* pin */}
-                      <div
-                        className={`h-3.5 w-3.5 border-2 transition-all duration-300 ${
-                          isActive
-                            ? "scale-125 border-[#238CCC] bg-[#238CCC]"
-                            : "border-[#238CCC] bg-white"
-                        }`}
-                      />
-
-                      {/* label */}
-                      <span
-                        className={`mt-2 text-[11px] font-medium uppercase tracking-wider transition-colors duration-300 ${
-                          isActive
-                            ? "text-[#0D3B7F]"
-                            : "text-[#0D3B7F]/50 group-hover:text-[#0D3B7F]"
-                        }`}
-                      >
-                        {o.city}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-
-              {/* bottom stat */}
-              <div className="absolute bottom-5 left-5 flex items-center gap-3 text-sm text-[#0D3B7F]/70">
-                <Globe2 className="h-4 w-4 text-[#238CCC]" />
-                <span>{offices.length} oficinas internacionales</span>
-              </div>
-            </div>
-
-            {/* city tabs */}
-            <div className="mt-5 flex flex-wrap gap-2">
-              {offices.map((o, idx) => (
-                <button
-                  key={o.city}
-                  type="button"
-                  onClick={() => setActive(idx)}
-                  className={`border px-4 py-2 text-sm transition-all duration-300 ${
-                    idx === active
-                      ? "border-[#0D3B7F] bg-[#0D3B7F] text-white"
-                      : "border-black/10 bg-white text-[#0D3B7F]/70 hover:border-[#238CCC]"
-                  }`}
-                >
-                  {o.city}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* DETAILS */}
-          <div
-            key={a.city}
-            className="overflow-hidden border border-black/5 bg-white lg:col-span-2"
-          >
-            {/* image */}
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <img
-                src={a.image}
-                alt={`${a.city}, ${a.country}`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.05) 20%, rgba(13,59,127,0.82) 100%)",
-                }}
-              />
-
-              <div className="absolute left-5 top-5">
-                <span className="border border-white/20 bg-black/20 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white backdrop-blur">
-                  {a.region}
-                </span>
-              </div>
-
-              <div className="absolute bottom-5 left-5 right-5 text-white">
-                <h3 className="text-3xl font-semibold tracking-tight">
-                  {a.city}
-                </h3>
-
-                <p className="mt-1 text-sm text-white/75">{a.country}</p>
-              </div>
-            </div>
-
-            {/* content */}
-            <div className="p-6">
-              <p className="text-sm leading-relaxed text-[#0D3B7F]/72">
-                {a.note}
-              </p>
-
-              <div className="mt-6 space-y-4">
-                {/* address */}
-                <div className="flex items-start gap-3 border-t border-black/5 pt-4">
-                  <Building2 className="mt-0.5 h-4 w-4 text-[#238CCC]" />
-
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#0D3B7F]/45">
-                      Dirección
-                    </div>
-
-                    <div className="mt-1 text-sm font-medium text-[#0D3B7F]">
-                      {a.address}
-                    </div>
-                  </div>
-                </div>
-
-                {/* team */}
-                <div className="flex items-start gap-3 border-t border-black/5 pt-4">
-                  <Users className="mt-0.5 h-4 w-4 text-[#238CCC]" />
-
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#0D3B7F]/45">
-                      Equipo
-                    </div>
-
-                    <div className="mt-1 text-sm font-medium text-[#0D3B7F]">
-                      {a.team}
-                    </div>
-                  </div>
-                </div>
-
-                {/* timezone */}
-                <div className="flex items-start gap-3 border-t border-black/5 pt-4">
-                  <Clock className="mt-0.5 h-4 w-4 text-[#238CCC]" />
-
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#0D3B7F]/45">
-                      Horario
-                    </div>
-
-                    <div className="mt-1 text-sm font-medium text-[#0D3B7F]">
-                      {a.timezone}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function LogosCarousel() {
   const logos = [
@@ -808,25 +559,22 @@ function LogosCarousel() {
 
       {/* CAROUSEL */}
       <div className="relative">
-        <div
-          className="flex items-center gap-8 marquee-track"
-          style={{ width: "max-content" }}
-        >
+        <div className="flex items-center gap-8 marquee-track" style={{ width: "max-content" }}>
           {row.map((logo, idx) => (
             <div
-  key={idx}
-  className="flex items-center justify-center shrink-0 w-[260px] h-[130px] rounded-3xl border border-[#0D3B7F]/10 bg-white transition-all duration-300 hover:-translate-y-1"
-  style={{
-    boxShadow: "0 10px 30px rgba(13,59,127,0.06)",
-  }}
->
-  <img
-    src={logo}
-    alt={`logo-${idx}`}
-    className="max-w-[180px] max-h-[70px] object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-    draggable={false}
-  />
-</div>
+              key={idx}
+              className="flex items-center justify-center shrink-0 w-[260px] h-[130px] rounded-3xl border border-[#0D3B7F]/10 bg-white transition-all duration-300 hover:-translate-y-1"
+              style={{
+                boxShadow: "0 10px 30px rgba(13,59,127,0.06)",
+              }}
+            >
+              <img
+                src={logo}
+                alt={`logo-${idx}`}
+                className="max-w-[180px] max-h-[70px] object-contain opacity-80 hover:opacity-100 transition-all duration-300"
+                draggable={false}
+              />
+            </div>
           ))}
         </div>
 
@@ -834,8 +582,7 @@ function LogosCarousel() {
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-32"
           style={{
-            background:
-              "linear-gradient(to right, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
+            background: "linear-gradient(to right, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
           }}
         />
 
@@ -843,8 +590,7 @@ function LogosCarousel() {
         <div
           className="pointer-events-none absolute inset-y-0 right-0 w-32"
           style={{
-            background:
-              "linear-gradient(to left, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
+            background: "linear-gradient(to left, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
           }}
         />
       </div>
@@ -940,8 +686,7 @@ function ContactSection() {
   const [sent, setSent] = useState(false);
 
   const onChange =
-    (key: string) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (key: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((prev) => ({
         ...prev,
         [key]: e.target.value,
@@ -968,12 +713,7 @@ function ContactSection() {
     });
   };
 
-  const field = (
-    key: keyof typeof form,
-    label: string,
-    type = "text",
-    textarea = false
-  ) => {
+  const field = (key: keyof typeof form, label: string, type = "text", textarea = false) => {
     const active = focus === key || form[key].length > 0;
 
     return (
@@ -982,11 +722,7 @@ function ContactSection() {
           className="absolute left-5 transition-all duration-200 pointer-events-none"
           style={{
             top: active ? "10px" : textarea ? "22px" : "50%",
-            transform: active
-              ? "translateY(0)"
-              : textarea
-                ? "translateY(0)"
-                : "translateY(-50%)",
+            transform: active ? "translateY(0)" : textarea ? "translateY(0)" : "translateY(-50%)",
             fontSize: active ? "11px" : "15px",
             letterSpacing: active ? "0.08em" : "0",
             textTransform: active ? "uppercase" : "none",
@@ -1023,11 +759,7 @@ function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-28 px-6"
-      style={{ background: "#f5f5f5" }}
-    >
+    <section id="contact" className="py-28 px-6" style={{ background: "#f5f5f5" }}>
       <div className="mx-auto max-w-4xl">
         {/* HEADER */}
         <div className="text-center mb-14">
@@ -1046,8 +778,7 @@ function ContactSection() {
           </h2>
 
           <p className="mt-5 text-lg text-[#4b5563] max-w-2xl mx-auto">
-            Completa el formulario y nos pondremos en contacto contigo lo antes
-            posible.
+            Completa el formulario y nos pondremos en contacto contigo lo antes posible.
           </p>
         </div>
 
@@ -1074,9 +805,7 @@ function ContactSection() {
             {field("specialty", "Especialidad")}
           </div>
 
-          <div className="mt-5">
-            {field("message", "Mensaje", "text", true)}
-          </div>
+          <div className="mt-5">{field("message", "Mensaje", "text", true)}</div>
 
           <button
             type="submit"
