@@ -85,12 +85,11 @@ export function SiteHeader() {
 
       {/* MAIN HEADER */}
       <div
-  className="bg-[#FFF]"
-  style={{
-    boxShadow:
-      "0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(15,23,42,.06)",
-  }}
->
+        className="bg-[#FFF]"
+        style={{
+          boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(15,23,42,.06)",
+        }}
+      >
         <div
           className="
         relative
@@ -118,8 +117,8 @@ export function SiteHeader() {
               src="/images/LogoMain1.png"
               alt="Foster Stern Group"
               className="
-            h-18
-            md:h-20
+            h-20
+            md:h-22
             w-auto
             object-contain
             transition-all
@@ -193,7 +192,7 @@ export function SiteHeader() {
             px-5
             py-2.5
             text-white
-            text-[16px]
+            text-[14px]
             uppercase
             tracking-[0.08em]
             font-semibold

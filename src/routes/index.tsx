@@ -6,6 +6,7 @@ import cityMexico from "@/assets/city-mexico.jpg";
 import cityMiami from "@/assets/city-miami.jpg";
 import cityMadrid from "@/assets/city-madrid.jpg";
 import cityBogota from "@/assets/city-bogota.jpg";
+import { GlobalPresenceShowcase } from "@/components/GlobalPresenceShowcase";
 import {
   ArrowRight,
   Compass,
@@ -180,6 +181,7 @@ function Index() {
           </div>
         </section>
       <GlobalPresence />
+      <GlobalPresenceShowcase />
       </section>
 
       {/* SERVICES */}
@@ -560,7 +562,7 @@ function GlobalPresence() {
     <section
       id="presence"
       className="relative overflow-hidden py-24"
-      style={{ background: "#f7f7f7" }}
+      style={{ background: "#f5f5f5" }}
     >
       {/* subtle background glow */}
       <div
