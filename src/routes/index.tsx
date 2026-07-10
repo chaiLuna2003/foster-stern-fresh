@@ -8,6 +8,7 @@ import cityMadrid from "@/assets/city-madrid.jpg";
 import cityBogota from "@/assets/city-bogota.jpg";
 import { GlobalPresenceShowcase } from "@/components/GlobalPresenceShowcase";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ServicesShowcaseGrid } from "@/components/ServicesShowcaseGrid";
 import {
   ArrowRight,
   Compass,
@@ -187,123 +188,7 @@ function Index() {
       </section>
 
       {/* SERVICES */}
-      <section
-        id="services"
-        className="relative py-28 overflow-hidden"
-        style={{ background: "var(--gradient-fresh)" }}
-      >
-        {/* Decorative blobs */}
-        <div className="pointer-events-none absolute -top-24 -right-24 w-[500px] h-[500px] bg-white/10 rounded-full animate-blob" />
-        <div
-          className="pointer-events-none absolute -bottom-32 -left-24 w-[400px] h-[400px] bg-white/5 rounded-full animate-blob"
-          style={{ animationDelay: "-7s" }}
-        />
-
-        <div className="relative mx-auto max-w-7xl px-6">
-          {/* Header */}
-          <div className="max-w-3xl">
-            <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">
-              Nuestros servicios
-            </span>
-
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white leading-tight">
-              Soluciones Médicas Especializadas
-            </h2>
-
-            <p className="mt-4 text-white/80 text-base md:text-lg">
-              Ofrecemos una gama integral de servicios de vanguardia diseñados para cubrir múltiples
-              áreas del sector salud.
-            </p>
-          </div>
-
-          {/* Grid */}
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                t: "Medicina Clínica",
-                d: "Atención médica especializada y de alta calidad.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 3v18M3 12h18" />
-                  </svg>
-                ),
-              },
-              {
-                t: "Medicina Regenerativa",
-                d: "Restauración de la salud celular y tejidos mediante terapias innovadoras.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6.5 20l2-7L3 9h7z" />
-                  </svg>
-                ),
-              },
-              {
-                t: "Investigación Médica",
-                d: "Desarrollo científico y protocolos de vanguardia para la medicina del futuro.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M9 3h6m-7 6h8m-9 6h10" />
-                  </svg>
-                ),
-              },
-              {
-                t: "Manufactura y Distribución",
-                d: "Producción y logística global de insumos médicos confiables.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 7h18M3 12h18M3 17h18" />
-                  </svg>
-                ),
-              },
-              {
-                t: "Inmunología y Alergias",
-                d: "Diagnóstico avanzado y tratamientos para el sistema inmunológico.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2l4 10-4 10-4-10 4-10z" />
-                  </svg>
-                ),
-              },
-              {
-                t: "Innovación en Salud",
-                d: "Creación de nuevos proyectos y soluciones médicas de alto impacto.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2v20M2 12h20" />
-                  </svg>
-                ),
-              },
-            ].map((s, i) => (
-              <div
-                key={s.t}
-                className="group relative p-7 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-white transition-all duration-300 hover:bg-white hover:text-[#0D3B7F] hover:-translate-y-2 hover:shadow-2xl"
-                style={{
-                  animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${i * 0.1}s both`,
-                }}
-              >
-                {/* Icon */}
-                <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-lg bg-white/10 group-hover:bg-[#0D3B7F]/10 transition">
-                    {s.icon}
-                  </div>
-                  <span className="text-xs opacity-40 group-hover:opacity-100 font-bold">
-                    0{i + 1}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="mt-5 text-xl font-semibold">{s.t}</h3>
-
-                {/* Description */}
-                <p className="mt-2 text-sm opacity-80 group-hover:opacity-90">{s.d}</p>
-
-                {/* Glow line */}
-                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0D3B7F] group-hover:w-full transition-all duration-500" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesShowcaseGrid />
 
       {/* INFO SECTION */}
       <InfoSection />
