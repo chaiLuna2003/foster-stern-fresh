@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const heroImages = ["/images/HeroSection1.png", "/images/MisionImg.png", "/images/1.png"];
+const heroImages = ["/images/HeroSection1.png" , "/images/Innovacion.png"];
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -434,7 +434,7 @@ function LogosCarousel() {
       {/* HEADER */}
       <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
         <span className="text-xs uppercase tracking-[0.25em] text-[#0D3B7F] font-bold">
-          Empresas que confían en nosotros
+          Empresas afiliadas a nosotros
         </span>
 
         <h2 className="mt-4 text-3xl md:text-5xl font-bold text-[#0D3B7F]">

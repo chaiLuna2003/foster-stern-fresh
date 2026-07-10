@@ -14,9 +14,11 @@ const logos = ["/images/FSGRD.svg", "/images/FSGMX.svg", "/images/FSGCO.svg", "/
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
 
   const toggleRef = useRef<HTMLButtonElement | null>(null);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const hideTimeout = useRef<number | null>(null);
 
   const pathname = useRouterState({
     select: (s) => s.location.pathname + s.location.hash,
@@ -53,8 +55,57 @@ export function SiteHeader() {
     }
   }, [open]);
 
+  useEffect(() => {
+  const handleScroll = () => {
+    // Mostrar inmediatamente al hacer scroll
+    setShowHeader(true);
+
+    // Reiniciar temporizador
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+
+    // Esperar 1 segundo sin scroll
+    hideTimeout.current = window.setTimeout(() => {
+      setShowHeader(false);
+    }, 1000);
+  };
+
+  window.addEventListener("scroll", handleScroll, {
+    passive: true,
+  });
+
+  // Iniciar el contador al cargar la página
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+  };
+}, []);
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
+  <header
+  className={`
+    fixed
+    inset-x-0
+    top-0
+    z-50
+    transform-gpu
+    transition-all
+    duration-500
+    ease-[cubic-bezier(.22,1,.36,1)]
+    ${
+      showHeader
+        ? "opacity-100 translate-y-0 blur-0 scale-100 pointer-events-auto"
+        : "opacity-0 -translate-y-6 blur-sm scale-[0.98] pointer-events-none"
+    }
+  `}
+>
+
       {/* TOP MARQUEE */}
       <div className="relative overflow-hidden bg-[#FFF]">
         <div className="header-marquee py-3">

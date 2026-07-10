@@ -48,7 +48,7 @@ const services: ServiceCardData[] = [
     id: "medicina-regenerativa",
     title: "Medicina Regenerativa",
     description: "Restauración de la salud celular y tejidos mediante terapias innovadoras.",
-    image: "/images/servicio-medicina-regenerativa.png",
+    image: "/images/Medicina-regenerativa.png",
     modal: {
       description:
         "Terapias de vanguardia orientadas a la reparación de tejidos y la recuperación funcional, combinando investigación científica con un enfoque centrado en resultados sostenibles a largo plazo.",
@@ -63,7 +63,7 @@ const services: ServiceCardData[] = [
     id: "investigacion-medica",
     title: "Investigación Médica",
     description: "Desarrollo científico y protocolos de vanguardia para la medicina del futuro.",
-    image: "/images/servicio-investigacion-medica.png",
+    image: "/images/Investigacion-medica.png",
     modal: {
       description:
         "Programas de investigación que traducen hallazgos científicos en protocolos aplicables, impulsando innovación médica con estándares internacionales de calidad y ética.",
@@ -78,7 +78,7 @@ const services: ServiceCardData[] = [
     id: "manufactura-distribucion",
     title: "Manufactura y Distribución",
     description: "Producción y logística global de insumos médicos confiables.",
-    image: "/images/servicio-manufactura-distribucion.png",
+    image: "/images/Manufacturacion.png",
     modal: {
       description:
         "Infraestructura de manufactura y una red logística global que garantiza trazabilidad, calidad certificada y entregas puntuales de insumos médicos en cada región donde operamos.",
@@ -93,7 +93,7 @@ const services: ServiceCardData[] = [
     id: "inmunologia-alergias",
     title: "Inmunología y Alergias",
     description: "Diagnóstico avanzado y tratamientos para el sistema inmunológico.",
-    image: "/images/servicio-inmunologia-alergias.png",
+    image: "/images/Imnunologia.png",
     modal: {
       description:
         "Diagnóstico de precisión y planes de tratamiento individualizados para condiciones inmunológicas y alérgicas, apoyados en tecnología especializada y monitoreo continuo.",
@@ -108,7 +108,7 @@ const services: ServiceCardData[] = [
     id: "innovacion-salud",
     title: "Innovación en Salud",
     description: "Creación de nuevos proyectos y soluciones médicas de alto impacto.",
-    image: "/images/servicio-innovacion-salud.png",
+    image: "/images/Innovacion.png",
     modal: {
       description:
         "Un área dedicada a explorar nuevas soluciones médicas, desde alianzas estratégicas hasta el desarrollo de proyectos que amplían nuestro impacto en la salud global.",
@@ -163,13 +163,15 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
             <DialogTrigger asChild>
               <button
-                type="button"
-                className={cn(
-                  "mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/40",
-                  "bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md",
-                  "transition-all duration-300 hover:bg-white hover:text-[#0D3B7F]",
-                )}
-              >
+  type="button"
+  className={cn(
+    "mt-5 inline-flex w-fit items-center gap-2 rounded-full",
+    "border border-[#238CCC]",
+    "bg-[#238CCC] px-5 py-2.5 text-sm font-semibold text-white",
+    "transition-all duration-300",
+    "hover:border-[#0D3B7F] hover:bg-[#0D3B7F] hover:text-white"
+  )}
+>
                 Ver más
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
@@ -225,7 +227,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
  */
 export function ServicesShowcaseGrid() {
   return (
-    <div className="mx-auto max-w-6xl">
+    <div className="mx-auto max-w-6xl mt-20">
       {/* Header de la sección */}
       <div className="max-w-2xl">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#238CCC]">
