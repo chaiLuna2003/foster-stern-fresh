@@ -130,6 +130,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <Dialog>
       <div
+      
         className="group relative h-[450px] overflow-hidden rounded-[1.75rem] shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
         style={{
           animation: `rise .8s cubic-bezier(.2,.7,.2,1) ${index * 0.1}s both`,
@@ -163,15 +164,15 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
             <DialogTrigger asChild>
               <button
-  type="button"
-  className={cn(
-    "mt-5 inline-flex w-fit items-center gap-2 rounded-full",
-    "border border-[#238CCC]",
-    "bg-[#238CCC] px-5 py-2.5 text-sm font-semibold text-white",
-    "transition-all duration-300",
-    "hover:border-[#0D3B7F] hover:bg-[#0D3B7F] hover:text-white"
-  )}
->
+                type="button"
+                className={cn(
+                  "mt-5 inline-flex w-fit items-center gap-2 rounded-full",
+                  "border border-[#238CCC]",
+                  "bg-[#238CCC] px-5 py-2.5 text-sm font-semibold text-white",
+                  "transition-all duration-300",
+                  "hover:border-[#0D3B7F] hover:bg-[#0D3B7F] hover:text-white",
+                )}
+              >
                 Ver más
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
@@ -187,9 +188,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         />
         <div className="p-6 pt-5">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-[#0D3B7F]">
-              {service.title}
-            </DialogTitle>
+            <DialogTitle className="text-2xl font-bold text-[#0D3B7F]">{service.title}</DialogTitle>
             <DialogDescription className="pt-2 text-base leading-relaxed text-[#0D3B7F]/75">
               {service.modal.description}
             </DialogDescription>
@@ -227,7 +226,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
  */
 export function ServicesShowcaseGrid() {
   return (
-    <div className="mx-auto max-w-6xl mt-20">
+    <div className="mx-auto max-w-6xl mt-20" id="services">
       {/* Header de la sección */}
       <div className="max-w-2xl">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#238CCC]">

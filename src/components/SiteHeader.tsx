@@ -10,7 +10,7 @@ const links: { label: string; to: string; hash?: string }[] = [
   { label: "Clientes", to: "/", hash: "testimonials" },
 ];
 
-const logos = ["/images/FSGRD.svg", "/images/FSGMX.svg", "/images/FSGCO.svg", "/images/FSGESP.svg"];
+const logos = ["/images/FSGRD.svg", "/images/FSGMX.svg", "/images/FSGCO.svg", "/images/FSGESP.svg" , "/images/Lamed.svg",  "/images/MiamiInstitute.svg"];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -56,40 +56,40 @@ export function SiteHeader() {
   }, [open]);
 
   useEffect(() => {
-  const handleScroll = () => {
-    // Mostrar inmediatamente al hacer scroll
-    setShowHeader(true);
+    const handleScroll = () => {
+      // Mostrar inmediatamente al hacer scroll
+      setShowHeader(true);
 
-    // Reiniciar temporizador
-    if (hideTimeout.current) {
-      clearTimeout(hideTimeout.current);
-    }
+      // Reiniciar temporizador
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
 
-    // Esperar 1 segundo sin scroll
-    hideTimeout.current = window.setTimeout(() => {
-      setShowHeader(false);
-    }, 1000);
-  };
+      // Esperar 1 segundo sin scroll
+      hideTimeout.current = window.setTimeout(() => {
+        setShowHeader(false);
+      }, 1000);
+    };
 
-  window.addEventListener("scroll", handleScroll, {
-    passive: true,
-  });
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
-  // Iniciar el contador al cargar la página
-  handleScroll();
+    // Iniciar el contador al cargar la página
+    handleScroll();
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
 
-    if (hideTimeout.current) {
-      clearTimeout(hideTimeout.current);
-    }
-  };
-}, []);
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
+    };
+  }, []);
 
   return (
-  <header
-  className={`
+    <header
+      className={`
     fixed
     inset-x-0
     top-0
@@ -104,8 +104,7 @@ export function SiteHeader() {
         : "opacity-0 -translate-y-6 blur-sm scale-[0.98] pointer-events-none"
     }
   `}
->
-
+    >
       {/* TOP MARQUEE */}
       <div className="relative overflow-hidden bg-[#FFF]">
         <div className="header-marquee py-3">

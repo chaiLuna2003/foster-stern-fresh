@@ -9,6 +9,7 @@ import cityBogota from "@/assets/city-bogota.jpg";
 import { GlobalPresenceShowcase } from "@/components/GlobalPresenceShowcase";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ServicesShowcaseGrid } from "@/components/ServicesShowcaseGrid";
+import LogosCarousel from "@/components/LogosCarousel";
 import {
   ArrowRight,
   Compass,
@@ -32,7 +33,14 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const heroImages = ["/images/HeroSection1.png" , "/images/Innovacion.png"];
+const heroImages = [
+  "/images/HeroSection1.png",
+  "/images/Innovacion.png",
+  "/images/Hero-image-3.png",
+  "/images/HeroImage5.webp",
+  "/images/HeroImage6.webp",
+  "/images/HeroImage6.1.webp",
+];
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -53,32 +61,33 @@ function Index() {
       <SiteHeader />
 
       {/* HERO — Deep navy strategic */}
-      <section id="top" className="relative overflow-hidden bg-[#F5F5F5] pt-24 md:pt-10">
-        <div className="grid min-h-[75vh] lg:grid-cols-2">
+      <section id="top" className="relative overflow-hidden bg-[#F5F5F5] pt-24 md:pt-32 ">
+        <div className="grid min-h-[75vh] lg:grid-cols-[40%_60%]">
           {/* LEFT CONTENT */}
           <div className="flex items-center">
             <div className="mx-auto w-full max-w-xl px-2 py-16 md:px-12 lg:px-2">
               <h1 className="text-5xl font-extrabold tracking-tight text-[#111] md:text-6xl lg:text-5xl leading-tight flex flex-col gap-3">
-                <span className="text-[#0D3B7F]">Instituciones más sólidas.</span>
+                <span className="text-[#0D3B7F]">Soluciones</span>
 
-                <span>Pacientes más sanos.</span>
+                <span>Globales para el</span>
 
                 <span className="text-[#0D3B7F] relative inline-block">
-                  Éxito garantizado.
+                  Cuidado de la Salud
                   <span className="absolute inset-0 text-[#0D3B7F] blur-sm opacity-60 animate-pulse">
-                    Éxito garantizado.
+                    Cuidado de la Salud
                   </span>
                 </span>
               </h1>
 
               <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-500">
                 Más de 25 años de experiencia brindando soluciones de alta tecnología y excelencia
-                en el sector de la salud global.
+                en el sector de la salud global{" "}
+                <span className="font-bold">más alla de las fronteras</span>
               </p>
 
               <div className="mt-10">
                 <a
-                  href="#contact"
+                  href="#services"
                   className="group inline-flex items-center gap-3 rounded-xl bg-[#0D3B7F] px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#222]"
                 >
                   Conoce nuestros Servicios
@@ -91,18 +100,19 @@ function Index() {
           </div>
 
           {/* RIGHT CAROUSEL */}
-          <div className="relative overflow-hidden bg-[#ececec] h-[800px]">
+          <div className="relative h-[720px] overflow-hidden">
             {heroImages.map((image, index) => (
               <div
                 key={image}
-                className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out ${
-                  index === heroIndex ? "opacity-100" : "opacity-0"
+                className={`absolute inset-0 transition-all duration-1000 ${
+                  index === heroIndex ? "opacity-100 blur-0" : "opacity-0 blur-sm"
                 }`}
               >
                 <img
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full object-contain transition-transform duration-[8000ms]
+    ${index === heroIndex ? "scale-105" : "scale-100"}`}
                 />
               </div>
             ))}
@@ -145,11 +155,11 @@ function Index() {
         </div>
 
         <section className="mx-auto max-w-7xl px-6 mt-20">
-          <h3 className="text-center text-sm uppercase tracking-[0.25em] text-[#238CCC] font-semibold mb-10">
+          <h3 className="text-center text-lg uppercase tracking-[0.25em] text-[#238CCC] font-semibold mb-10">
             Presencia Internacional
           </h3>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
               { name: "Estados Unidos", code: "us" },
               { name: "Portugal", code: "pt" },
@@ -183,7 +193,7 @@ function Index() {
             ))}
           </div>
         </section>
-        
+
         <GlobalPresenceShowcase />
       </section>
 
@@ -413,75 +423,6 @@ const offices = [
     note: "Nuestra puerta de entrada al mercado europeo y patrimonio transatlántico.",
   },
 ];
-
-
-
-function LogosCarousel() {
-  const logos = [
-    "/images/FSGRD.svg",
-    "/images/FSGMX.svg",
-    "/images/FSGCO.svg",
-    "/images/FSGESP.svg",
-  ];
-
-  const row = [...logos, ...logos];
-
-  return (
-    <section
-      className="relative py-20 overflow-hidden border-y border-[#0D3B7F]/10"
-      style={{ background: "#f5f5f5" }}
-    >
-      {/* HEADER */}
-      <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
-        <span className="text-xs uppercase tracking-[0.25em] text-[#0D3B7F] font-bold">
-          Empresas afiliadas a nosotros
-        </span>
-
-        <h2 className="mt-4 text-3xl md:text-5xl font-bold text-[#0D3B7F]">
-          Construimos relaciones sólidas.
-        </h2>
-      </div>
-
-      {/* CAROUSEL */}
-      <div className="relative">
-        <div className="flex items-center gap-8 marquee-track" style={{ width: "max-content" }}>
-          {row.map((logo, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-center shrink-0 w-[260px] h-[130px] rounded-3xl border border-[#0D3B7F]/10 bg-white transition-all duration-300 hover:-translate-y-1"
-              style={{
-                boxShadow: "0 10px 30px rgba(13,59,127,0.06)",
-              }}
-            >
-              <img
-                src={logo}
-                alt={`logo-${idx}`}
-                className="max-w-[180px] max-h-[70px] object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-                draggable={false}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* FADE LEFT */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 w-32"
-          style={{
-            background: "linear-gradient(to right, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
-          }}
-        />
-
-        {/* FADE RIGHT */}
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 w-32"
-          style={{
-            background: "linear-gradient(to left, #f5f5f5 0%, rgba(245,245,245,0) 100%)",
-          }}
-        />
-      </div>
-    </section>
-  );
-}
 
 function InfoSection() {
   const words = ["Visión", "Confianza", "Estrategia", "Futuro"];
