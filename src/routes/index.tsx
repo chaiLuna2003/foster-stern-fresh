@@ -203,9 +203,6 @@ function Index() {
       {/* INFO SECTION */}
       <InfoSection />
 
-      {/* LOGOS MARQUEE */}
-      <LogosCarousel />
-
       {/* CTA */}
       <section id="cta" className="relative py-28 overflow-hidden">
         {/* Background Image */}
@@ -258,6 +255,10 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* LOGOS MARQUEE */}
+      <LogosCarousel />
+
 
       {/* CONTACT FORM */}
       <ContactSection />
@@ -585,35 +586,40 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-28 px-6" style={{ background: "#f5f5f5" }}>
-      <div className="mx-auto max-w-4xl">
-        {/* HEADER */}
-        <div className="text-center mb-14">
-          <span
-            className="uppercase tracking-[0.25em] text-sm font-bold"
-            style={{ color: "#0D3B7F" }}
-          >
+    <section id="contact" className="relative py-28 px-6 overflow-hidden">
+      {/* BACKGROUND IMAGE */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/Form-background.webp')",
+        }}
+      />
+
+      {/* GRAY OVERLAY */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      <div className="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
+        {/* LEFT — HEADER / INFO */}
+        <div className="text-white">
+          <span className="uppercase tracking-[0.25em] text-sm font-bold text-[#9fd3ff]">
             Contacto
           </span>
 
-          <h2
-            className="mt-4 text-4xl md:text-5xl font-bold leading-tight"
-            style={{ color: "#0D3B7F" }}
-          >
+          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
             Hablemos de tu empresa.
           </h2>
 
-          <p className="mt-5 text-lg text-[#4b5563] max-w-2xl mx-auto">
+          <p className="mt-5 text-lg text-white/80 max-w-md">
             Completa el formulario y nos pondremos en contacto contigo lo antes posible.
           </p>
         </div>
 
-        {/* FORM */}
+        {/* RIGHT — FORM */}
         <form
           onSubmit={submit}
-          className="rounded-[2rem] border border-[#e5e5e5] bg-white p-8 md:p-12"
+          className="rounded-[2rem] border border-[#e5e5e5] bg-white p-8 md:p-12 lg:ml-auto lg:max-w-xl w-full"
           style={{
-            boxShadow: "0 10px 40px rgba(13,59,127,0.06)",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
           }}
         >
           <div className="grid md:grid-cols-2 gap-5">

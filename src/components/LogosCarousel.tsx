@@ -12,7 +12,7 @@ function LogosCarousel() {
   const companies = [
     {
       logo: "/images/FSGRD.svg",
-      image: "/images/Imnunologia.png",
+      image: "/images/Imnunologia.webp",
       title: "Foster Stern República Dominicana",
       description:
         "Especialistas en manufactura, distribución y comercialización de productos médicos para Latinoamérica. Contamos con procesos certificados que garantizan calidad, trazabilidad y cumplimiento internacional.",

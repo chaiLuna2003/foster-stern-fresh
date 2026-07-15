@@ -26,6 +26,7 @@ export function SiteHeader() {
   const toggleRef = useRef<HTMLButtonElement | null>(null);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const hideTimeout = useRef<number | null>(null);
+  const openRef = useRef(false);
 
   const pathname = useRouterState({
     select: (s) => s.location.pathname + s.location.hash,
@@ -41,6 +42,22 @@ export function SiteHeader() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  // Mantiene el header visible mientras el menú mobile está abierto,
+  // y evita que el auto-ocultamiento por inactividad de scroll lo oculte
+  // dejando el menú invisible pero técnicamente "abierto" (open === true).
+  useEffect(() => {
+    openRef.current = open;
+
+    if (open) {
+      setShowHeader(true);
+
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+        hideTimeout.current = null;
+      }
+    }
   }, [open]);
 
   useEffect(() => {
@@ -74,6 +91,7 @@ export function SiteHeader() {
 
       // Esperar 1 segundo sin scroll
       hideTimeout.current = window.setTimeout(() => {
+        if (openRef.current) return; // no ocultar si el menú mobile está abierto
         setShowHeader(false);
       }, 1000);
     };
