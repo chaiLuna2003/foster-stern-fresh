@@ -10,7 +10,14 @@ const links: { label: string; to: string; hash?: string }[] = [
   { label: "Clientes", to: "/", hash: "testimonials" },
 ];
 
-const logos = ["/images/FSGRD.svg", "/images/FSGMX.svg", "/images/FSGCO.svg", "/images/FSGESP.svg" , "/images/Lamed.svg",  "/images/MiamiInstitute.svg"];
+const logos = [
+  "/images/FSGRD.svg",
+  "/images/FSGMX.svg",
+  "/images/FSGCO.svg",
+  "/images/FSGESP.svg",
+  "/images/Lamed.svg",
+  "/images/MiamiInstitute.svg",
+];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -98,11 +105,10 @@ export function SiteHeader() {
     transition-all
     duration-500
     ease-[cubic-bezier(.22,1,.36,1)]
-    ${
-      showHeader
-        ? "opacity-100 translate-y-0 blur-0 scale-100 pointer-events-auto"
-        : "opacity-0 -translate-y-6 blur-sm scale-[0.98] pointer-events-none"
-    }
+    ${showHeader
+          ? "opacity-100 translate-y-0 blur-0 scale-100 pointer-events-auto"
+          : "opacity-0 -translate-y-6 blur-sm scale-[0.98] pointer-events-none"
+        }
   `}
     >
       {/* TOP MARQUEE */}
@@ -182,14 +188,14 @@ export function SiteHeader() {
           {/* DESKTOP NAV */}
           <nav
             className="
-          hidden
-          md:flex
-          items-center
-          gap-10
-          absolute
-          left-1/2
-          -translate-x-1/2
-        "
+    hidden
+    lg:flex
+    items-center
+    gap-10
+    absolute
+    left-1/2
+    -translate-x-1/2
+  "
           >
             {links.map((link) => (
               <Link

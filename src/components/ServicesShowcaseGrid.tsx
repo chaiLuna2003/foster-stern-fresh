@@ -33,7 +33,7 @@ const services: ServiceCardData[] = [
     id: "medicina-clinica",
     title: "Medicina Clínica",
     description: "Atención médica especializada y de alta calidad.",
-    image: "/images/Medicina-Clinica.png",
+    image: "/images/Medicina-Clinica.webp",
     modal: {
       description:
         "Equipos clínicos multidisciplinarios que acompañan cada caso con protocolos rigurosos, tecnología de diagnóstico actualizada y seguimiento cercano del paciente en todas las etapas del tratamiento.",
@@ -48,7 +48,7 @@ const services: ServiceCardData[] = [
     id: "medicina-regenerativa",
     title: "Medicina Regenerativa",
     description: "Restauración de la salud celular y tejidos mediante terapias innovadoras.",
-    image: "/images/Medicina-regenerativa.png",
+    image: "/images/Medicina-regenerativa.webp",
     modal: {
       description:
         "Terapias de vanguardia orientadas a la reparación de tejidos y la recuperación funcional, combinando investigación científica con un enfoque centrado en resultados sostenibles a largo plazo.",
@@ -63,7 +63,7 @@ const services: ServiceCardData[] = [
     id: "investigacion-medica",
     title: "Investigación Médica",
     description: "Desarrollo científico y protocolos de vanguardia para la medicina del futuro.",
-    image: "/images/Investigacion-medica.png",
+    image: "/images/Investigacion-medica.webp",
     modal: {
       description:
         "Programas de investigación que traducen hallazgos científicos en protocolos aplicables, impulsando innovación médica con estándares internacionales de calidad y ética.",
@@ -78,7 +78,7 @@ const services: ServiceCardData[] = [
     id: "manufactura-distribucion",
     title: "Manufactura y Distribución",
     description: "Producción y logística global de insumos médicos confiables.",
-    image: "/images/Manufacturacion.png",
+    image: "/images/Manufacturacion.webp",
     modal: {
       description:
         "Infraestructura de manufactura y una red logística global que garantiza trazabilidad, calidad certificada y entregas puntuales de insumos médicos en cada región donde operamos.",
@@ -93,7 +93,7 @@ const services: ServiceCardData[] = [
     id: "inmunologia-alergias",
     title: "Inmunología y Alergias",
     description: "Diagnóstico avanzado y tratamientos para el sistema inmunológico.",
-    image: "/images/Imnunologia.png",
+    image: "/images/Imnunologia.webp",
     modal: {
       description:
         "Diagnóstico de precisión y planes de tratamiento individualizados para condiciones inmunológicas y alérgicas, apoyados en tecnología especializada y monitoreo continuo.",
@@ -108,7 +108,7 @@ const services: ServiceCardData[] = [
     id: "innovacion-salud",
     title: "Innovación en Salud",
     description: "Creación de nuevos proyectos y soluciones médicas de alto impacto.",
-    image: "/images/Innovacion.png",
+    image: "/images/Innovacion.webp",
     modal: {
       description:
         "Un área dedicada a explorar nuevas soluciones médicas, desde alianzas estratégicas hasta el desarrollo de proyectos que amplían nuestro impacto en la salud global.",
@@ -226,7 +226,10 @@ function ServiceCard({ service, index }: ServiceCardProps) {
  */
 export function ServicesShowcaseGrid() {
   return (
-    <div className="mx-auto max-w-6xl mt-20" id="services">
+    <div
+  className="mx-auto mt-20 max-w-6xl px-4 sm:px-6 lg:px-8"
+  id="services"
+>
       {/* Header de la sección */}
       <div className="max-w-2xl">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#238CCC]">

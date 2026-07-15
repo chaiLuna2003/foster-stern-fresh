@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
-import infoImage from "@/assets/info-section.jpg";
+import infoImage from "/images/Cuidado-de-salud.webp";
 import heroMain from "@/assets/hero-main.jpg";
 import cityMexico from "@/assets/city-mexico.jpg";
 import cityMiami from "@/assets/city-miami.jpg";
@@ -34,12 +34,12 @@ import {
 import { useEffect, useState } from "react";
 
 const heroImages = [
-  "/images/HeroSection1.png",
-  "/images/Innovacion.png",
-  "/images/Hero-image-3.png",
+  "/images/HeroSection1.webp",
+  "/images/Innovacion.webp",
+  "/images/Hero-image-3.webp",
   "/images/HeroImage5.webp",
   "/images/HeroImage6.webp",
-  "/images/HeroImage6.1.webp",
+  
 ];
 
 export const Route = createFileRoute("/")({
@@ -61,11 +61,11 @@ function Index() {
       <SiteHeader />
 
       {/* HERO — Deep navy strategic */}
-      <section id="top" className="relative overflow-hidden bg-[#F5F5F5] pt-24 md:pt-32 ">
+      <section id="top" className="relative overflow-hidden bg-[#F5F5F5] pt-24 md:pt-32 lg:pt-0">
         <div className="grid min-h-[75vh] lg:grid-cols-[40%_60%]">
           {/* LEFT CONTENT */}
           <div className="flex items-center">
-            <div className="mx-auto w-full max-w-xl px-2 py-16 md:px-12 lg:px-2">
+            <div className="mx-auto w-full max-w-xl px-2 py-16 md:px-12 lg:px-12">
               <h1 className="text-5xl font-extrabold tracking-tight text-[#111] md:text-6xl lg:text-5xl leading-tight flex flex-col gap-3">
                 <span className="text-[#0D3B7F]">Soluciones</span>
 
@@ -212,7 +212,7 @@ function Index() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/CTAImage.png')",
+            backgroundImage: "url('/images/Cuidado-de-la-salud.webp')",
           }}
         />
 
